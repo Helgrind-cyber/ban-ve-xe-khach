@@ -5,13 +5,12 @@ require_once './config/utils.php';
 ?>
 <!DOCTYPE html>
 <html>
-  
 <!-- Mirrored from titanicthemes.com/travel/blue/list4.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2020 15:00:04 GMT -->
 <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Travel Agency - HTML5 Booking template</title>
-	
+
     <!-- Bootstrap -->
     <link href="<?= THEME_ASSET_URL ?>dist/css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="<?= THEME_ASSET_URL ?>assets/css/custom.css" rel="stylesheet" media="screen">
@@ -22,31 +21,29 @@ require_once './config/utils.php';
       <script src="<?= THEME_ASSET_URL ?>assets/js/html5shiv.js"></script>
       <script src="<?= THEME_ASSET_URL ?>assets/js/respond.min.js"></script>
     <![endif]-->
-	
-    <!-- Fonts -->	
+
+    <!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400,300,300italic' rel='stylesheet' type='text/css'>	
 	<!-- Font-Awesome -->
     <link rel="stylesheet" type="text/css" href="<?= THEME_ASSET_URL ?>assets/css/font-awesome.css" media="screen" />
     <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="<?= THEME_ASSET_URL ?>assets/css/font-awesome-ie7.css" media="screen" /><![endif]-->
-	
+
     <!-- REVOLUTION BANNER CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="<?= THEME_ASSET_URL ?>css/fullscreen.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="<?= THEME_ASSET_URL ?>rs-plugin/css/settings.css" media="screen" />
 
-    <!-- Picker -->	
+    <!-- Picker -->
 	<link rel="stylesheet" href="<?= THEME_ASSET_URL ?>assets/css/jquery-ui.css" />	
-	
-	
+
+
 	<!-- bin/jquery.slider.min.css -->
 	<link rel="stylesheet" href="<?= THEME_ASSET_URL ?>plugins/jslider/css/jslider.css" type="text/css">
 	<link rel="stylesheet" href="<?= THEME_ASSET_URL ?>plugins/jslider/css/jslider.round.css" type="text/css">	
-	
 
-	
-    <!-- jQuery -->	
+    <!-- jQuery -->
     <script src="<?= THEME_ASSET_URL ?>assets/js/jquery.v2.0.3.js"></script>
-	
+
 	<!-- bin/jquery.slider.min.js -->
 	<script type="text/javascript" src="<?= THEME_ASSET_URL ?>plugins/jslider/js/jshashtable-2.1_src.js"></script>
 	<script type="text/javascript" src="<?= THEME_ASSET_URL ?>plugins/jslider/js/jquery.numberformatter-1.2.3.js"></script>
@@ -55,13 +52,10 @@ require_once './config/utils.php';
 	<script type="text/javascript" src="<?= THEME_ASSET_URL ?>plugins/jslider/js/draggable-0.1.js"></script>
 	<script type="text/javascript" src="<?= THEME_ASSET_URL ?>plugins/jslider/js/jquery.slider.js"></script>
 	<!-- end -->
-	
-	
+
   </head>
   <body id="top" class="thebg" >
-    
-	
-	
+
   <div class="navbar-wrapper2 navbar-fixed-top">
         <div class="container">
             <div class="navbar mtnav">
@@ -96,43 +90,32 @@ require_once './config/utils.php';
 
                 </div>
             </div>
-        </div>
-	
-	
-	
-	
+
 	<div class="container breadcrub">
-	   
+
 		<div class="clearfix"></div>
 		<div class="brlines"></div>
-	</div>	
+	</div>
 
 	<!-- CONTENT -->
 	<div class="container">
-		<div class="container pagecontainer offset-0">	
+		<div class="container pagecontainer offset-0">
 
 			<!-- FILTERS -->
 			<div class="col-md-3 filters offset-0">
-			
-				
-				<!-- TOP TIP -->
-				
-				
-	
 
-	
-	
+				<!-- TOP TIP -->
+
+
 				<div class="bookfilters hpadding20">
-					
-					
-						
+
 						<!-- HOTELS TAB -->
 						<div class="hotelstab2 none">
 							<span class="opensans size13">Where do you want to go?</span>
 							<input type="text" class="form-control" placeholder="Greece">
-							
+
 							<div class="clearfix pbottom15"></div>
-							
+
 							<div class="w50percent">
 								<div class="wh90percent textleft">
 									<span class="opensans size13">Check in date</span>
@@ -146,32 +129,32 @@ require_once './config/utils.php';
 									<input type="text" class="form-control mySelectCalendar" id="datepicker2" placeholder="mm/dd/yyyy"/>
 								</div>
 							</div>
-							
+
 							<div class="clearfix pbottom15"></div>
-							
+
 							<div class="room1" >
 								<div class="w50percent">
 									<div class="wh90percent textleft">
 										<span class="opensans size13"><b>ROOM 1</b></span><br/>
-										
+
 										<div class="addroom1 block"><a onclick="addroom2()" class="grey cpointer">+ Add room</a></div>
 									</div>
 								</div>
 
-								<div class="w50percentlast">	
+								<div class="w50percentlast">
 									<div class="wh90percent textleft right ohidden">
 										<div class="w50percent">
 											<div class="wh90percent textleft left">
 												<span class="opensans size13">Adult</span>
 												<select class="form-control mySelectBoxClass">
 												  <option>1</option>
-												  <option selected>2</option>
+												  <option>2</option>
 												  <option>3</option>
 												  <option>4</option>
 												  <option>5</option>
 												</select>
 											</div>
-										</div>							
+										</div>
 										<div class="w50percentlast">
 											<div class="wh90percent textleft right ohidden">
 											<span class="opensans size13">Child</span>
@@ -188,7 +171,7 @@ require_once './config/utils.php';
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="room2 none">
 								<div class="clearfix"></div><div class="line1"></div>
 								<div class="w50percent">
@@ -198,7 +181,7 @@ require_once './config/utils.php';
 									</div>
 								</div>
 
-								<div class="w50percentlast">	
+								<div class="w50percentlast">
 									<div class="wh90percent textleft right">
 										<div class="w50percent">
 											<div class="wh90percent textleft left">
@@ -211,7 +194,7 @@ require_once './config/utils.php';
 												  <option>5</option>
 												</select>
 											</div>
-										</div>							
+										</div>
 										<div class="w50percentlast">
 											<div class="wh90percent textleft right">
 											<span class="opensans size13">Child</span>
@@ -227,7 +210,7 @@ require_once './config/utils.php';
 										</div>
 									</div>
 								</div>
-							</div>		
+							</div>
 
 							<div class="room3 none">
 								<div class="clearfix"></div><div class="line1"></div>
@@ -238,7 +221,7 @@ require_once './config/utils.php';
 									</div>
 								</div>
 
-								<div class="w50percentlast">	
+								<div class="w50percentlast">
 									<div class="wh90percent textleft right">
 										<div class="w50percent">
 											<div class="wh90percent textleft left">
@@ -251,7 +234,7 @@ require_once './config/utils.php';
 												  <option>5</option>
 												</select>
 											</div>
-										</div>							
+										</div>
 										<div class="w50percentlast">
 											<div class="wh90percent textleft right">
 											<span class="opensans size13">Child</span>
@@ -271,7 +254,7 @@ require_once './config/utils.php';
 							<button type="submit" class="btn-search3">Search</button>
 						</div>
 						<!-- END OF HOTELS TAB -->
-						
+
 						<!-- FLIGHTS TAB -->
 						<div class="flightstab2 none">
 							<div class="w50percent">
@@ -287,10 +270,9 @@ require_once './config/utils.php';
 									<input type="text" class="form-control" placeholder="City or airport">
 								</div>
 							</div>
-							
-							
+
 							<div class="clearfix pbottom15"></div>
-							
+
 							<div class="w50percent">
 								<div class="wh90percent textleft">
 									<span class="opensans size13">Departing</span>

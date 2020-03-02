@@ -56,7 +56,7 @@ require_once './config/utils.php';
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="index-2.html" class="navbar-brand"><img src="<?= BASE_URL ?>public/images/logo1.ico" alt="Travel Agency Logo" class="logo" /></a>
+                        <a href="index.php" class="navbar-brand"><img src="<?= BASE_URL ?>public/images/logo1.ico" alt="Travel Agency Logo" class="logo" /></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -371,6 +371,15 @@ require_once './config/utils.php';
                 <!-- End of column 4-->
 
             </div>
+        </div>
+    </div>
+    <div class="footerbg3">
+        <div class="container center grey">
+        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+        <b>Version</b> 3.0.2
+    </div>
         </div>
     </div>
     <!-- / WRAP -->

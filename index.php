@@ -1,5 +1,9 @@
 <?php
 require_once './config/utils.php';
+
+$getRoutesSql = "select * from routes";
+$routes = queryExecute($getRoutesSql, true);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -207,17 +211,17 @@ require_once './config/utils.php';
 
                         <div class="tab-content3" id="myTabContent">
                             <div id="air" class="tab-pane fade active in">
-                                <form action="<?php echo BASE_URL . 'search.php' ?>" method="post" enctype="multipart/form-data">
+                                <form action="<?php echo BASE_URL . 'search.php' ?>" method="get" enctype="multipart/form-data">
                                     <div class="w50percent">
                                         <div class="wh90percent textleft">
                                             <span class="opensans size13"><b>Điểm đi</b></span>
-                                            <select class="form-control mySelectBoxClass" name="first_point">
-                                                <option>Hà Nội</option>
-                                                <option selected>Hải Phòng</option>
-                                                <option>Nam Định</option>
-                                                <option>Bắc Ninh</option>
-                                                <option>Ninh Bình</option>
-                                                <option>Hà Nam</option>
+                                            <select class="form-control mySelectBoxClass" name="begin_point">
+                                                <option value="" selected>Tất cả</option>
+                                                <?php foreach ($routes as $route) : ?>
+                                                    <option value="<?php echo $route['id'] ?>">
+                                                        <?php echo $route['begin_point'] ?>
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
@@ -226,12 +230,12 @@ require_once './config/utils.php';
                                         <div class="wh90percent textleft right">
                                             <span class="opensans size13"><b>Điểm đến</b></span>
                                             <select class="form-control mySelectBoxClass" name="end_point">
-                                                <option>Hà Nội</option>
-                                                <option selected>Hải Phòng</option>
-                                                <option>Nam Định</option>
-                                                <option>Bắc Ninh</option>
-                                                <option>Ninh Bình</option>
-                                                <option>Hà Nam</option>
+                                            <option value="" selected>Tất cả</option>
+                                                <?php foreach ($routes as $route) : ?>
+                                                    <option value="<?php echo $route['id'] ?>">
+                                                        <?php echo $route['end_point'] ?>
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
@@ -239,20 +243,14 @@ require_once './config/utils.php';
                                     <div class="w50percentlast">
                                         <div class="wh90percent textleft right">
                                             <span class="opensans size13"><b>Chọn ngày</b></span>
-                                            <input type="text" class="form-control mySelectCalendar" id="datepicker4" placeholder="mm/dd/yyyy" />
+                                            <input type="text" class="form-control mySelectCalendar" id="datepicker4" placeholder="mm/dd/yyyy" name="created_date" />
                                         </div>
                                     </div>
 
                                     <div class="w50percent">
                                         <div class="wh90percent textleft">
-                                            <span class="opensans size13"><b>Số Người</b></span>
-                                            <select class="form-control mySelectBoxClass">
-                                                <option>1</option>
-                                                <option selected>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
+                                            <span class="opensans size13"><b>Số Ghế</b></span>
+                                            <input class="form-control" type="number" name="seat_number">
                                         </div>
                                     </div>
 

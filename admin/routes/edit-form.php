@@ -60,6 +60,10 @@ $routesEdit = queryExecute($getRoutesEditQuery, false);
                                 <label for="">Điểm xuất phát<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="begin_point" value="<?php echo $routesEdit['begin_point'] ?>">
                             </div>
+                            <div class="form-group">
+                                <label for="">Điểm cuối<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="end_point" value="<?php echo $routesEdit['end_point'] ?>">
+                            </div>
                             <div class="col-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">Sửa</button>
                                 <a href="<?= ADMIN_URL . 'routes' ?>" class="btn btn-danger">Hủy</a>

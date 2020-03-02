@@ -1,9 +1,10 @@
 <?php
+session_start();
 require_once './config/utils.php';
-
+$loggedInUser = $_SESSION[AUTH];
+// Lấy dữ liệu từ bảng routes
 $getRoutesSql = "select * from routes";
 $routes = queryExecute($getRoutesSql, true);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -69,12 +70,22 @@ $routes = queryExecute($getRoutesSql, true);
                                 <a href="index.php">Trang chủ<span class="badge indent0"></a>
 
                             </li>
-
-
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" href="login.php">Đăng nhập</a>
-
-                            </li>
+                            <?php if ($loggedInUser) : ?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, <?= $loggedInUser['name']; ?></a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Thông tin cá nhân</a>
+                                        <a class="dropdown-item" href="#">Đổi mật khẩu</a>
+                                        <a class="dropdown-item" href="#">Thông tin vé xe</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="<?php echo BASE_URL . './logout.php' ?>">Đăng xuất</a>
+                                    </div>
+                                </li>
+                            <?php else : ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="login.php" title="">Đăng Nhập</a>
+                                </li>
+                            <?php endif ?>
                         </ul>
                     </div>
                     <!-- /Navigation-->
@@ -230,7 +241,7 @@ $routes = queryExecute($getRoutesSql, true);
                                         <div class="wh90percent textleft right">
                                             <span class="opensans size13"><b>Điểm đến</b></span>
                                             <select class="form-control mySelectBoxClass" name="end_point">
-                                            <option value="" selected>Tất cả</option>
+                                                <option value="" selected>Tất cả</option>
                                                 <?php foreach ($routes as $route) : ?>
                                                     <option value="<?php echo $route['id'] ?>">
                                                         <?php echo $route['end_point'] ?>

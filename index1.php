@@ -5,12 +5,13 @@ require_once './config/utils.php';
 ?>
 <!DOCTYPE html>
 <html>
+  
 <!-- Mirrored from titanicthemes.com/travel/blue/list4.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2020 15:00:04 GMT -->
 <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Travel Agency - HTML5 Booking template</title>
-
+	
     <!-- Bootstrap -->
     <link href="<?= THEME_ASSET_URL ?>dist/css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="<?= THEME_ASSET_URL ?>assets/css/custom.css" rel="stylesheet" media="screen">
@@ -21,29 +22,31 @@ require_once './config/utils.php';
       <script src="<?= THEME_ASSET_URL ?>assets/js/html5shiv.js"></script>
       <script src="<?= THEME_ASSET_URL ?>assets/js/respond.min.js"></script>
     <![endif]-->
-
-    <!-- Fonts -->
+	
+    <!-- Fonts -->	
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400,300,300italic' rel='stylesheet' type='text/css'>	
 	<!-- Font-Awesome -->
     <link rel="stylesheet" type="text/css" href="<?= THEME_ASSET_URL ?>assets/css/font-awesome.css" media="screen" />
     <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="<?= THEME_ASSET_URL ?>assets/css/font-awesome-ie7.css" media="screen" /><![endif]-->
-
+	
     <!-- REVOLUTION BANNER CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="<?= THEME_ASSET_URL ?>css/fullscreen.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="<?= THEME_ASSET_URL ?>rs-plugin/css/settings.css" media="screen" />
 
-    <!-- Picker -->
+    <!-- Picker -->	
 	<link rel="stylesheet" href="<?= THEME_ASSET_URL ?>assets/css/jquery-ui.css" />	
-
-
+	
+	
 	<!-- bin/jquery.slider.min.css -->
 	<link rel="stylesheet" href="<?= THEME_ASSET_URL ?>plugins/jslider/css/jslider.css" type="text/css">
 	<link rel="stylesheet" href="<?= THEME_ASSET_URL ?>plugins/jslider/css/jslider.round.css" type="text/css">	
+	
 
-    <!-- jQuery -->
+	
+    <!-- jQuery -->	
     <script src="<?= THEME_ASSET_URL ?>assets/js/jquery.v2.0.3.js"></script>
-
+	
 	<!-- bin/jquery.slider.min.js -->
 	<script type="text/javascript" src="<?= THEME_ASSET_URL ?>plugins/jslider/js/jshashtable-2.1_src.js"></script>
 	<script type="text/javascript" src="<?= THEME_ASSET_URL ?>plugins/jslider/js/jquery.numberformatter-1.2.3.js"></script>
@@ -52,10 +55,13 @@ require_once './config/utils.php';
 	<script type="text/javascript" src="<?= THEME_ASSET_URL ?>plugins/jslider/js/draggable-0.1.js"></script>
 	<script type="text/javascript" src="<?= THEME_ASSET_URL ?>plugins/jslider/js/jquery.slider.js"></script>
 	<!-- end -->
-
+	
+	
   </head>
   <body id="top" class="thebg" >
-
+    
+	
+	
   <div class="navbar-wrapper2 navbar-fixed-top">
         <div class="container">
             <div class="navbar mtnav">
@@ -90,32 +96,43 @@ require_once './config/utils.php';
 
                 </div>
             </div>
-
+        </div>
+	
+	
+	
+	
 	<div class="container breadcrub">
-
+	   
 		<div class="clearfix"></div>
 		<div class="brlines"></div>
-	</div>
+	</div>	
 
 	<!-- CONTENT -->
 	<div class="container">
-		<div class="container pagecontainer offset-0">
+		<div class="container pagecontainer offset-0">	
 
 			<!-- FILTERS -->
 			<div class="col-md-3 filters offset-0">
-
+			
+				
 				<!-- TOP TIP -->
+				
+				
+	
 
-
+	
+	
 				<div class="bookfilters hpadding20">
-
+					
+					
+						
 						<!-- HOTELS TAB -->
 						<div class="hotelstab2 none">
 							<span class="opensans size13">Where do you want to go?</span>
 							<input type="text" class="form-control" placeholder="Greece">
-
+							
 							<div class="clearfix pbottom15"></div>
-
+							
 							<div class="w50percent">
 								<div class="wh90percent textleft">
 									<span class="opensans size13">Check in date</span>
@@ -129,32 +146,32 @@ require_once './config/utils.php';
 									<input type="text" class="form-control mySelectCalendar" id="datepicker2" placeholder="mm/dd/yyyy"/>
 								</div>
 							</div>
-
+							
 							<div class="clearfix pbottom15"></div>
-
+							
 							<div class="room1" >
 								<div class="w50percent">
 									<div class="wh90percent textleft">
 										<span class="opensans size13"><b>ROOM 1</b></span><br/>
-
+										
 										<div class="addroom1 block"><a onclick="addroom2()" class="grey cpointer">+ Add room</a></div>
 									</div>
 								</div>
 
-								<div class="w50percentlast">
+								<div class="w50percentlast">	
 									<div class="wh90percent textleft right ohidden">
 										<div class="w50percent">
 											<div class="wh90percent textleft left">
 												<span class="opensans size13">Adult</span>
 												<select class="form-control mySelectBoxClass">
 												  <option>1</option>
-												  <option>2</option>
+												  <option selected>2</option>
 												  <option>3</option>
 												  <option>4</option>
 												  <option>5</option>
 												</select>
 											</div>
-										</div>
+										</div>							
 										<div class="w50percentlast">
 											<div class="wh90percent textleft right ohidden">
 											<span class="opensans size13">Child</span>
@@ -171,7 +188,7 @@ require_once './config/utils.php';
 									</div>
 								</div>
 							</div>
-
+							
 							<div class="room2 none">
 								<div class="clearfix"></div><div class="line1"></div>
 								<div class="w50percent">
@@ -181,7 +198,7 @@ require_once './config/utils.php';
 									</div>
 								</div>
 
-								<div class="w50percentlast">
+								<div class="w50percentlast">	
 									<div class="wh90percent textleft right">
 										<div class="w50percent">
 											<div class="wh90percent textleft left">
@@ -194,7 +211,7 @@ require_once './config/utils.php';
 												  <option>5</option>
 												</select>
 											</div>
-										</div>
+										</div>							
 										<div class="w50percentlast">
 											<div class="wh90percent textleft right">
 											<span class="opensans size13">Child</span>
@@ -210,7 +227,7 @@ require_once './config/utils.php';
 										</div>
 									</div>
 								</div>
-							</div>
+							</div>		
 
 							<div class="room3 none">
 								<div class="clearfix"></div><div class="line1"></div>
@@ -221,7 +238,7 @@ require_once './config/utils.php';
 									</div>
 								</div>
 
-								<div class="w50percentlast">
+								<div class="w50percentlast">	
 									<div class="wh90percent textleft right">
 										<div class="w50percent">
 											<div class="wh90percent textleft left">
@@ -234,7 +251,7 @@ require_once './config/utils.php';
 												  <option>5</option>
 												</select>
 											</div>
-										</div>
+										</div>							
 										<div class="w50percentlast">
 											<div class="wh90percent textleft right">
 											<span class="opensans size13">Child</span>
@@ -254,7 +271,7 @@ require_once './config/utils.php';
 							<button type="submit" class="btn-search3">Search</button>
 						</div>
 						<!-- END OF HOTELS TAB -->
-
+						
 						<!-- FLIGHTS TAB -->
 						<div class="flightstab2 none">
 							<div class="w50percent">
@@ -270,9 +287,10 @@ require_once './config/utils.php';
 									<input type="text" class="form-control" placeholder="City or airport">
 								</div>
 							</div>
-
+							
+							
 							<div class="clearfix pbottom15"></div>
-
+							
 							<div class="w50percent">
 								<div class="wh90percent textleft">
 									<span class="opensans size13">Departing</span>
@@ -505,57 +523,7 @@ require_once './config/utils.php';
 
 							<div class="w50percentlast">
 								<div class="wh90percent textleft right">
-									<span class="opensans size13">Hour</span>
-									<select class="form-control mySelectBoxClass">
-									  <option>12:00 AM</option>
-									  <option>12:30 AM</option>
-									  <option>01:00 AM</option>
-									  <option>01:30 AM</option>
-									  <option>02:00 AM</option>
-									  <option>02:30 AM</option>
-									  <option>03:00 AM</option>
-									  <option>03:30 AM</option>
-									  <option>04:00 AM</option>
-									  <option>04:30 AM</option>
-									  <option>05:00 AM</option>
-									  <option>05:30 AM</option>
-									  <option>06:00 AM</option>
-									  <option>06:30 AM</option>
-									  <option>07:00 AM</option>
-									  <option>07:30 AM</option>
-									  <option>08:00 AM</option>
-									  <option>08:30 AM</option>
-									  <option>09:00 AM</option>
-									  <option>09:30 AM</option>
-									  <option>10:00 AM</option>
-									  <option selected>10:30 AM</option>
-									  <option>11:00 AM</option>
-									  <option>11:30 AM</option>
-									  <option>12:00 PM</option>
-									  <option>12:30 PM</option>								  
-									  <option>01:00 PM</option>
-									  <option>01:30 PM</option>
-									  <option>02:00 PM</option>
-									  <option>02:30 PM</option>
-									  <option>03:00 PM</option>
-									  <option>03:30 PM</option>
-									  <option>04:00 PM</option>
-									  <option>04:30 PM</option>
-									  <option>05:00 PM</option>
-									  <option>05:30 PM</option>
-									  <option>06:00 PM</option>
-									  <option>06:30 PM</option>
-									  <option>07:00 PM</option>
-									  <option>07:30 PM</option>
-									  <option>08:00 PM</option>
-									  <option>08:30 PM</option>
-									  <option>09:00 PM</option>
-									  <option>09:30 PM</option>
-									  <option>10:00 PM</option>
-									  <option>10:30 PM</option>
-									  <option>11:00 PM</option>
-									  <option>11:30 PM</option>								  
-									</select>
+									
 								</div>
 							</div>
 							
@@ -572,56 +540,7 @@ require_once './config/utils.php';
 								<div class="w50percentlast">	
 									<div class="wh90percent textleft right">
 										<span class="opensans size13">Hour</span>
-										<select class="form-control mySelectBoxClass">
-										  <option>12:00 AM</option>
-										  <option>12:30 AM</option>
-										  <option>01:00 AM</option>
-										  <option>01:30 AM</option>
-										  <option>02:00 AM</option>
-										  <option>02:30 AM</option>
-										  <option>03:00 AM</option>
-										  <option>03:30 AM</option>
-										  <option>04:00 AM</option>
-										  <option>04:30 AM</option>
-										  <option>05:00 AM</option>
-										  <option>05:30 AM</option>
-										  <option>06:00 AM</option>
-										  <option>06:30 AM</option>
-										  <option>07:00 AM</option>
-										  <option>07:30 AM</option>
-										  <option>08:00 AM</option>
-										  <option>08:30 AM</option>
-										  <option>09:00 AM</option>
-										  <option>09:30 AM</option>
-										  <option>10:00 AM</option>
-										  <option selected>10:30 AM</option>
-										  <option>11:00 AM</option>
-										  <option>11:30 AM</option>
-										  <option>12:00 PM</option>
-										  <option>12:30 PM</option>								  
-										  <option>01:00 PM</option>
-										  <option>01:30 PM</option>
-										  <option>02:00 PM</option>
-										  <option>02:30 PM</option>
-										  <option>03:00 PM</option>
-										  <option>03:30 PM</option>
-										  <option>04:00 PM</option>
-										  <option>04:30 PM</option>
-										  <option>05:00 PM</option>
-										  <option>05:30 PM</option>
-										  <option>06:00 PM</option>
-										  <option>06:30 PM</option>
-										  <option>07:00 PM</option>
-										  <option>07:30 PM</option>
-										  <option>08:00 PM</option>
-										  <option>08:30 PM</option>
-										  <option>09:00 PM</option>
-										  <option>09:30 PM</option>
-										  <option>10:00 PM</option>
-										  <option>10:30 PM</option>
-										  <option>11:00 PM</option>
-										  <option>11:30 PM</option>		
-										</select>
+										
 									</div>
 								</div>
 							</div><div class="clearfix"></div>
@@ -632,59 +551,12 @@ require_once './config/utils.php';
 						<!-- CRUISE TAB -->
 						<div class="cruisestab2 none">
 							<div class="fullwidth">
-								<span class="opensans size13">Going to</span>
-								<select class="form-control mySelectBoxClass">
-								  <option selected>Show all</option>
-								  <optgroup label="Most Popular">
-									  <option>Caribbean</option>
-									  <option>Bahamas</option>
-									  <option>Mexico</option>
-									  <option>Alaska</option>
-									  <option>Europe</option>
-									  <option>Bermuda</option>
-									  <option>Hawaii</option>
-								  </optgroup>
-								  <optgroup label="Other Destinations">
-									  <option>Africa</option>
-									  <option>Arctic/Antartctic</option>
-									  <option>Asia</option>
-									  <option>Australia/New Zealand</option>
-									  <option>Central America</option>
-									  <option>Cruise to Nowhere</option>
-									  <option>Galapagos</option>
-									  <option>Greenland/Iceland</option>
-									  <option>Middle East</option>
-									  <option>Pacific Coastal</option>
-									  <option>Panama Canal</option>
-									  <option>South Africa</option>
-									  <option>South Pacific</option>
-									  <option>Tahiti</option>
-									  <option>Transatlantic</option>
-									  <option>World Cruises</option>
-								  </optgroup>
-								</select>
+								
 
 								<div class="clearfix pbottom15"></div>
 								
 								<span class="opensans size13">Departure</span>
-								<select class="form-control mySelectBoxClass">
-								  <option selected>Show all</option>
-								  <option>October 2013</option>
-								  <option>November 2013</option>
-								  <option>December 2013</option>
-								  <option>January 2014</option>
-								  <option>February 2014</option>
-								  <option>March 2014</option>
-								  <option>April 2014</option>
-								  <option>May 2014</option>
-								  <option>June 2014</option>
-								  <option>July 2014</option>
-								  <option>August 2014</option>
-								  <option>September 2014</option>
-								  <option>October 2014</option>
-								  <option>November 2014</option>
-								  <option>December 2014</option>
-								</select>
+								
 							</div><div class="clearfix"></div>
 							<button type="submit" class="btn-search3">Search</button>
 						</div>
@@ -749,19 +621,7 @@ require_once './config/utils.php';
 												</select>
 											</div>
 										</div>							
-										<div class="w50percentlast">
-											<div class="wh90percent textleft right ohidden">
-											<span class="opensans size13">Child</span>
-												<select class="form-control mySelectBoxClass">
-												  <option>0</option>
-												  <option selected>1</option>
-												  <option>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -776,33 +636,7 @@ require_once './config/utils.php';
 								</div>
 
 								<div class="w50percentlast">	
-									<div class="wh90percent textleft right">
-										<div class="w50percent">
-											<div class="wh90percent textleft left">
-												<span class="opensans size13">Adult</span>
-												<select class="form-control mySelectBoxClass">
-												  <option>1</option>
-												  <option>2</option>
-												  <option selected>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>							
-										<div class="w50percentlast">
-											<div class="wh90percent textleft right">
-											<span class="opensans size13">Child</span>
-												<select class="form-control mySelectBoxClass">
-												  <option selected>0</option>
-												  <option>1</option>
-												  <option>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>
-									</div>
+									
 								</div>
 							</div>		
 
@@ -817,31 +651,8 @@ require_once './config/utils.php';
 
 								<div class="w50percentlast">	
 									<div class="wh90percent textleft right">
-										<div class="w50percent">
-											<div class="wh90percent textleft left">
-												<span class="opensans size13">Adult</span>
-												<select class="form-control mySelectBoxClass">
-												  <option selected>1</option>
-												  <option>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>							
-										<div class="w50percentlast">
-											<div class="wh90percent textleft right">
-											<span class="opensans size13">Child</span>
-												<select class="form-control mySelectBoxClass">
-												  <option selected>0</option>
-												  <option>1</option>
-												  <option>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>
+																	
+										
 									</div>
 								</div>
 							</div><div class="clearfix"></div>
@@ -855,29 +666,9 @@ require_once './config/utils.php';
 						<div class="flighthoteltab2 none">
 						
 							
-							<div class="w50percent">
-								<div class="wh90percent textleft">
-									<span class="opensans size13">Flying from</span>
-									<input type="text" class="form-control" placeholder="City or airport">
-								</div>
-							</div>
 
-							<div class="w50percentlast">
-								<div class="wh90percent textleft right">
-									<span class="opensans size13">To</span>
-									<input type="text" class="form-control" placeholder="City or airport">
-								</div>
-							</div>
-							
 							<div class="clearfix pbottom15"></div>
 							
-
-							<div class="w50percent">
-								<div class="wh90percent textleft">
-									<span class="opensans size13">Departing</span>
-									<input type="text" class="form-control mySelectCalendar" id="datepicker10" placeholder="mm/dd/yyyy"/>
-								</div>
-							</div>
 
 							<div class="w50percentlast">
 								<div class="wh90percent textleft right">
@@ -900,30 +691,9 @@ require_once './config/utils.php';
 								<div class="w50percentlast">	
 									<div class="wh90percent textleft right ohidden">
 										<div class="w50percent">
-											<div class="wh90percent textleft left">
-												<span class="opensans size13">Adult</span>
-												<select class="form-control mySelectBoxClass">
-												  <option>1</option>
-												  <option selected>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
+											
 										</div>							
-										<div class="w50percentlast">
-											<div class="wh90percent textleft right ohidden">
-											<span class="opensans size13">Child</span>
-												<select class="form-control mySelectBoxClass">
-												  <option>0</option>
-												  <option selected>1</option>
-												  <option>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -940,30 +710,9 @@ require_once './config/utils.php';
 								<div class="w50percentlast">	
 									<div class="wh90percent textleft right">
 										<div class="w50percent">
-											<div class="wh90percent textleft left">
-												<span class="opensans size13">Adult</span>
-												<select class="form-control mySelectBoxClass">
-												  <option>1</option>
-												  <option>2</option>
-												  <option selected>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
+											
 										</div>							
-										<div class="w50percentlast">
-											<div class="wh90percent textleft right">
-											<span class="opensans size13">Child</span>
-												<select class="form-control mySelectBoxClass">
-												  <option selected>0</option>
-												  <option>1</option>
-												  <option>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>
+										
 									</div>
 								</div>
 							</div>		
@@ -979,31 +728,7 @@ require_once './config/utils.php';
 
 								<div class="w50percentlast">	
 									<div class="wh90percent textleft right">
-										<div class="w50percent">
-											<div class="wh90percent textleft left">
-												<span class="opensans size13">Adult</span>
-												<select class="form-control mySelectBoxClass">
-												  <option selected>1</option>
-												  <option>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>							
-										<div class="w50percentlast">
-											<div class="wh90percent textleft right">
-											<span class="opensans size13">Child</span>
-												<select class="form-control mySelectBoxClass">
-												  <option selected>0</option>
-												  <option>1</option>
-												  <option>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -1014,44 +739,7 @@ require_once './config/utils.php';
 						<!-- END OF FLIGHT+HOTE TAB -->					
 						
 						<!-- FLIGHT+CAR TAB -->					
-						<div class="flightcartab2 none">
-							<div class="w50percent">
-								<div class="wh90percent textleft">
-									<span class="opensans size13">Flying from</span>
-									<input type="text" class="form-control" placeholder="City or airport">
-								</div>
-							</div>
-
-							<div class="w50percentlast">
-								<div class="wh90percent textleft right">
-									<span class="opensans size13">To</span>
-									<input type="text" class="form-control" placeholder="City or airport">
-								</div>
-							</div>
-							
-							<div class="clearfix pbottom15"></div>
-							
-
-							<div class="w50percent">
-								<div class="wh90percent textleft">
-									<span class="opensans size13">Departing</span>
-									<input type="text" class="form-control mySelectCalendar" id="datepicker11" placeholder="mm/dd/yyyy"/>
-								</div>
-							</div>
-
-							<div class="w50percentlast">
-								<div class="wh90percent textleft right">
-									<span class="opensans size13">Returning</span>
-									<input type="text" class="form-control mySelectCalendar" id="datepicker12" placeholder="mm/dd/yyyy"/>
-								</div>
-							</div>
-							
-							<div class="clearfix pbottom15"></div>
-							
-							<div class="center size10 ca03">! An economy car will be added to your search. (You may change your car options later.)</div>
-							<div class="clearfix"></div>
-							<button type="submit" class="btn-search3">Search</button>										
-						</div>
+						
 						<!-- END OF FLIGHT+CAR TAB -->		
 						
 						<!-- HOTEL+CAR TAB -->					
@@ -1088,33 +776,7 @@ require_once './config/utils.php';
 								</div>
 
 								<div class="w50percentlast">	
-									<div class="wh90percent textleft right ohidden">
-										<div class="w50percent">
-											<div class="wh90percent textleft left">
-												<span class="opensans size13">Adult</span>
-												<select class="form-control mySelectBoxClass">
-												  <option>1</option>
-												  <option selected>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>							
-										<div class="w50percentlast">
-											<div class="wh90percent textleft right ohidden">
-											<span class="opensans size13">Child</span>
-												<select class="form-control mySelectBoxClass">
-												  <option>0</option>
-												  <option selected>1</option>
-												  <option>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 							
@@ -1129,31 +791,7 @@ require_once './config/utils.php';
 
 								<div class="w50percentlast">	
 									<div class="wh90percent textleft right">
-										<div class="w50percent">
-											<div class="wh90percent textleft left">
-												<span class="opensans size13">Adult</span>
-												<select class="form-control mySelectBoxClass">
-												  <option>1</option>
-												  <option>2</option>
-												  <option selected>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>							
-										<div class="w50percentlast">
-											<div class="wh90percent textleft right">
-											<span class="opensans size13">Child</span>
-												<select class="form-control mySelectBoxClass">
-												  <option selected>0</option>
-												  <option>1</option>
-												  <option>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>
+										>
 									</div>
 								</div>
 							</div>		
@@ -1169,31 +807,7 @@ require_once './config/utils.php';
 
 								<div class="w50percentlast">	
 									<div class="wh90percent textleft right">
-										<div class="w50percent">
-											<div class="wh90percent textleft left">
-												<span class="opensans size13">Adult</span>
-												<select class="form-control mySelectBoxClass">
-												  <option selected>1</option>
-												  <option>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>							
-										<div class="w50percentlast">
-											<div class="wh90percent textleft right">
-											<span class="opensans size13">Child</span>
-												<select class="form-control mySelectBoxClass">
-												  <option selected>0</option>
-												  <option>1</option>
-												  <option>2</option>
-												  <option>3</option>
-												  <option>4</option>
-												  <option>5</option>
-												</select>
-											</div>
-										</div>
+										
 									</div>
 								</div>
 							</div><div class="clearfix"></div><br/>
@@ -1285,8 +899,10 @@ require_once './config/utils.php';
 						</div>
 						<div class="radio">
 						  <label>
-							<input type="radio" name="hanoi" id="hanoi" value="option2">
-							Hà Nội
+						  <a href="<?= ADMIN_URL . 'routes' ?>" class="nav-link">
+                                <i class="fa fa-user-plus nav-icon"></i>
+                                <p>Hà Nội</p>
+                            </a>
 						  </label>
 						</div>
 						<div class="radio">
@@ -1424,21 +1040,10 @@ require_once './config/utils.php';
 									</form>			
 								</div>
 								<div class="labelleft2">			
-									<b>Mabely Grand Hotel</b><br/><br/><br/>
-									<p class="grey">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec semper lectus. Suspendisse placerat enim mauris, eget lobortis nisi egestas et.
-									Donec elementum metus et mi aliquam eleifend. Suspendisse volutpat egestas rhoncus.</p><br/>
-									<ul class="hotelpreferences">
-										<li class="icohp-internet"></li>
-										<li class="icohp-air"></li>
-										<li class="icohp-pool"></li>
-										<li class="icohp-childcare"></li>
-										<li class="icohp-fitness"></li>
-										<li class="icohp-breakfast"></li>
-										<li class="icohp-parking"></li>
-										<li class="icohp-pets"></li>
-										<li class="icohp-spa"></li>
-									</ul>
+									<b>Hà Nội</b><br/><br/><br/>
+									<b>6h30.Cầu Giấy</b><br><br>
+									<b>9h30.tp Nam Định</b><br><br><br>
+									<b>Nam Định</b><br/><br/><br/>	
 									
 								</div>
 							</div>
@@ -1474,16 +1079,8 @@ require_once './config/utils.php';
 									<p class="grey">
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec semper lectus. Suspendisse placerat enim mauris, eget lobortis nisi egestas et.
 									Donec elementum metus et mi aliquam eleifend. Suspendisse volutpat egestas rhoncus.</p><br/>
-									<ul class="hotelpreferences">
-										<li class="icohp-fridge"></li>
-										<li class="icohp-microwave"></li>
-										<li class="icohp-washing"></li>
-										<li class="icohp-roomservice"></li>
-										<li class="icohp-safe"></li>
-										<li class="icohp-playground"></li>
-										<li class="icohp-conferenceroom"></li>
-									</ul>
 									
+									<b>Mabely Grand Hotel</b><br/><br/><br/>
 								</div>
 							</div>
 							
@@ -1518,15 +1115,7 @@ require_once './config/utils.php';
 									<p class="grey">
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec semper lectus. Suspendisse placerat enim mauris, eget lobortis nisi egestas et.
 									Donec elementum metus et mi aliquam eleifend. Suspendisse volutpat egestas rhoncus.</p><br/>
-									<ul class="hotelpreferences">
-										<li class="icohp-fridge"></li>
-										<li class="icohp-microwave"></li>
-										<li class="icohp-washing"></li>
-										<li class="icohp-roomservice"></li>
-										<li class="icohp-safe"></li>
-										<li class="icohp-playground"></li>
-										<li class="icohp-conferenceroom"></li>
-									</ul>
+									<b>Mabely Grand Hotel</b><br/><br/><br/>
 									
 								</div>
 							</div>

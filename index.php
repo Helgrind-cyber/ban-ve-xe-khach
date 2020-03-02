@@ -281,7 +281,7 @@ $routes = queryExecute($getRoutesSql, true);
                         <a href="#" class="social3b"><img src="<?= THEME_ASSET_URL ?>images/icon-gplus.png" alt="" /></a>
                         <a href="#" class="social4b"><img src="<?= THEME_ASSET_URL ?>images/icon-youtube.png" alt="" /></a>
                         <br /><br /><br />
-                        <img src="<?= THEME_ASSET_URL ?>images/logosmal.png" alt="" /><br />
+                        <img src="<?= THEME_ASSET_URL ?>images/logo1.ico" width="100px" alt="" /><br />
                         &copy; 2013 | <a href="#">Privacy Policy</a><br />
                         All Rights Reserved
                         <br /><br />
@@ -305,7 +305,7 @@ $routes = queryExecute($getRoutesSql, true);
                 <!-- End of column 2-->
 
                 <div class="col-md-3">
-                    <span class="ftitle">Travel Specialists</span>
+                    <span class="ftitle">Điểm đến</span>
                     <br /><br />
                     <ul class="footerlist">
                         <li><a href="#">Hà Nội</a></li>

@@ -7,7 +7,7 @@ require_once './config/utils.php';
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đặt vé xe - Trang chủ</title>
+    <title>Trang chủ</title>
     <!-- Favicon ico -->
     <link rel="shortcut icon" type="image/png" href="<?= PUBLIC_URL . 'images/favicon.ico' ?>" />
     <!-- Bootstrap -->
@@ -207,12 +207,11 @@ require_once './config/utils.php';
 
                         <div class="tab-content3" id="myTabContent">
                             <div id="air" class="tab-pane fade active in">
-
-                                <form action="<?php echo CART_URL?>" method="post" enctype="multipart/form-data">
+                                <form action="<?php echo BASE_URL . 'search.php' ?>" method="post" enctype="multipart/form-data">
                                     <div class="w50percent">
                                         <div class="wh90percent textleft">
                                             <span class="opensans size13"><b>Điểm đi</b></span>
-                                            <select class="form-control mySelectBoxClass">
+                                            <select class="form-control mySelectBoxClass" name="first_point">
                                                 <option>Hà Nội</option>
                                                 <option selected>Hải Phòng</option>
                                                 <option>Nam Định</option>
@@ -226,30 +225,13 @@ require_once './config/utils.php';
                                     <div class="w50percentlast">
                                         <div class="wh90percent textleft right">
                                             <span class="opensans size13"><b>Điểm đến</b></span>
-                                            <select class="form-control mySelectBoxClass">
+                                            <select class="form-control mySelectBoxClass" name="end_point">
                                                 <option>Hà Nội</option>
                                                 <option selected>Hải Phòng</option>
                                                 <option>Nam Định</option>
                                                 <option>Bắc Ninh</option>
                                                 <option>Ninh Bình</option>
                                                 <option>Hà Nam</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="clearfix"></div><br />
-
-                                    <div class="w50percent">
-                                        <div class="wh90percent textleft">
-                                            <span class="opensans size13"><b>Departing</b></span>
-                                            <select class="form-control mySelectBoxClass">
-                                                <option>6h30 Am</option>
-                                                <option selected>8h30 AM</option>
-                                                <option>11h30 AM</option>
-                                                <option>1h30 PM</option>
-                                                <option>4h30 PM</option>
-                                                <option>6h30 PM</option>
                                             </select>
                                         </div>
                                     </div>
@@ -261,41 +243,22 @@ require_once './config/utils.php';
                                         </div>
                                     </div>
 
-                                    <div class="clearfix"></div>
-
-                                    <div class="room1 margtop15">
-                                        <div class="w50percent">
-                                            <div class="wh90percent textleft">
-                                                <span class="opensans size13"><b>Người lớn</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option>1</option>
-                                                    <option selected>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="w50percentlast">
-                                            <div class="wh90percent textleft right">
-                                                <span class="opensans size13"><b>Trẻ em</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option>0</option>
-                                                    <option selected>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
+                                    <div class="w50percent">
+                                        <div class="wh90percent textleft">
+                                            <span class="opensans size13"><b>Số Người</b></span>
+                                            <select class="form-control mySelectBoxClass">
+                                                <option>1</option>
+                                                <option selected>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
                                         </div>
                                     </div>
 
-                                    <div class="searchbg">
-                                        <form action="http://titanicthemes.com/travel/blue/list4.html">
-                                            <button type="submit" class="btn-search">Search</button>
-                                        </form>
+                                    <div class="clearfix"></div>
+                                    <div class="text-center pt-5">
+                                        <button type="submit" class="btn-search text-center">Đặt vé</button>
                                     </div>
                                 </form>
                             </div>
@@ -375,11 +338,11 @@ require_once './config/utils.php';
     </div>
     <div class="footerbg3">
         <div class="container center grey">
-        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.0.2
-    </div>
+            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 3.0.2
+            </div>
         </div>
     </div>
     <!-- / WRAP -->

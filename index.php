@@ -1,22 +1,18 @@
 <?php
 require_once './config/utils.php';
-
-
 ?>
 <!DOCTYPE html>
 <html>
-
-<!-- Mirrored from titanicthemes.com/travel/blue/index6.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Feb 2020 09:36:52 GMT -->
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đặt vé xe - Trang chủ</title>
-
+    <!-- Favicon ico -->
+    <link rel="shortcut icon" type="image/png" href="<?= PUBLIC_URL . 'images/favicon.ico' ?>" />
     <!-- Bootstrap -->
     <link href="<?= THEME_ASSET_URL ?>dist/css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="<?= THEME_ASSET_URL ?>assets/css/custom.css" rel="stylesheet" media="screen">
-
     <!-- Carousel -->
     <link href="<?= THEME_ASSET_URL ?>examples/carousel/carousel.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -84,13 +80,6 @@ require_once './config/utils.php';
         </div>
     </div>
     <!-- / Top wrapper -->
-
-
-    <!--
-#################################
-    - THEMEPUNCH BANNER -
-#################################
--->
     <div id="dajy" class="fullscreen-container mtslide sliderbg fixed">
         <div class="fullscreenbanner">
             <ul>
@@ -201,12 +190,6 @@ require_once './config/utils.php';
 
         });
     </script>
-
-
-
-
-
-
     <!-- WRAP -->
     <div class="wrap cstyle03">
 
@@ -225,7 +208,7 @@ require_once './config/utils.php';
                         <div class="tab-content3" id="myTabContent">
                             <div id="air" class="tab-pane fade active in">
 
-                                <form action="index1.php" method="post" enctype="multipart/form-data">
+                                <form action="<?php echo CART_URL?>" method="post" enctype="multipart/form-data">
                                     <div class="w50percent">
                                         <div class="wh90percent textleft">
                                             <span class="opensans size13"><b>Điểm đi</b></span>

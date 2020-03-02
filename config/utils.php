@@ -57,7 +57,7 @@ function checkAdminLoggedIn(){
         die;
     }
     // 2 - giá trị của cột role_id = 2
-    if($_SESSION[AUTH]['role_id'] < 5){
+    if($_SESSION[AUTH]['role_id'] < 2){
         header('location: ' . BASE_URL . 'login.php?msg=You\'re not admin, tell me who you are? ');
         die;
     }

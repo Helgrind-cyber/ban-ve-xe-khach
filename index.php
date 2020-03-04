@@ -267,7 +267,7 @@ $routes = queryExecute($getRoutesSql, true);
 
                                     <div class="clearfix"></div>
                                     <div class="text-center pt-5">
-                                        <button type="submit" class="btn-search text-center">Đặt vé</button>
+                                        <button type="submit" class="btn-search text-center">Tìm vé</button>
                                     </div>
                                 </form>
                             </div>
@@ -275,10 +275,66 @@ $routes = queryExecute($getRoutesSql, true);
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2 col-md-push-8"></div>
 
             </div>
         </div>
+        
+                <!-- Carousel -->
+                <div class="container">
+                    <h1>Thông tin</h1>
+                     <div class="wrapper">
+                    <div class="list_carousel">
+                        <ul id="foo">
+                            <li>
+                                <a href="list4.html"><img src="<?= THEME_ASSET_URL ?>images/thumb-hawaii.jpg" alt=""/></a>
+                                <div class="m1">
+                                    <h6 class="lh1 dark"><b>Thông Tin</b></h6>
+                                    <h6 class="lh1 green">Save up to 30%</h6>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="list4.html"><img src="<?= THEME_ASSET_URL ?>images/thumb-santorini.jpg" alt=""/></a>
+                                <div class="m1">
+                                    <h6 class="lh1 dark"><b>Thông Tin</b></h6>
+                                    <h6 class="lh1 green">Save up to 30%</h6>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="list4.html"><img src="<?= THEME_ASSET_URL ?>images/thumb-dubai.jpg" alt=""/></a>
+                                <div class="m1">
+                                    <h6 class="lh1 dark"><b>Thông Tin</b></h6>
+                                    <h6 class="lh1 green">Save up to 30%</h6>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="list4.html"><img src="<?= THEME_ASSET_URL ?>images/thumb-hawaii.jpg" alt=""/></a>
+                                <div class="m1">
+                                    <h6 class="lh1 dark"><b>Thông Tin</b></h6>
+                                    <h6 class="lh1 green">Save up to 30%</h6>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="list4.html"><img src="<?= THEME_ASSET_URL ?>images/thumb-santorini.jpg" alt=""/></a>
+                                <div class="m1">
+                                    <h6 class="lh1 dark"><b>Thông Tin</b></h6>
+                                    <h6 class="lh1 green">Save up to 30%</h6>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="list4.html"><img src="<?= THEME_ASSET_URL ?>images/thumb-dubai.jpg" alt=""/></a>
+                                <div class="m1">
+                                    <h6 class="lh1 dark"><b>Thông Tin</b></h6>
+                                    <h6 class="lh1 green">Save up to 30%</h6>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                        <a id="prev_btn" class="prev" href="#"><img src="<?= THEME_ASSET_URL ?>images/spacer.png" alt=""/></a>
+                        <a id="next_btn" class="next" href="#"><img src="<?= THEME_ASSET_URL ?>images/spacer.png" alt=""/></a>
+                    </div>
+                </div>
+                </div>
+
         <!-- FOOTER -->
 
         <div class="footerbg">

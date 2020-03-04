@@ -65,19 +65,19 @@ require_once '../config/utils.php';
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="index-2.html" class="navbar-brand"><img src="<?= THEME_ASSET_URL ?>images/logo.png" alt="Travel Agency Logo" class="logo"/></a>
+                        <a href="../index.php" class="navbar-brand"><img src="<?= BASE_URL ?>public/images/logo1.ico" alt="Travel Agency Logo" class="logo"/></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
 
                             <li class="dropdown">
-                                <a href="index.php">Trang chủ<span class="badge indent0"></a>
+                                <a href="../index.php">Trang chủ<span class="badge indent0"></a>
 
                                 </li>
 
 
                                 <li class="dropdown">
-                                    <a  class="dropdown-toggle" href="login.php">Đăng nhập</a>
+                                    <a  class="dropdown-toggle" href="../login.php">Đăng nhập</a>
 
                                 </li>
                             </ul>
@@ -1107,7 +1107,7 @@ require_once '../config/utils.php';
                     <a href="#" class="social3b"><img src="<?= THEME_ASSET_URL ?>images/icon-gplus.png" alt=""/></a>
                     <a href="#" class="social4b"><img src="<?= THEME_ASSET_URL ?>images/icon-youtube.png" alt=""/></a>
                     <br/><br/><br/>
-                    <img src="<?= THEME_ASSET_URL ?>images/logosmal.png" alt="" /><br/>
+                    <img src="<?= THEME_ASSET_URL ?>images/logo1.ico" width="100px" alt="" /><br/>
                     &copy; 2013  |  <a href="#">Privacy Policy</a><br/>
                     All Rights Reserved
                     <br/><br/>

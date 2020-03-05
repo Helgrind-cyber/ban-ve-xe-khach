@@ -3,21 +3,32 @@ session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
 
-// $getVehicleTypesQuery = "select * from vehicle_types where status = 0";
-// $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
+$keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
+$vtId = isset($_GET['vehicleTypes']) == true ? $_GET['vehicleTypes'] : false;
 
-// $getVehiclesQuery = "select * from vehicles";
-// $vehicles = queryExecute($getVehiclesQuery, true);
+// danh sách vehicle types
+$getVehicleTypesQuery = "select * from vehicle_types";
+$vehicleTypes = queryExecute($getVehicleTypesQuery, true);
 
 // danh sách vehicles
 $getVehiclesQuery = "select
-                    vehicles.*,
-                    vehicle_types.name as type_name
-                    from vehicles, vehicle_types
-                    where vehicles.vehicletype_id = vehicle_types.id";
+                    v.*,
+                    vt.name as type_name
+                    from vehicles v
+                    join vehicle_types vt
+                    on v.vehicletype_id = vt.id";
+if ($keyword !== "") {
+    $getVehiclesQuery .= " where (v.seat_booked like '%$keyword%'
+                                or v.plate_number like '%$keyword%')";
+    if ($vtId !== false && $vtId !== "") {
+        $getVehiclesQuery .= " and v.vehicletype_id = $vtId";
+    }
+} else {
+    if ($vtId !== false && $vtId !== "") {
+        $getVehiclesQuery .= " and v.vehicletype_id = $vtId";
+    }
+}
 $vehicles = queryExecute($getVehiclesQuery, true);
-// $getVehicleTypeQuery = "select * from vehicle_types";
-// $VehicleTypes = queryExecute($getVehicleTypeQuery, true);
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +72,26 @@ $vehicles = queryExecute($getVehiclesQuery, true);
                 <div class="row">
                     <div class="col-md-10 col-offset-1">
                         <!-- Filter  -->
+                        <form action="" method="get">
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <input type="text" value="<?php echo $keyword?>" class="form-control" name="keyword" placeholder="Nhập biển số, số ghế">
+                                </div>
+                                <div class="form-group col-4">
+                                    <select name="vehicleTypes" class="form-control" >
+                                        <option selected value="">Tất cả</option>
+                                        <?php foreach($vehicleTypes as $vt): ?>
+                                            <option
+                                                <?php if($vtId === $vt['id'] ) {echo "selected";} ?>
+                                                    value="<?php echo $vt['id'] ?>"><?php echo $vt['name'] ?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-2">
+                                    <button type="submit" class="btn btn-success">Tìm kiếm</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <!-- Danh sách users  -->
                     <table class="table table-stripped">

@@ -3,8 +3,15 @@ session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
 
+$keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 // danh sách routes
-$getRoutesQuery = "select * from routes";
+$getRoutesQuery = "select * from routes r";
+if ($keyword !== "") {
+    $getRoutesQuery .= " where (r.distance like '%$keyword%'
+                                or r.estimate_time like '%$keyword%'
+                                or r.begin_point like '%$keyword%'
+                                or r.end_point like '%$keyword%')";
+}
 $routes = queryExecute($getRoutesQuery, true);
 
 ?>
@@ -50,6 +57,16 @@ $routes = queryExecute($getRoutesQuery, true);
                 <div class="row">
                     <div class="col-md-10 col-offset-1">
                         <!-- Filter  -->
+                        <form action="" method="get">
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <input type="text" value="<?php echo $keyword?>" class="form-control" name="keyword" placeholder="Nhập khoảng cách, thời gian, địa điểm,...">
+                                </div>
+                                <div class="form-group col-2">
+                                    <button type="submit" class="btn btn-success">Tìm kiếm</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <!-- Danh sách users  -->
                     <table class="table table-stripped">

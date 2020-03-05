@@ -7,21 +7,22 @@ $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 $roleId = isset($_GET['role']) == true ? $_GET['role'] : false;
 
 // Lấy danh sách roles
-$getRolesQuery = "select * from roles where status = 1";
+// $getRolesQuery = "select * from roles where status = 1";
+$getRolesQuery = "select * from roles";
 $roles = queryExecute($getRolesQuery, true);
 
 // danh sách users
 $getUsersQuery = "select
-                                users.*,
-                                roles.name as role_name
-                    from users users
-                    join roles roles
-                    on users.role_id = roles.id";
-
+                    u.*,
+                    r.name as role_name
+                    from users u
+                    join roles r
+                    on u.role_id = r.id";
+// tìm kiếm
 if ($keyword !== "") {
     $getUsersQuery .= " where (u.email like '%$keyword%'
                             or u.phone_number like '%$keyword%'
-                            or u.name like '%$keyword%'  )
+                            or u.name like '%$keyword%')
                       ";
     if ($roleId !== false && $roleId !== "") {
         $getUsersQuery .= " and u.role_id = $roleId";
@@ -59,10 +60,11 @@ $users = queryExecute($getUsersQuery, true);
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1 class="m-0 text-dark">Quản trị users</h1>
-                        </div><!-- /.col -->
+                        </div>
+                        <!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="<?= ADMIN_URL ?>">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="<?= ADMIN_URL . 'dashboard'?>">Dashboard</a></li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->

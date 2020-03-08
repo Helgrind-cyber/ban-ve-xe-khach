@@ -3,12 +3,12 @@ session_start();
 include_once "../../config/utils.php";
 checkAdminLoggedIn();
 $plate_number = trim($_POST['plate_number']);
-$vehicletype_id = trim($_POST['vehicletype_id']);
-$seat_booked = trim($_POST['seat_booked']);
+$type_id = trim($_POST['type_id']);
+$seat = trim($_POST['seat']);
 // validate bằng php
 
 $plate_numbererr = "";
-$seat_bookedrr = "";
+$seaterr = "";
 
 if(strlen($plate_number) < 2 || strlen($plate_number) > 191){
     $plate_numbererr = "Yêu cầu nhập trong khoảng 2-191 ký tự";
@@ -25,15 +25,15 @@ if($plates == "" && count($plates) > 0){
 }
 
 
-if($plate_numbererr . $seat_bookedrr != "" ){
-    header('location: ' . ADMIN_URL . "vehicles/add-form.php?plate_numbererr=$plate_numbererr&owner_iderr=$owner_iderr&manufactureerr=$manufactureerr&colorerr=$colorerr&modelerr=$modelerr");
+if($plate_numbererr . $seaterr != "" ){
+    header('location: ' . ADMIN_URL . "vehicles/add-form.php?plate_numbererr=$plate_numbererr");
     die;
 }
 
 $insertVehicleQuery = "insert into vehicles
-                          (vehicletype_id, seat_booked, plate_number)
+                          (type_id, seat, plate_number)
                     values
-                          ('$vehicletype_id ', '$seat_booked','$plate_number')";
+                          ('$type_id ', '$seat','$plate_number')";
 
 queryExecute($insertVehicleQuery, false);
 // dd($insertVehicleQuery);

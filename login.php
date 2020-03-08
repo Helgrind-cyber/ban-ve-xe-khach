@@ -18,12 +18,11 @@ require_once "./config/utils.php";
 		<div class="row">
 			<div class="col-4 offset-4">
                 <div class="login-logo">
-                    <a href="<?php echo BASE_URL ?>" >
-                        <img src="<?php echo BASE_URL . 'public/images/logo1.ico'?>" alt="" class="">
+                    <a href="<?php echo BASE_URL ?>">
+                        <img src="<?php echo BASE_URL . 'public/images/logo1.ico'?>" alt="" class="img-thumbnail">
                     </a>
                 </div>
 				<form action="post-login.php" method="post">
-                    <!-- dùng để hiện message -->
                     <div class="d-flex justify-content-center">
                         <?php if(isset($_GET['msg'])):?>
                         <span class="text-danger"><?php echo $_GET['msg']?></span>

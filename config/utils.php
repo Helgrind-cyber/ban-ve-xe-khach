@@ -1,9 +1,9 @@
 <?php
 
 # Quy định constants
-define('BASE_URL', 'http://localhost/ban-ve-xe-khach/');
+define('BASE_URL', 'http://localhost/ban-ve-xe-khach-pt15111/');
 define('ADMIN_URL', BASE_URL . 'admin/');
-define('CART_URL', BASE_URL . 'cart/');
+define('SEARCH_URL', BASE_URL . 'search_products/');
 define('PUBLIC_URL', BASE_URL . 'public/');
 define('ADMIN_ASSET_URL', PUBLIC_URL . 'admin/');
 
@@ -11,6 +11,7 @@ define('THEME_ASSET_URL', PUBLIC_URL . 'blue/');
 
 define('DEFAULT_IMAGE', PUBLIC_URL . 'images/default-image.jpg');
 define('AUTH', 'AUTH_SESSION');
+//
 define("ACTIVE", 1);
 define("INACTIVE", -1);
 

@@ -14,7 +14,4 @@ if(password_verify($password, $loggedInUser['password'])){
     header('location: login.php?msg=Sai thông tin đăng nhập!');
     die;
 }
-
-
-
-?>
+ ?>

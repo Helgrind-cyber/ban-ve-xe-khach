@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2020 at 12:09 PM
+-- Generation Time: Mar 07, 2020 at 08:16 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `created_date` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `created_date` datetime(6) NOT NULL,
   `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -44,9 +44,9 @@ CREATE TABLE `orders` (
 CREATE TABLE `order_detail` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `ticket_id` int(11) NOT NULL,
   `unit_price` varchar(255) NOT NULL,
-  `seat_number` int(2) NOT NULL
+  `seat_number` varchar(255) NOT NULL,
+  `schedule_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -58,7 +58,7 @@ CREATE TABLE `order_detail` (
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -66,9 +66,9 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `status`) VALUES
-(4, 'Người Dùng - User', 1),
-(5, 'Người Quản Trị - Admin', 1),
-(6, 'Người Quản Trị - Super Admin', 0);
+(1, 'Người Dùng - User', 1),
+(2, 'Quản trị - Admin', 1),
+(3, 'Quản trị - Super Admin', 0);
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,7 @@ INSERT INTO `roles` (`id`, `name`, `status`) VALUES
 CREATE TABLE `routes` (
   `id` int(11) NOT NULL,
   `distance` varchar(255) NOT NULL,
-  `estimate_time` text NOT NULL DEFAULT 'current_timestamp(6)',
+  `estimate_time` time(6) NOT NULL,
   `begin_point` varchar(255) NOT NULL,
   `end_point` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -89,20 +89,31 @@ CREATE TABLE `routes` (
 --
 
 INSERT INTO `routes` (`id`, `distance`, `estimate_time`, `begin_point`, `end_point`) VALUES
-(0, '180km', '03:40', 'Bx Mỹ Đình', '');
+(1, '200km', '04:00:00.000000', 'Mỹ Đình', 'Nam Định');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tickets`
+-- Table structure for table `route_schedules`
 --
 
-CREATE TABLE `tickets` (
+CREATE TABLE `route_schedules` (
   `id` int(11) NOT NULL,
-  `vehicle_id` int(11) NOT NULL,
   `route_id` int(11) NOT NULL,
-  `price` varchar(255) NOT NULL
+  `vehicle_id` int(11) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `start_time` datetime(6) NOT NULL,
+  `end_time` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `route_schedules`
+--
+
+INSERT INTO `route_schedules` (`id`, `route_id`, `vehicle_id`, `price`, `start_time`, `end_time`) VALUES
+(6, 1, 1, '150000', '2020-02-02 12:00:00.000000', '2020-02-02 12:00:00.000000'),
+(7, 1, 1, '150000', '2020-02-02 12:00:00.000000', '2020-02-02 12:00:00.000000'),
+(8, 1, 1, '120000', '2020-02-02 06:00:00.000000', '2020-02-02 06:00:00.000000');
 
 -- --------------------------------------------------------
 
@@ -115,8 +126,8 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `phone_number` varchar(255) NOT NULL,
-  `role_id` int(11) NOT NULL
+  `phone_number` varchar(10) NOT NULL,
+  `role_id` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -124,11 +135,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone_number`, `role_id`) VALUES
-(3, 'Quân', 'helgrindxxx@gmail.com', '$2y$10$Y9.idjtygJa0/9r6XEMh.eDInq2/X7IcoraJvi5dmyCqr0Fgcyat6', '914946200', 6),
-(5, 'Hồng Quân', 'quannh@gmail.com', '$2y$10$YaVvbXR8r3SUcduOexpuCuAMPQLyejw16RE4lMXWN1ZWl5qCZpxw.', '0123456789', 4),
-(6, 'Trần Hữu Thiện', 'thienth@gmail.com', '$2y$10$4ijdV/Z4EA7fLZRnYGmhMeLo9.a7wgyBpCap1V5SjPKSTenSDTSFa', '0868456456', 5),
-(7, 'Hong Son', 'son@gmail.com', '$2y$10$Y9.idjtygJa0/9r6XEMh.eDInq2/X7IcoraJvi5dmyCqr0Fgcyat6', '0123456789', 6),
-(8, 'Thiet', 'thiet@gmail.com', '$2y$10$Y9.idjtygJa0/9r6XEMh.eDInq2/X7IcoraJvi5dmyCqr0Fgcyat6', '0123456589', 6);
+(2, 'ThienTH', 'thienth@gmail.com', '$2y$10$4ijdV/Z4EA7fLZRnYGmhMeLo9.a7wgyBpCap1V5SjPKSTenSDTSFa', '123456789', 3),
+(3, 'Hồng Quân', 'helgrindxxx@gmail.com', '$2y$10$/9RCcuWqFwwH1eRgLbg3ue5a/7n2NPHOc0oPc9QYMoxOn6meQSWge', '0914946200', 2),
+(4, 'Nguyễn Văn A', 'anv@gmail.com', '$2y$10$evtG.fVBx3p8dfAGkOiVH.kk0eqZQILmXoLWKU3Mpd3J8uuMum1JO', '0987654311', 1);
 
 -- --------------------------------------------------------
 
@@ -138,17 +147,19 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone_number`, `role_id
 
 CREATE TABLE `vehicles` (
   `id` int(11) NOT NULL,
-  `vehicletype_id` int(11) NOT NULL,
-  `seat_booked` varchar(255) NOT NULL,
-  `plate_number` varchar(255) NOT NULL
+  `type_id` int(11) NOT NULL,
+  `seat` int(100) NOT NULL,
+  `plate_number` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `vehicles`
 --
 
-INSERT INTO `vehicles` (`id`, `vehicletype_id`, `seat_booked`, `plate_number`) VALUES
-(1, 1, '30', '29T9-999.99');
+INSERT INTO `vehicles` (`id`, `type_id`, `seat`, `plate_number`) VALUES
+(1, 1, 30, '29T9-999.99'),
+(6, 1, 16, '18H1-888.88'),
+(7, 2, 16, '29G9-666.66');
 
 -- --------------------------------------------------------
 
@@ -167,8 +178,8 @@ CREATE TABLE `vehicle_types` (
 --
 
 INSERT INTO `vehicle_types` (`id`, `name`, `status`) VALUES
-(1, 'Limousin', 0),
-(2, 'Xe Bus 29', 0);
+(1, 'Xe Bus 2 tầng', 0),
+(2, 'Xe Limousine', 0);
 
 --
 -- Indexes for dumped tables
@@ -187,7 +198,7 @@ ALTER TABLE `orders`
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`),
   ADD KEY `order_id` (`order_id`),
-  ADD KEY `ticket_id` (`ticket_id`);
+  ADD KEY `schedule_id` (`schedule_id`);
 
 --
 -- Indexes for table `roles`
@@ -202,12 +213,12 @@ ALTER TABLE `routes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tickets`
+-- Indexes for table `route_schedules`
 --
-ALTER TABLE `tickets`
+ALTER TABLE `route_schedules`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `vehicle_id` (`vehicle_id`),
-  ADD KEY `route_id` (`route_id`);
+  ADD KEY `route_id` (`route_id`),
+  ADD KEY `vehicle_id` (`vehicle_id`);
 
 --
 -- Indexes for table `users`
@@ -220,7 +231,8 @@ ALTER TABLE `users`
 -- Indexes for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `type_id` (`type_id`);
 
 --
 -- Indexes for table `vehicle_types`
@@ -233,6 +245,12 @@ ALTER TABLE `vehicle_types`
 --
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
@@ -242,25 +260,31 @@ ALTER TABLE `order_detail`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tickets`
+-- AUTO_INCREMENT for table `routes`
 --
-ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `routes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `route_schedules`
+--
+ALTER TABLE `route_schedules`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `vehicle_types`
@@ -283,20 +307,26 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_detail`
   ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
-  ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`id`);
+  ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`schedule_id`) REFERENCES `route_schedules` (`id`);
 
 --
--- Constraints for table `tickets`
+-- Constraints for table `route_schedules`
 --
-ALTER TABLE `tickets`
-  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`),
-  ADD CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`route_id`) REFERENCES `routes` (`id`);
+ALTER TABLE `route_schedules`
+  ADD CONSTRAINT `route_schedules_ibfk_1` FOREIGN KEY (`route_id`) REFERENCES `routes` (`id`),
+  ADD CONSTRAINT `route_schedules_ibfk_2` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`);
 
 --
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+
+--
+-- Constraints for table `vehicles`
+--
+ALTER TABLE `vehicles`
+  ADD CONSTRAINT `vehicles_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `vehicle_types` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

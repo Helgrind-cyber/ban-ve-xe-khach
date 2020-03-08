@@ -52,7 +52,7 @@ $routes = queryExecute($getRoutesQuery, true);
                             </div>
                             <div class="form-group">
                                 <label for="">Thời gian dự kiến<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="estimate_time">
+                                <input type="datetime" class="form-control" name="estimate_time">
                             </div>
                             <div class="form-group">
                                 <label for="">Điểm đầu<span class="text-danger">*</span></label>

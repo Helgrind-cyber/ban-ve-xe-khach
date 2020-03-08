@@ -16,7 +16,7 @@ $getVehiclesQuery = "select
                     vt.name as type_name
                     from vehicles v
                     join vehicle_types vt
-                    on v.vehicletype_id = vt.id";
+                    on v.type_id = vt.id";
 if ($keyword !== "") {
     $getVehiclesQuery .= " where (v.seat_booked like '%$keyword%'
                                 or v.plate_number like '%$keyword%')";
@@ -111,7 +111,7 @@ $vehicles = queryExecute($getVehiclesQuery, true);
                                 <td><?php echo $vehicle['id'] ?></td>
                                 <td><?php echo $vehicle['plate_number'] ?></td>
                                 <td><?php echo $vehicle['type_name'] ?></td>
-                                <td><?php echo $vehicle['seat_booked'] ?></td>
+                                <td><?php echo $vehicle['seat'] ?></td>
                                 <td>
                                     <a href="<?php echo ADMIN_URL . 'vehicles/edit-form.php?id=' . $vehicle['id'] ?>"
                                        class="btn btn-sm btn-info">

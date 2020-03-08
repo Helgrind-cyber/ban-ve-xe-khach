@@ -1,7 +1,6 @@
 <?php
 // session_start();
 require_once '../../config/utils.php';
-
 $loggedInUser = $_SESSION[AUTH];
 ?>
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">

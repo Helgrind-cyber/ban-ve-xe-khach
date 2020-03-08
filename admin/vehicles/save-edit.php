@@ -36,7 +36,7 @@ $updateVehicleQuery = "update vehicles
                     set
                         vehicletype_id = '$vehicletype_id',
                         seat_booked = '$seat_booked',
-                          plate_number = '$plate_number'
+                        plate_number = '$plate_number'
                     where id = '$id'";
 
 

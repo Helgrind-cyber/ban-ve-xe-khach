@@ -25,24 +25,23 @@
                                 <a class="dropdown-item" href="#">Đổi mật khẩu</a>
                                 <a class="dropdown-item" href="#">Thông tin vé xe</a>
                                 <a class="dropdown-item text-danger" style="<?php if ($loggedInUser !== null && $loggedInUser['role_id'] > 1) {
-                                                                                                            echo 'display:inline-block';
-                                                                                                        } else {
-                                                                                                            echo 'display:none';
-                                                                                                        } ?>" href="<?= ADMIN_URL . 'dashboard' ?>">Quản lý Trang Web</a>
+                                                                                echo 'display:inline-block';
+                                                                            } else {
+                                                                                echo 'display:none';
+                                                                            } ?>" href="<?= ADMIN_URL . 'dashboard' ?>">Quản lý Trang Web</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="<?= BASE_URL . 'login/logout.php' ?>">Đăng xuất</a>
                             </div>
                         </li>
                     <?php else : ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= BASE_URL.'login/login.php'?>" title="">Đăng Nhập</a>
+                            <a class="nav-link" href="<?= BASE_URL . 'login/login.php' ?>" title="">Đăng Nhập</a>
                         </li>
                     <?php endif ?>
                     <li class="btn-cart nav-item btn btn-outline-primary">
                         <a class="nav-link" href="<?= CART_URL ?>" title="">Giỏ Hàng <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                     </li>
                 </ul>
-                <!-- </div> -->
             </div>
         </div>
     </div>

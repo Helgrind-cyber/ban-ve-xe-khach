@@ -6,3 +6,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 <!-- main.css -->
 <link rel="stylesheet" href="<?php echo PUBLIC_URL . '/css/main.css' ?>">
+<!-- Favicon -->
+<link rel="shortcut icon" href="<?= PUBLIC_URL.'images/favicon.ico'?>" type="image/x-icon">

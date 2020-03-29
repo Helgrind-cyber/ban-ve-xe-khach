@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "./config/utils.php";
+include_once "../config/utils.php";
 
 $name = trim($_POST['name']);
 $email = trim($_POST['email']);
@@ -46,15 +46,14 @@ if ($nameerr . $emailerr . $passworderr != "") {
 $password = password_hash($password, PASSWORD_DEFAULT);
 
 $role_id = 1;
-$filename = "public/img/default-image.jpg";
 $messages = "Từ giờ bạn có thể đăng nhập được rồi";
 // insert query
 $insertUserQuery = "insert into users
-                          (name, password, email, role_id, phone_number, avatar)
+                          (name, password, email, role_id, phone_number)
                     values
-                          ('$name', '$password', '$email', '$role_id', '$phone_number', '$filename')";
+                          ('$name', '$password', '$email', '$role_id', '$phone_number')";
 
 // dd($insertUserQuery);
 queryExecute($insertUserQuery, false);
-header("location: " . BASE_URL . "login.php?messages=$messages&style=none");
+header("location: " . BASE_URL . "login/login.php?messages=$messages&style=none");
 die;

@@ -1,7 +1,7 @@
 <?php
 // bắt đầu sử dụng session
 session_start();
-require_once "./config/utils.php";
+require_once "../config/utils.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,12 +25,12 @@ require_once "./config/utils.php";
 <body>
     <div class="container">
         <div class="col-8 offset-2">
-            <div class="login-logo d-flex justify-content-center m-5">
+            <div class="col-5 offset-4 login-logo">
                 <a href="<?php echo BASE_URL ?>">
-                    <img src="<?php echo PUBLIC_URL . 'img/site-logo.png' ?>" alt="" class="img-logo">
+                    <img src="<?php echo BASE_URL . 'public/images/logo1.ico' ?>" alt="" class="img-thumbnail">
                 </a>
             </div>
-            <form id="validation" role="form" action="<?php echo BASE_URL . 'save-register.php'; ?>" method="post" enctype="multipart/form-data" autocomplete="on">
+            <form id="validation" role="form" action="<?php echo BASE_URL . 'login/save-register.php'; ?>" method="post" enctype="multipart/form-data" autocomplete="on">
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="email">Địa chỉ email</label>

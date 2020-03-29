@@ -13,6 +13,12 @@ require_once "../config/utils.php";
 	<title></title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="<?php echo BASE_URL . 'public/css/main.css' ?>">
+	<style>
+		.hidden {
+			display: <?php echo $_GET['style'] ?>
+		}
+	</style>
+</head>
 </head>
 
 <body>
@@ -30,6 +36,11 @@ require_once "../config/utils.php";
 							<span class="text-danger"><?php echo $_GET['msg'] ?></span>
 						<?php endif; ?>
 					</div>
+					<div class="d-flex justify-content-center">
+						<?php if (isset($_GET['messages'])) : ?>
+							<span class="text-danger"><?php echo $_GET['messages'] ?></span>
+						<?php endif; ?>
+					</div>
 					<div class="form-group">
 						<label for="email">Email address</label>
 						<input type="email" class="form-control" id="email" name="email" placeholder="Nhập Email">
@@ -39,7 +50,7 @@ require_once "../config/utils.php";
 						<input type="password" class="form-control" id="password" name="password">
 					</div>
 					<div class="form-group">
-						<a href="<?php echo BASE_URL . 'register.php' ?>" class="text-danger hidden"><ins>Chưa có tài khoản, đi tới đăng ký</ins></a>&nbsp;
+						<a href="<?php echo BASE_URL . 'login/register.php' ?>" class="text-danger hidden"><ins>Chưa có tài khoản, đi tới đăng ký</ins></a>&nbsp;
 					</div>
 					<div class="d-flex justify-content-center">
 						<button type="submit" class="btn btn-primary">Submit</button>&nbsp;

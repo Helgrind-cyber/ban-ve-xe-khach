@@ -3,23 +3,13 @@ session_start();
 include_once "../../config/utils.php";
 checkAdminLoggedIn();
 // lấy thông tin từ form gửi lên;
+$id = trim($_POST['id']);
 $content = trim($_POST['content']);
 $title = trim($_POST['title']);
 $image = $_FILES['image'];
 $id = trim($_POST['id']);
-
-// kiểm tra tài khoản có tồn tại hay không
-
-
-
-// kiểm tra xem có quyền để thực hiện edit hay không
-
-
-
-
-
-
-
+// kiểm tra xem tin tức có tồn tại hay không
+$getNewsQuery = "select * from news where id = '$id'";
 // upload file
 $filename = "";
 if($image['size'] > 0){
@@ -28,10 +18,10 @@ if($image['size'] > 0){
     $filename = "public/images/" . $filename;
 }
 
-$updateNewsQuery = "update news 
+$updateNewsQuery = "update news
                     set   image = '$filename',
-                          title = '$title', 
-                          content = '$content' 
+                          title = '$title',
+                          content = '$content'
                     where id = $id";
 queryExecute($updateNewsQuery, false);
 header("location: " . ADMIN_URL . "news");

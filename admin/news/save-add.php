@@ -9,19 +9,7 @@ $image = $_FILES['image'];
 // validate bằng php
 $nameerr = "";
 $emailerr = "";
-$passworderr = "";
-// check name
 
-
-// check email
-
-
-// check email đã tồn tại hay chưa
-
-// check password
-
-// mã hóa mật khẩu
-$password = password_hash($password, PASSWORD_DEFAULT);
 // upload file ảnh
 $filename = "";
 if($image['size'] > 0){
@@ -33,6 +21,7 @@ $insertNewsQuery = "insert into news
                           (image, title, content)
                     values
                           ('$filename', '$title', '$content')";
+// dd($insertNewsQuery);
 queryExecute($insertNewsQuery, false);
 header("location: " . ADMIN_URL . "news");
 die;

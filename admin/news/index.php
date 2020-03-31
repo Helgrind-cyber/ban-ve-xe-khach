@@ -4,39 +4,15 @@ require_once '../../config/utils.php';
 checkAdminLoggedIn();
 
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
-$roleId = isset($_GET['role']) == true ? $_GET['role'] : false;
 
-// Lấy danh sách roles
-// $getRolesQuery = "select * from roles where status = 1";
-$getRolesQuery = "select * from roles";
-$roles = queryExecute($getRolesQuery, true);
-
-//lấy dữ liệu bảng nnews
-$getNewsQuery = "select * from news";
-$news = queryExecute($getNewsQuery,true);
-
-// danh sách users
-$getUsersQuery = "select
-                    u.*,
-                    r.name as role_name
-                    from users u
-                    join roles r
-                    on u.role_id = r.id";
+// danh sách news
+$getNewsQuery = "select n.* from news n";
 // tìm kiếm
 if ($keyword !== "") {
-    $getUsersQuery .= " where (u.email like '%$keyword%'
-                            or u.phone_number like '%$keyword%'
-                            or u.name like '%$keyword%')
-                      ";
-    if ($roleId !== false && $roleId !== "") {
-        $getUsersQuery .= " and u.role_id = $roleId";
-    }
-} else {
-    if ($roleId !== false && $roleId !== "") {
-        $getUsersQuery .= " where u.role_id = $roleId";
-    }
+    $getNewsQuery .= " where (n.title like '%$keyword%'
+                            or n.content like '%$keyword%')";
 }
-$users = queryExecute($getUsersQuery, true);
+$news = queryExecute($getNewsQuery, true);
 
 ?>
 <!DOCTYPE html>
@@ -68,7 +44,7 @@ $users = queryExecute($getUsersQuery, true);
                         <!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="<?= ADMIN_URL . 'dashboard'?>">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="<?= ADMIN_URL . 'dashboard' ?>">Dashboard</a></li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -86,19 +62,7 @@ $users = queryExecute($getUsersQuery, true);
                             <form action="" method="get">
                                 <div class="form-row">
                                     <div class="form-group col-6">
-                                        <input type="text" value="<?php echo $keyword ?>" class="form-control"
-                                            name="keyword" placeholder="Nhập tên, email, căn hộ, số điện thoại,...">
-                                    </div>
-                                    <div class="form-group col-4">
-                                        <select name="role" class="form-control">
-                                            <option selected value="">Tất cả</option>
-                                            <?php foreach ($roles as $ro) : ?>
-                                            <option <?php if ($roleId === $ro['id']) {
-                                                            echo "selected";
-                                                        } ?> value="<?php echo $ro['id'] ?>"><?php echo $ro['name'] ?>
-                                            </option>
-                                            <?php endforeach; ?>
-                                        </select>
+                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên, email, căn hộ, số điện thoại,...">
                                     </div>
                                     <div class="form-group col-2">
                                         <button type="submit" class="btn btn-success">Tìm kiếm</button>
@@ -114,34 +78,27 @@ $users = queryExecute($getUsersQuery, true);
                                 <th>thông tin</th>
                                 <th width="100">Ảnh</th>
                                 <th>
-                                    <a href="<?php echo ADMIN_URL . 'news/add-form.php' ?>"
-                                        class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
+                                    <a href="<?php echo ADMIN_URL . 'news/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                 </th>
                             </thead>
                             <tbody>
                                 <?php foreach ($news as $ne) : ?>
-                                <tr>
-                                    <td><?php echo $ne['id'] ?></td>
-                                    <td><?php echo $ne['title'] ?></td>
-                                    <td><?php echo $ne['content'] ?></td>
-                                    <td>
-                                        <img class="img-fluid" src="<?= BASE_URL. $ne['image'] ?>" alt="">
-                                    </td>
-                                    <td>
-
-                                        <a href="<?php echo ADMIN_URL . 'news/edit-form.php?id=' . $ne['id'] ?>"
-                                            class="btn btn-sm btn-info">
-                                            <i class="fa fa-pencil-alt"></i>
-                                        </a>
-
-
-                                        <a href="<?php echo ADMIN_URL . 'news/remove.php?id=' . $ne['id'] ?>"
-                                            class="btn-remove btn btn-sm btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td><?php echo $ne['id'] ?></td>
+                                        <td><?php echo $ne['title'] ?></td>
+                                        <td><?php echo $ne['content'] ?></td>
+                                        <td>
+                                            <img class="img-fluid" src="<?= BASE_URL . $ne['image'] ?>" alt="">
+                                        </td>
+                                        <td>
+                                            <a href="<?php echo ADMIN_URL . 'news/edit-form.php?id=' . $ne['id'] ?>" class="btn btn-sm btn-info">
+                                                <i class="fa fa-pencil-alt"></i>
+                                            </a>
+                                            <a href="<?php echo ADMIN_URL . 'news/remove.php?id=' . $ne['id'] ?>" class="btn-remove btn btn-sm btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -159,36 +116,36 @@ $users = queryExecute($getUsersQuery, true);
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
-    $(document).ready(function() {
-        $('.btn-remove').on('click', function() {
-            var redirectUrl = $(this).attr('href');
-            Swal.fire({
-                title: 'Thông báo!',
-                text: "Bạn có chắc chắn muốn xóa tin này?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Đồng ý'
-            }).then((result) => { // arrow function es6 (es2015)
-                if (result.value) {
-                    window.location.href = redirectUrl;
-                }
+        $(document).ready(function() {
+            $('.btn-remove').on('click', function() {
+                var redirectUrl = $(this).attr('href');
+                Swal.fire({
+                    title: 'Thông báo!',
+                    text: "Bạn có chắc chắn muốn xóa tin này?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Đồng ý'
+                }).then((result) => { // arrow function es6 (es2015)
+                    if (result.value) {
+                        window.location.href = redirectUrl;
+                    }
+                });
+                return false;
             });
-            return false;
-        });
-         <?php
-       
-        if (isset($_GET['msg'])): ?>
-            Swal.fire({
-                position: 'bottom-end',
-                icon: 'warning',
-                title: "<?= $_GET['msg']; ?>",
-                showConfirmButton: false,
-                timer: 1500
-            }); 
+            <?php
+
+            if (isset($_GET['msg'])) : ?>
+                Swal.fire({
+                    position: 'bottom-end',
+                    icon: 'warning',
+                    title: "<?= $_GET['msg']; ?>",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             <?php endif; ?>
-    });
+        });
     </script>
 </body>
 

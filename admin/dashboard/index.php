@@ -23,6 +23,9 @@ $routes = queryExecute($getAllRoutesSql, true);
 $getAllSchedulesSql = "select * from route_schedules";
 $schedules = queryExecute($getAllSchedulesSql, true);
 
+$getAllNewsSql = "select * from news";
+$news = queryExecute($getAllNewsSql, true);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,7 +79,8 @@ $schedules = queryExecute($getAllSchedulesSql, true);
                                 <div class="icon">
                                     <i class="fa fa-users"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -90,7 +94,8 @@ $schedules = queryExecute($getAllSchedulesSql, true);
                                 <div class="icon">
                                     <i class="fa fa-motorcycle"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'vehicles' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?= ADMIN_URL . 'vehicles' ?>" class="small-box-footer">Chi tiết <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -104,7 +109,8 @@ $schedules = queryExecute($getAllSchedulesSql, true);
                                 <div class="icon">
                                     <i class="fa fa-list-alt"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'schedules/' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?= ADMIN_URL . 'schedules/' ?>" class="small-box-footer">Chi tiết <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -122,7 +128,8 @@ $schedules = queryExecute($getAllSchedulesSql, true);
                                 <div class="icon">
                                     <i class="fa fa fa-truck"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'vehicle_type' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?= ADMIN_URL . 'vehicle_type' ?>" class="small-box-footer">Chi tiết <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -136,7 +143,22 @@ $schedules = queryExecute($getAllSchedulesSql, true);
                                 <div class="icon">
                                     <i class="fa fa-route"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'routes' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?= ADMIN_URL . 'routes' ?>" class="small-box-footer">Chi tiết <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3><?= count($news) ?></h3>
+                                    <p>Tin Tức</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-route"></i>
+                                </div>
+                                <a href="<?= ADMIN_URL . 'news' ?>" class="small-box-footer">Chi tiết <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>

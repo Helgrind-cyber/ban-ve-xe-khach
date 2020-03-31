@@ -146,6 +146,29 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                    <i class="far fa-newspaper nav-icon "></i>
+                        <p>
+                            Tin Tức
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= ADMIN_URL . 'news' ?>" class="nav-link">
+                            <i class="far fa-newspaper nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= ADMIN_URL . 'news/add-form.php' ?>" class="nav-link">
+                                <i class="fa fa-plus nav-icon"></i>
+                                <p>Thêm Tin Tức</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
                     <a href="<?= BASE_URL . 'logout.php' ?>" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>

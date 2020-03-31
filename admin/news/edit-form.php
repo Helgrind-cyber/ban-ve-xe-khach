@@ -10,8 +10,6 @@ $id = isset($_GET['id']) ? $_GET['id'] : -1;
 $getNewsQuery = "select * from news where id = $id";
 $news = queryExecute($getNewsQuery, false);
 
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,7 +47,7 @@ $news = queryExecute($getNewsQuery, false);
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <form id="edit-user-form" action="<?= ADMIN_URL . 'news/save-edit.php' ?>" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="<?= $news['id'] ?>">
+                        <input type="text" name="id" value="<?= $news['id'] ?>" hidden>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -65,9 +63,8 @@ $news = queryExecute($getNewsQuery, false);
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-6 offset-md-3">
-                                        <img src="<?= BASE_URL . $news['image'] ?>" id="preview-img" class="img-fluid">
-                                        <input type="file" class="form-control" name="image"
-                                        onchange="encodeImageFileAsURL(this)">
+                                        <img src="<?= DEFAULT_IMAGE ?>" width="200" id="preview-img" alt=""><br>
+                                        <input type="file" class="form-control" name="image" onchange="encodeImageFileAsURL(this)">
                                     </div>
                                 </div>
                                 <div class="col d-flex justify-content-center p-4">

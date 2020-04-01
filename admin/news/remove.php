@@ -14,5 +14,5 @@ $id = isset($_GET['id']) ? $_GET['id'] : -1;
 
 $removeNewsQuery = "delete from news where id = $id";
 queryExecute($removeNewsQuery, false);
-header("location: " . ADMIN_URL . "news?msg=Xóa tài khoản thành công");
+header("location: " . ADMIN_URL . "news?msg=Xóa tin tức thành công");
 die;

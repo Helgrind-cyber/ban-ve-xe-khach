@@ -24,7 +24,7 @@ $updateNewsQuery = "update news
                     set   image = '$filename',
                           title = '$title',
                           content = '$content'
-                    where id = $id";
+                    where id = '$id'";
 queryExecute($updateNewsQuery, false);
 header("location: " . ADMIN_URL . "news");
 die;

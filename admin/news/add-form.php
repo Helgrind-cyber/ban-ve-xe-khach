@@ -49,9 +49,11 @@ checkAdminLoggedIn();
                                     <label for="">Thông tin<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="content">
                                 </div>
+                                <div class="form-group">
+                                    <img src="<?= DEFAULT_IMAGE ?>" width="200" id="preview-img" alt="">
+                                </div>
                                 <div class="from-group">
                                     <label for="">Ảnh<span class="text-danger">*</span></label><br>
-                                    <img src="<?= DEFAULT_IMAGE ?>" width="200" id="preview-img" alt=""><br>
                                     <input type="file" class="form-control" name="image" onchange="encodeImageFileAsURL(this)">
                                 </div>
                             </div>
@@ -88,6 +90,7 @@ checkAdminLoggedIn();
             }
             reader.readAsDataURL(file);
         }
+
         $('#add-user-form').validate({
             rules: {
                 name: {

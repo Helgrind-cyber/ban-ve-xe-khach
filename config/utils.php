@@ -12,8 +12,8 @@ define('THEME_ASSET_URL', PUBLIC_URL . 'blue/');
 define('DEFAULT_IMAGE', PUBLIC_URL . 'images/default-image.jpg');
 define('AUTH', 'AUTH_SESSION');
 //
-define("ACTIVE", 1);
-define("INACTIVE", -1);
+define("ACTIVE", 0);
+define("INACTIVE", 1);
 
 # Các hàm sử dụng chung
 # Trả về kết nối đến csdl

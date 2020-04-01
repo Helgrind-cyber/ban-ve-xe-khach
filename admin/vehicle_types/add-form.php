@@ -49,8 +49,8 @@ checkAdminLoggedIn();
                                 <div class="form-group">
                                     <label for="">Trạng thái<span class="text-danger">*</span></label>
                                     <select name="status" class="form-control">
-                                        <option value="0">Có hiệu lực</option>
-                                        <option value="1">Không có hiệu lực</option>
+                                        <option value="<?= ACTIVE?>">Có hiệu lực</option>
+                                        <option value="<?= INACTIVE?>">Không có hiệu lực</option>
                                     </select>
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">

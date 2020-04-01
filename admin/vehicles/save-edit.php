@@ -4,15 +4,15 @@ include_once "../../config/utils.php";
 checkAdminLoggedIn();
 $id = trim($_POST['id']);
 $plate_number = trim($_POST['plate_number']);
-$vehicletype_id = trim($_POST['vehicletype_id']);
-$seat_booked = trim($_POST['seat_booked']);
-
+$type_id = trim($_POST['type_id']);
+$seat = trim($_POST['seat']);
 // validate bằng php
-$plate_numbererr = "";
-$seat_bookedrr = "";
 
-if(strlen($plate_number) < 2 || strlen($plate_number) > 191){
-    $plate_numbererr = "Yêu cầu nhập trong khoảng 2-191 ký tự";
+$plate_numbererr = "";
+$seaterr = "";
+
+if(strlen($plate_number) != 8){
+    $plate_numbererr = "Yêu cầu nhập 8 ký tự";
 }
 if(strlen($plate_number) == 0){
     $plate_numbererr = "Yêu cầu nhập biển số xe";

@@ -10,8 +10,8 @@ $seat = trim($_POST['seat']);
 $plate_numbererr = "";
 $seaterr = "";
 
-if(strlen($plate_number) < 2 || strlen($plate_number) > 191){
-    $plate_numbererr = "Yêu cầu nhập trong khoảng 2-191 ký tự";
+if(strlen($plate_number) != 8){
+    $plate_numbererr = "Yêu cầu nhập 8 ký tự";
 }
 if(strlen($plate_number) == 0){
     $plate_numbererr = "Yêu cầu nhập biển số xe";

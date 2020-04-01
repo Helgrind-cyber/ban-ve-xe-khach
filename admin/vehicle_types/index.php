@@ -8,11 +8,12 @@ $status = isset($_GET['status']) == true ? $_GET['status'] : false;
 // get vehicle types query
 $getVehicleTypesQuery = "select vt.* from vehicle_types vt";
 // điều kiện tìm kiếm
-if ($keyword !== "") {
+if ($keyword != "" || $status != "") {
     $getVehicleTypesQuery .= " where (vt.name like '%$keyword%'
-                                    or vt.status like '%$status%')";
+                                    and vt.status = $status)";
 }
 $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
+
 ?>
 
 <!DOCTYPE html>
@@ -130,7 +131,7 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                 var redirectUrl = $(this).attr('href');
                 Swal.fire({
                     title: 'Thông báo!',
-                    text: "Bạn có chắc chắn muốn xóa tài khoản này?",
+                    text: "Bạn có chắc chắn muốn xóa loại phương tiền này?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',

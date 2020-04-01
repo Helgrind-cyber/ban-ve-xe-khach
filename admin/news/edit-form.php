@@ -91,7 +91,7 @@ $news = queryExecute($getNewsQuery, false);
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
             if (file === undefined) {
-                $('#preview-img').attr('src', "<?= BASE_URL . $user['avatar'] ?>");
+                $('#preview-img').attr('src', "<?= DEFAULT_IMAGE ?>");
                 return false;
             }
             var reader = new FileReader();

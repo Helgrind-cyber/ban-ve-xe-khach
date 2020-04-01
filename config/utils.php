@@ -55,12 +55,12 @@ function checkAdminLoggedIn(){
     // kiểm tra đăng nhập
     // 1 - đăng nhập thành công - ktra bằng session AUTH
     if(!isset($_SESSION[AUTH]) || $_SESSION[AUTH] == null || count($_SESSION[AUTH]) == 0){
-        header('location: ' . BASE_URL . 'login.php?msg=Hãy đăng nhập');
+        header('location: ' . BASE_URL . 'login/login.php?msg=Hãy đăng nhập');
         die;
     }
     // 2 - giá trị của cột role_id = 2
     if($_SESSION[AUTH]['role_id'] < 2){
-        header('location: ' . BASE_URL . 'login.php?msg=You\'re not admin, tell me who you are? ');
+        header('location: ' . BASE_URL . 'login/login.php?msg=You\'re not admin, tell me who you are? ');
         die;
     }
 }

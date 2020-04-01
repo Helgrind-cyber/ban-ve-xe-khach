@@ -2,15 +2,16 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-
+// get keyword from url
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
-$getVehicleTypesQuery = "select * from vehicle_types vt";
+$status = isset($_GET['status']) == true ? $_GET['status'] : false;
+// get vehicle types query
+$getVehicleTypesQuery = "select vt.* from vehicle_types vt";
 // điều kiện tìm kiếm
-
 if ($keyword !== "") {
-    $getVehicleTypesQuery .= " where (vt.name like '%$keyword%')";
+    $getVehicleTypesQuery .= " where (vt.name like '%$keyword%'
+                                    or vt.status like '%$status%')";
 }
-
 $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
 ?>
 
@@ -60,7 +61,14 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                             <form action="" method="get">
                                 <div class="form-row">
                                     <div class="form-group col-6">
-                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên, trạng thái,...">
+                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên loại phương tiện...">
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <select name="status" class="form-control">
+                                            <option selected value="">Tất cả</option>
+                                            <option value="<?= ACTIVE ?>">Có hiệu lực</option>
+                                            <option value="<?= INACTIVE ?>">Không có hiệu lực</option>
+                                        </select>
                                     </div>
                                     <div class="form-group col-2">
                                         <button type="submit" class="btn btn-success">Tìm kiếm</button>

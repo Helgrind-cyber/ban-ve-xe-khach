@@ -23,46 +23,49 @@ $news = queryExecute($getNewsQuery,true);
     <title>Bán vé xe khách - Trang chủ</title>
 </head>
 
-<body>
+<body class="bg-light">
     <?php include_once './public/_share/header.php'; ?>
     <!--END HEADER - START BANNER-->
     <div class="banner border-bottom pt-3 pb-3">
         <div class="container">
-            <h1 class="slogan h2 m-5 text-dark text-center text-capitalize">đặt vé xe trước, nhận chỗ sớm, không lo hết
-                vé</h1>
+            <h1 class="h2 m-5 text-dark text-center text-capitalize">đặt vé xe trước, nhận chỗ sớm, không lo hết vé</h1>
             <p class="text-center text-uppercase h4 font-weight-bold">tìm vé xe</p>
 
             <form action="<?php echo SEARCH_URL ?>" method="get" enctype="multipart/form-data">
                 <div class="row d-flex justify-content-center">
                     <div class="col-8 form-group">
-                        <input type="text" class="form-control p-4 border-dark" name="keyword" value=""
-                            placeholder="Nhập địa điểm, giá vé, loại xe tìm kiếm ...">
+                        <input type="text" class="form-control p-4 border-dark" name="keyword" value="" placeholder="Nhập địa điểm, giá vé, loại xe tìm kiếm ...">
                     </div>
                 </div>
                 <div class="text-center">
                     <button type="submit" name="btn-submit" class="btn btn-primary">Tìm Vé</button>
                 </div>
             </form>
+            <!--END CONTENT - START CAROUSEL-->
+<div class="container pt-2">
+    <h4>Tin tức</h4>
+    <div class="list_carousel bg-light pt-3 pb-4">
+        <ul id="foo">
+            <?php foreach ($news as $ne) : ?>
+            <li>
+                <a href="list4.html"><img src="<?= BASE_URL . $ne['image'] ?>" alt="" /></a>
+                <div class="m1">
+                    <h6 class="lh2 dark"><b><?= $ne['title']?></b></h6>
+                    <h6 class="lh2 green"><?= $ne['content']?></h6>
+                </div>
+            </li>
+            <?php endforeach;?>
+        </ul>
+        <div class="clearfix"></div>
+        <a id="prev_btn" class="prev" href="#"><img src="<?= THEME_ASSET_URL ?>images/spacer.png" alt="" /></a>
+        <a id="next_btn" class="next" href="#"><img src="<?= THEME_ASSET_URL ?>images/spacer.png" alt="" /></a>
+    </div>
+</div>
         </div>
     </div>
-    <!--END BANNER - START NEWS-->
-    <div class="new pt-2 pb-5">
-        <div class="container">
-            <h2 class="h3 text-capitalize text-center">tin tức chung</h2>
-            <div class="row">
-                <?php foreach ($news as $ne) :?>
-                <div class="newsImg col-4 border p-2">
-                    <img class="img-rounded" src="<?php echo BASE_URL . $ne['image'] ?>" alt="here is news image">
-                    <h3><?= $ne['title']?></h3>
-                    <p><?= $ne['content']?></p>
-                </div> <?php endforeach; ?>
-            </div>
-        </div>
-
-
-        <!--END CONTACT - START FOOTER-->
-        <?php include_once './public/_share/footer.php'; ?>
-        <?php include_once './public/_share/script.php'; ?>
+    <!--END CONTACT - START FOOTER-->
+    <?php include_once './public/_share/footer.php'; ?>
+    <?php include_once './public/_share/script.php'; ?>
     </div>
 </body>
 

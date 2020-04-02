@@ -20,7 +20,7 @@ define("INACTIVE", -1);
 function getdbConn(){
 	try{
 		$host = "127.0.0.1";
-		$dbname = "ban_ve_xe";
+		$dbname = "ban-ve-xe";
 		$dbusername = "root";
 		$dbpass = "";
 

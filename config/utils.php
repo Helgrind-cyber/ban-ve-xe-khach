@@ -1,7 +1,7 @@
 <?php
 
 # Quy định constants
-define('BASE_URL', 'http://book-tickets.helgrind/');
+define('BASE_URL', 'http://localhost/ban-ve-xe-khach/');
 define('ADMIN_URL', BASE_URL . 'admin/');
 define('SEARCH_URL', BASE_URL . 'search_products/');
 define('PUBLIC_URL', BASE_URL . 'public/');

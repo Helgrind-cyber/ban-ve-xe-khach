@@ -20,9 +20,9 @@ define("INACTIVE", -1);
 function getdbConn(){
 	try{
 		$host = "127.0.0.1";
-		$dbname = "ban-ve-xe";
+		$dbname = "ban_ve_xe";
 		$dbusername = "root";
-		$dbpass = "123456789";
+		$dbpass = "";
 
 		$connect = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $dbusername, $dbpass);
 		return $connect;

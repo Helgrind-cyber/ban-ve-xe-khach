@@ -1,6 +1,9 @@
 <?php
+// bắt đầu một session
 session_start();
+//kết nối đến file utils
 require_once '../../config/utils.php';
+//kiểm tra quyền đăng nhập
 checkAdminLoggedIn();
 
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";

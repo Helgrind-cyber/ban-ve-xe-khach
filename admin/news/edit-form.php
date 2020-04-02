@@ -55,7 +55,7 @@ $news = queryExecute($getNewsQuery, false);
                                 </div>
                                 <div class="form-group">
                                     <label for="">Thông tin<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="content" value="<?= $news['content'] ?>>
+                                    <input type="text" class="form-control" name="content" value="<?= $news['content'] ?>">
                                 </div>
                                 <div class=" from-group">
                                     <label for="">Ảnh<span class="text-danger">*</span></label><br>

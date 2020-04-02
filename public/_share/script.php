@@ -8,3 +8,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <!-- cdn tempusdominus bootstrap -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- -------------------------make carousel------------------------- -->
+<!-- This page JS -->
+<script src="<?= THEME_ASSET_URL ?>assets/js/js-index3.js"></script>
+<!-- Custom functions -->
+<script src="<?= THEME_ASSET_URL ?>assets/js/functions.js"></script>
+<!-- Picker UI-->
+<script src="<?= THEME_ASSET_URL ?>assets/js/jquery-ui.js"></script>
+<!-- Easing -->
+<script src="<?= THEME_ASSET_URL ?>assets/js/jquery.easing.js"></script>
+<!-- jQuery KenBurn Slider  -->
+<script type="text/javascript" src="<?= THEME_ASSET_URL ?>rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<!-- Nicescroll  -->
+<script src="<?= THEME_ASSET_URL ?>assets/js/jquery.nicescroll.min.js"></script>
+<!-- CarouFredSel -->
+<script src="<?= THEME_ASSET_URL ?>assets/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+<script src="<?= THEME_ASSET_URL ?>assets/js/helper-plugins/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" src="<?= THEME_ASSET_URL ?>assets/js/helper-plugins/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="<?= THEME_ASSET_URL ?>assets/js/helper-plugins/jquery.transit.min.js"></script>
+<script type="text/javascript" src="<?= THEME_ASSET_URL ?>assets/js/helper-plugins/jquery.ba-throttle-debounce.min.js"></script>
+<!-- Custom Select -->
+<script type='text/javascript' src="<?= THEME_ASSET_URL ?>assets/js/jquery.customSelect.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="<?= THEME_ASSET_URL ?>dist/js/bootstrap.min.js"></script>

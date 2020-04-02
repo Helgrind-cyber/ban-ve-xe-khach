@@ -20,5 +20,5 @@ if(!$removeSchedules){
 
 $removeSchedulesQuery = "delete from route_schedules where id = $id";
 queryExecute($removeSchedulesQuery, false);
-header("location: " . ADMIN_URL . "schedules?msg=Xóa tài khoản thành công");
+header("location: " . ADMIN_URL . "schedules?msg=Xóa lịch trình thành công");
 die;

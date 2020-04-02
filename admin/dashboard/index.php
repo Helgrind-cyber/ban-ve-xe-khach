@@ -141,7 +141,7 @@ $news = queryExecute($getAllNewsSql, true);
                                     <p>Quãng Đường</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-route"></i>
+                                    <i class="fas fa-route"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'routes' ?>" class="small-box-footer">Chi tiết <i
                                         class="fas fa-arrow-circle-right"></i></a>
@@ -155,7 +155,7 @@ $news = queryExecute($getAllNewsSql, true);
                                     <p>Tin Tức</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-route"></i>
+                                    <i class="far fa-newspaper"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'news' ?>" class="small-box-footer">Chi tiết <i
                                         class="fas fa-arrow-circle-right"></i></a>

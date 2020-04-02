@@ -14,3 +14,4 @@
 <link href="<?= THEME_ASSET_URL ?>assets/css/custom.css" rel="stylesheet" media="screen">
 <!-- Carousel -->
 <link href="<?= THEME_ASSET_URL ?>examples/carousel/carousel.css" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">

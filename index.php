@@ -9,7 +9,7 @@ $getRoutesQuery = "select * from routes";
 $routes = queryExecute($getRoutesQuery, true);
 
 $getNewsQuery = "select * from news";
-$news = queryExecute($getNewsQuery,true);
+$news = queryExecute($getNewsQuery, true);
 
 ?>
 <!DOCTYPE html>
@@ -42,25 +42,27 @@ $news = queryExecute($getNewsQuery,true);
                 </div>
             </form>
             <!--END CONTENT - START CAROUSEL-->
-<div class="container pt-2">
-    <h4>Tin tức</h4>
-    <div class="list_carousel bg-light pt-3 pb-4">
-        <ul id="foo">
-            <?php foreach ($news as $ne) : ?>
-            <li>
-                <a href="list4.html"><img src="<?= BASE_URL . $ne['image'] ?>" alt="" /></a>
-                <div class="m1">
-                    <h6 class="lh2 dark"><b><?= $ne['title']?></b></h6>
-                    <h6 class="lh2 green"><?= $ne['content']?></h6>
-                </div>
-            </li>
-            <?php endforeach;?>
-        </ul>
-        <div class="clearfix"></div>
-        <a id="prev_btn" class="prev" href="#"><img src="<?= THEME_ASSET_URL ?>images/spacer.png" alt="" /></a>
-        <a id="next_btn" class="next" href="#"><img src="<?= THEME_ASSET_URL ?>images/spacer.png" alt="" /></a>
+        </div>
     </div>
-</div>
+    <div class="container pt-2">
+        <h4 class="h3">Tin tức</h4>
+        <div class="list_carousel bg-light pt-3 pb-4">
+            <ul id="foo">
+                <?php foreach ($news as $ne) : ?>
+                    <li>
+                        <a href="list4.html" class="carousel-header-img">
+                            <img src="<?= BASE_URL . $ne['image'] ?>" alt="" />
+                        </a>
+                        <div class="m1">
+                            <a href="#" class="h6 dark"><b><?= $ne['title'] ?></b></a>
+                            <p class="h6 green"><?= $ne['content'] ?></p>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+            <div class="clearfix"></div>
+            <a id="prev_btn" class="prev" href="#"><img src="<?= THEME_ASSET_URL ?>images/spacer.png" alt="" /></a>
+            <a id="next_btn" class="next" href="#"><img src="<?= THEME_ASSET_URL ?>images/spacer.png" alt="" /></a>
         </div>
     </div>
     <!--END CONTACT - START FOOTER-->

@@ -21,7 +21,7 @@ CREATE TABLE `news`(
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 9;
+AUTO_INCREMENT = 11;
 -- -------------------------------------------------------------
 
 
@@ -144,11 +144,11 @@ AUTO_INCREMENT = 8;
 
 -- Dump data of "news" -------------------------------------
 INSERT INTO `news`(`id`,`image`,`title`,`content`) VALUES 
-( '2', 'public/images/5e81e4cc1793c-ten-nhan-vat-game-audition-5.jpg', 'asdsada', 'Som' ),
-( '3', 'public/images/5e81dd25dcc7b-Best-PC-Games-GTAV.jpg', 'ấdasd', 'ádf' ),
-( '4', 'public/images/5e81e56903319-INSIDE-1.jpg', 'aasdfsadf', 'ádfsadf' ),
-( '6', 'public/images/5e82fb668244f-5e7dcda72068f-adcf0ad981ffbfecee8fd50069e4b711.jpg', 'Bài hát Love The Way You Lie - Skylar G được phát trên youtube', 'https://repl.it/repls/UnhappyFamousRobodoc' ),
-( '7', 'public/images/5e8300ba4d995-5e7d871aa732a-error_bg.jpg', 'Love The Way You Lie - Skylar G', 'https://repl.it/@QunNguyn1/MediumbluePinkLinks' );
+( '2', 'public/images/5e81e4cc1793c-ten-nhan-vat-game-audition-5.jpg', 'Lorem, ipsum dolor.', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, dolorum?' ),
+( '3', 'public/images/5e81dd25dcc7b-Best-PC-Games-GTAV.jpg', 'Lorem, ipsum dolor.', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, dolorum?' ),
+( '4', 'public/images/5e81e56903319-INSIDE-1.jpg', 'Lorem, ipsum dolor.', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, dolorum?' ),
+( '7', 'public/images/5e8300ba4d995-5e7d871aa732a-error_bg.jpg', 'Lorem, ipsum dolor.', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, dolorum?' ),
+( '10', 'public/images/5e8456a0e62d0-maxresdefault.jpg', 'Lorem, ipsum dolor.', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, dolorum?' );
 -- ---------------------------------------------------------
 
 

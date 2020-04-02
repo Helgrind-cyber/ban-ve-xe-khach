@@ -89,3 +89,12 @@ footer {
 form-group label.error {
     color: #DD4B38;
 }
+
+.carousel-header-img {
+    height: 145px;
+    display: block;
+}
+
+.carousel-header-img > img {
+    margin: auto;
+}

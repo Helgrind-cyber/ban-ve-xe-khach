@@ -36,4 +36,4 @@
 <script src="<?= ADMIN_ASSET_URL ?>dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= ADMIN_ASSET_URL ?>dist/js/demo.js"></script>
-
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>

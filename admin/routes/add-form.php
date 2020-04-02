@@ -2,133 +2,149 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-
-// danh sách routes
-$getRoutesQuery = "select * from routes";
-$routes = queryExecute($getRoutesQuery, true);
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <?php include_once '../_share/style.php'; ?>
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+    <div class="wrapper">
 
-    <!-- Navbar -->
-    <?php include_once '../_share/header.php'; ?>
-    <!-- /.navbar -->
+        <!-- Navbar -->
+        <?php include_once '../_share/header.php'; ?>
+        <!-- /.navbar -->
 
-    <!-- Main Sidebar Container -->
-    <?php include_once '../_share/sidebar.php'; ?>
+        <!-- Main Sidebar Container -->
+        <?php include_once '../_share/sidebar.php'; ?>
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Thêm quãng đường</h1>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">Thêm quãng đường</h1>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
 
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
-
-
-                <form id="add-route-form" action="<?= ADMIN_URL . 'routes/save-add.php' ?>" method="post"
-                      enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Khoảng cách<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="distance">
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <!-- Small boxes (Stat box) -->
+                    <form id="add-route-form" action="<?= ADMIN_URL . 'routes/save-add.php' ?>" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Khoảng cách<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="distance">
+                                    <?php if (isset($_GET['distanceerr'])) : ?>
+                                        <label class="error"><?= $_GET['distanceerr'] ?></label>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Thời gian dự kiến<span class="text-danger">*</span></label>
+                                    <input type="datetime" class="form-control" name="estimate_time" id="estimate_time">
+                                    <?php if (isset($_GET['estimate_timeerr'])) : ?>
+                                        <label class="error"><?= $_GET['estimate_timeerr'] ?></label>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="">Thời gian dự kiến<span class="text-danger">*</span></label>
-                                <input type="datetime" class="form-control" name="estimate_time">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Điểm đầu<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="begin_point">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Điểm cuối<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="end_point">
-                            </div>
-                            <div class="col-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary">Thêm</button>
-                                <a href="<?= ADMIN_URL . 'routes' ?>" class="btn btn-danger">Hủy</a>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Điểm đầu<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="begin_point">
+                                    <?php if (isset($_GET['begin_pointerr'])) : ?>
+                                        <label class="error"><?= $_GET['begin_pointerr'] ?></label>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Điểm cuối<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="end_point">
+                                    <?php if (isset($_GET['end_pointerr'])) : ?>
+                                        <label class="error"><?= $_GET['end_pointerr'] ?></label>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
-                </form>
-
-                <!-- /.row -->
-
-            </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
+                        <div class="col-12 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Thêm</button>&nbsp;
+                            <a href="<?= ADMIN_URL . 'routes' ?>" class="btn btn-danger">Hủy</a>
+                        </div>
+                    </form>
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <?php include_once '../_share/footer.php'; ?>
+        <!-- /.control-sidebar -->
     </div>
-    <!-- /.content-wrapper -->
-    <?php include_once '../_share/footer.php'; ?>
-    <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-<?php include_once '../_share/script.php'; ?>
-<!-- <script>
-    $('#add-route-form').validate({
-        rules: {
-            distance: {
-                required: true,
-                maxlength: 191,
-                remote: {
-                    url: "<?= ADMIN_URL . 'routes/verify-plate-number-vehicle-existed.php'?>",
-                    type: "post",
-                    data: {
-                        name: function () {
-                            return $( "input[name='distance']" ).val();
+    <!-- ./wrapper -->
+    <?php include_once '../_share/script.php'; ?>
+    <script>
+        $(document).ready(function() {
+            $('#add-route-form').validate({
+                rules: {
+                    distance: {
+                        required: true,
+                        min: 100,
+                        max: 200
+                    },
+                    begin_point: {
+                        required: true,
+                        maxlength: 191,
+                        remote: {
+                            url: "<?= ADMIN_URL . 'routes/verify-begin-point-existed.php' ?>",
+                            type: "post",
+                            data: {
+                                name: function() {
+                                    return $("input[name='begin_point']").val();
+                                }
+                            }
                         }
-                    }
+                    },
+                    end_point: {
+                        required: true,
+                        maxlength: 191,
+                        remote: {
+                            url: "<?= ADMIN_URL . 'routes/verify-end-point-existed.php' ?>",
+                            type: "post",
+                            data: {
+                                name: function() {
+                                    return $("input[name='end_point']").val();
+                                }
+                            }
+                        }
+                    },
+                    estimate_time: "required time"
+                },
+                messages: {
+                    begin_point: {
+                        required: "Hãy nhập địa điểm",
+                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
+                        remote: "Điểm đầu đã tồn tại."
+                    },
+                    end_point: {
+                        required: "Hãy nhập địa điểm",
+                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
+                        remote: "Điểm cuối đã tồn tại."
+                    },
+                    distance: {
+                        require: "Hãy nhập khoảng cách quãng đường",
+                        min: "Khoảng cách tối thiểu là 100km",
+                        max: "Khoảng cách tối đa là 200km"
+                    },
+                    estimate_time: "Nhập đúng định dạng thời gian example: 01:01"
                 }
-            },
-            manufacture: {
-                required: true,
-            },
-            color: {
-                required: true,
-            },
-            model: {
-                required: true,
-            },
-            owner_id: {
-                required: true,
-            }
-        },
-        messages: {
-            plate_number: {
-                required: "Hãy nhập phương tiện",
-                maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
-                remote: "Phương tiện đã tồn tại."
-            },
-            manufacture: {
-                required: "Hãy nhập hãng xe",
-            },
-            color: {
-                required: "Hãy nhập màu sắc",
-            },
-            model: {
-                required: "Hãy nhập model",
-            },
-            owner_id: {
-                required: "Hãy nhập id người dùng",
-            },
-        }
-    });
-</script> -->
+            });
+        });
+    </script>
 </body>

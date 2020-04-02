@@ -15,9 +15,8 @@ require_once "../config/utils.php";
     <link rel="stylesheet" href="<?php echo PUBLIC_URL . 'css/main.css' ?>">
     <style>
         label.error {
-            display: inline-block;
+            display: inline;
             color: #ff0000;
-            width: 200px;
         }
     </style>
 </head>
@@ -46,7 +45,6 @@ require_once "../config/utils.php";
                             <label class="error"><?= $_GET['nameerr'] ?></label>
                         <?php endif; ?>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="form-group col-6">
@@ -77,13 +75,18 @@ require_once "../config/utils.php";
             $("#validation").validate({
                 rules: {
                     email: {
-                        require: true,
+                        required: true,
                         email: true
                     },
                     password: {
                         required: true,
                         minlength: 6,
                         maxlength: 16
+                    },
+                    name: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 191
                     },
                     cfpassword: {
                         required: true,
@@ -95,11 +98,17 @@ require_once "../config/utils.php";
                     email: "Vui lòng nhập email",
                     password: {
                         required: "Hãy nhập mật khẩu",
+                        minlength: "Số lượng ký tự tối 6 ký tự",
                         maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
                     },
                     cfpassword: {
                         required: "Nhập lại mật khẩu",
                         equalTo: "Cần khớp với mật khẩu"
+                    },
+                    name : {
+                        maxlength: "Số lượng ký tự tối đa là 191 ký tự",
+                        minlength: "Số lượng ký tự tối thiểu bằng 2 ký tự",
+                        required: "Hãy nhập tên bạn vào đây"
                     }
                 },
 

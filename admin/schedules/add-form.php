@@ -9,8 +9,6 @@ $routes = queryExecute($getRoutesQuery, true);
 // lấy dữ liệu từ vehicles
 $getVehiclesQuery = "select * from vehicles";
 $vehicles = queryExecute($getVehiclesQuery, true);
-
-
 ?>
 <!DOCTYPE html>
 <html>

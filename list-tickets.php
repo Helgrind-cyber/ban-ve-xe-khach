@@ -1,7 +1,7 @@
 <?php
 // bắt đầu sử dụng session
 session_start();
-require_once "../config/utils.php";
+require_once "./config/utils.php";
 $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 // lấy dữ liệu từ Routes
@@ -35,18 +35,17 @@ $allData = queryExecute($getAllDataQuery, true);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <?php include_once '../public/_share/style.php' ?>
+    <?php include_once './public/_share/style.php' ?>
     <title>Bán vé xe khách - Danh sách vé</title>
 </head>
 
 <body>
-    <?php include_once '../public/_share/header.php' ?>
+    <?php include_once './public/_share/header.php' ?>
     <!--END HEADER - START LIST-->
     <div class="container">
         <div class="row">
-            <div class="col-2 side-bar bg-secondary border">
+            <div class="col-2 side-bar bg-light border">
                 <h3 class="h4 text-center text-capitalize border-bottom pt-2 pb-2">Lọc vé</h3>
-
             </div>
             <div class="col-10 listSearch border">
                 <h3 class="h4 text-center text-capitalize border-bottom pt-2 pb-2">Danh sách vé xe</h3>
@@ -76,8 +75,8 @@ $allData = queryExecute($getAllDataQuery, true);
         </div>
     </div>
     <!--END CONTACT - START FOOTER-->
-    <?php include_once '../public/_share/footer.php'?>
-    <?php include_once '../public/_share/script.php'?>
+    <?php include_once './public/_share/footer.php'?>
+    <?php include_once './public/_share/script.php'?>
 </body>
 
 </html>

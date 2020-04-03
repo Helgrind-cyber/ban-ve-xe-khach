@@ -2,10 +2,6 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-
-$getVehicleTypesQuery = "select * from vehicle_types";
-$vehicleTypes = queryExecute($getVehicleTypesQuery, true);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,14 +38,15 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-
-
                     <form id="add-vehicle-form" action="<?= ADMIN_URL . 'vehicles/save-add.php' ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Biển số xe<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="plate_number">
+                                    <?php if (isset($_GET['plate_numbererr'])) : ?>
+                                        <label class="error"><?= $_GET['plate_numbererr'] ?></label>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Loại xe<span class="text-danger">*</span></label>
@@ -58,10 +55,6 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                                             <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Số Ghế Có<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="seat">
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Thêm</button>
@@ -97,11 +90,6 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                             }
                         }
                     }
-                },
-                seat: {
-                    require: true,
-                    minlength: 6,
-                    maxlength: 40
                 }
             },
             messages: {
@@ -109,11 +97,6 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                     required: "Hãy nhập phương tiện",
                     maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
                     remote: "Phương tiện đã tồn tại."
-                },
-                seat: {
-                    require: "Nhập số ghế có",
-                    minlength: "Số ghế tối thiểu phải lớn hơn 6",
-                    maxlength: "Số ghế tối đa phải nhỏ hơn 40"
                 }
             }
         });

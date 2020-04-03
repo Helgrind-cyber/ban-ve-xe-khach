@@ -9,7 +9,6 @@ $seat = trim($_POST['seat']);
 // validate bằng php
 
 $plate_numbererr = "";
-$seaterr = "";
 
 if(strlen($plate_number) != 8){
     $plate_numbererr = "Yêu cầu nhập 8 ký tự";
@@ -28,7 +27,7 @@ if($plates == "" && count($plates) > 0){
 
 
 if($plate_numbererr . $owner_iderr . $manufactureerr . $colorerr . $modelerr != "" ){
-    header('location: ' . ADMIN_URL . "vehicles/edit-form.php?plate_numbererr=$plate_numbererr&owner_iderr=$owner_iderr&manufactureerr=$manufactureerr&colorerr=$colorerr&modelerr=$modelerr");
+    header('location: ' . ADMIN_URL . "vehicles/edit-form.php?plate_numbererr=$plate_numbererr");
     die;
 }
 

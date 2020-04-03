@@ -64,10 +64,6 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="">Số Ghế<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="seat_booked" value="<?php echo $vehicleEdit['seat'] ?>">
-                                </div>
                                 <div class="col-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Sửa</button>&nbsp;
                                     <a href="<?= ADMIN_URL . 'vehicles' ?>" class="btn btn-danger">Hủy</a>
@@ -102,11 +98,6 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                             }
                         }
                     }
-                },
-                seat: {
-                    require: true,
-                    minlength: 6,
-                    maxlength: 40
                 }
             },
             messages: {
@@ -114,11 +105,6 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                     required: "Hãy nhập phương tiện",
                     maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
                     remote: "Phương tiện đã tồn tại."
-                },
-                seat: {
-                    require: "Nhập số ghế có",
-                    minlength: "Số ghế tối thiểu phải lớn hơn 6",
-                    maxlength: "Số ghế tối đa phải nhỏ hơn 40"
                 }
             }
         });

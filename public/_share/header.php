@@ -15,7 +15,7 @@
                         <a class="nav-link" href="#">Thông tin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo SEARCH_URL ?>">Danh sách vé</a>
+                        <a class="nav-link" href="<?= BASE_URL . 'list-tickets.php' ?>">Danh sách vé</a>
                     </li>
                     <?php if ($loggedInUser) : ?>
                         <li class="nav-item dropdown">

@@ -2,7 +2,7 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-
+// dd($_SESSION[AUTH]['role_id'])
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 $roleId = isset($_GET['role']) == true ? $_GET['role'] : false;
 
@@ -82,7 +82,7 @@ $users = queryExecute($getUsersQuery, true);
                             <form action="" method="get">
                                 <div class="form-row">
                                     <div class="form-group col-6">
-                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên, email, căn hộ, số điện thoại,...">
+                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên, email, số điện thoại,...">
                                     </div>
                                     <div class="form-group col-4">
                                         <select name="role" class="form-control">
@@ -107,7 +107,6 @@ $users = queryExecute($getUsersQuery, true);
                                 <th>Tên</th>
                                 <th>Email</th>
                                 <th>Loại tài khoản</th>
-                                <th width="100">Ảnh</th>
                                 <th>Số ĐT</th>
                                 <th>
                                     <a href="<?php echo ADMIN_URL . 'users/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
@@ -122,14 +121,11 @@ $users = queryExecute($getUsersQuery, true);
                                         <td>
                                             <?php echo $us['role_name'] ?>
                                         </td>
-                                        <td>
-                                            <img class="img-fluid" src="<?= PUBLIC_URL . 'images/default-image.jpg' ?>" alt="">
-                                        </td>
                                         <td><?php echo $us['phone_number'] ?></td>
                                         <td>
                                             <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id'] || $us['id'] === $_SESSION[AUTH]['id']) : ?>
                                                 <a href="<?php echo ADMIN_URL . 'users/edit-form.php?id=' . $us['id'] ?>" class="btn btn-sm btn-info">
-                                                    <i class="fa fa-pencil-alt"></i>
+                                                    <i class="fas fa-pencil-alt"></i>
                                                 </a>
                                             <?php endif; ?>
                                             <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id']) : ?>

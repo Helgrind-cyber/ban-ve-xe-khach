@@ -2,7 +2,6 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,6 +55,13 @@ checkAdminLoggedIn();
                                         <option value="<?= INACTIVE ?>">Không có hiệu lực</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="">Số Ghế Có<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="seat">
+                                    <?php if (isset($_GET['seaterr'])) : ?>
+                                        <label class="error"><?= $_GET['seaterr'] ?></label>
+                                    <?php endif; ?>
+                                </div>
                                 <div class="col-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
                                     <a href="<?= ADMIN_URL . 'vehicle_types' ?>" class="btn btn-danger">Hủy</a>
@@ -90,6 +96,12 @@ checkAdminLoggedIn();
                             }
                         }
                     }
+                },
+                seat: {
+                    required: true,
+                    number: true,
+                    min: 9,
+                    max: 40
                 }
             },
             messages: {
@@ -98,6 +110,12 @@ checkAdminLoggedIn();
                     maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
                     remote: "Loại phương tiện đã tồn tại."
                 },
+                seat: {
+                    required: "Nhập số ghế có",
+                    number: "Hãy nhập số ghế bằng số",
+                    min: "Số ghế tối thiểu phải lớn hơn hoặc bằng 9",
+                    max: "Số ghế tối đa phải nhỏ hơn 40"
+                }
             }
         });
     </script>

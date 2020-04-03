@@ -6,12 +6,10 @@ $plate_number = trim($_POST['plate_number']);
 $type_id = trim($_POST['type_id']);
 $seat = trim($_POST['seat']);
 // validate bằng php
-
 $plate_numbererr = "";
-$seaterr = "";
 
-if(strlen($plate_number) != 8){
-    $plate_numbererr = "Yêu cầu nhập 8 ký tự";
+if(strlen($plate_number) != 10){
+    $plate_numbererr = "Yêu cầu nhập 10 ký tự của biển số '80A-800.80'";
 }
 if(strlen($plate_number) == 0){
     $plate_numbererr = "Yêu cầu nhập biển số xe";

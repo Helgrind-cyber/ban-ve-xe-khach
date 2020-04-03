@@ -39,7 +39,7 @@
                         </li>
                     <?php endif ?>
                     <li class="btn-cart nav-item btn btn-outline-primary">
-                        <a class="nav-link" href="<?= CART_URL ?>" title="">Giỏ Hàng <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                        <a class="nav-link" href="#" title="Pay tickets">Thanh toán <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                     </li>
                 </ul>
             </div>

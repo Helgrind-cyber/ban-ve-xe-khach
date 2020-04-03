@@ -31,7 +31,7 @@ $news = queryExecute($getNewsQuery, true);
             <h1 class="h2 m-5 text-dark text-center text-capitalize">đặt vé xe trước, nhận chỗ sớm, không lo hết vé</h1>
             <p class="text-center text-uppercase h4 font-weight-bold">tìm vé xe</p>
 
-            <form action="<?php echo SEARCH_URL ?>" method="get" enctype="multipart/form-data">
+            <form action="<?= BASE_URL . 'list-tickets.php' ?>" method="get" enctype="multipart/form-data">
                 <div class="row d-flex justify-content-center">
                     <div class="col-8 form-group">
                         <input type="text" class="form-control p-4 border-dark" name="keyword" value="" placeholder="Nhập địa điểm, giá vé, loại xe tìm kiếm ...">

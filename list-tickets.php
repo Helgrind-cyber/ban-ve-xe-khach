@@ -7,8 +7,8 @@ $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 // lấy dữ liệu từ Routes
 $getRoutesQuery = "select * from routes";
 $routes = queryExecute($getRoutesQuery, true);
-
 // lấy dữ liệu từ bảng routes: begin_point, end_point; route_schedules: begin/end_time, price; vehicles: seat, plate_number
+<<<<<<< HEAD
 $getAllDataQuery = "select rs.*,
                             vt.name as type_name,
                             v.seat as seat, v.plate_number as plate_number,
@@ -18,17 +18,24 @@ $getAllDataQuery = "select rs.*,
                         join route_schedules rs
                         on v.id=rs.vehicle_id
                         join routes r on rs.route_id = r.id";
+=======
+$getAllDataQuery = "select rs.*, vt.name as type_name, vt.seat as seat,
+                            v.plate_number as plate_number,
+                            r.begin_point as begin, r.end_point as end
+                from    vehicle_types vt
+                        join vehicles v on vt.id=v.type_id
+                        join route_schedules rs on v.id=rs.vehicle_id
+                        join routes r on rs.route_id=r.id";
+>>>>>>> quannh
 if ($keyword !== "") {
     $getAllDataQuery .= " where vt.name like '%$keyword%'
-                            or v.seat like '%$keyword%'
+                            or vt.seat like '%$keyword%'
                             or v.plate_number like '%$keyword%'
                             or r.begin_point like '%$keyword%'
                             or r.end_point like '%$keyword%'
                             or rs.price like '%$keyword%'";
 }
-
 $allData = queryExecute($getAllDataQuery, true);
-// dd($allData);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,6 +58,7 @@ $allData = queryExecute($getAllDataQuery, true);
             </div>
             <div class="col-10 listSearch border">
                 <h3 class="h4 text-center text-capitalize border-bottom pt-2 pb-2">Danh sách vé xe</h3>
+
                 <?php foreach ($allData as $data) : ?>
                     <div class="row pt-2 border-bottom">
                         <div class="col-3">
@@ -77,8 +85,8 @@ $allData = queryExecute($getAllDataQuery, true);
         </div>
     </div>
     <!--END CONTACT - START FOOTER-->
-    <?php include_once './public/_share/footer.php'?>
-    <?php include_once './public/_share/script.php'?>
+    <?php include_once './public/_share/footer.php' ?>
+    <?php include_once './public/_share/script.php' ?>
 </body>
 
 </html>

@@ -8,7 +8,6 @@ $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 $getRoutesQuery = "select * from routes";
 $routes = queryExecute($getRoutesQuery, true);
 // lấy dữ liệu từ bảng routes: begin_point, end_point; route_schedules: begin/end_time, price; vehicles: seat, plate_number
-<<<<<<< HEAD
 $getAllDataQuery = "select rs.*,
                             vt.name as type_name,
                             v.seat as seat, v.plate_number as plate_number,
@@ -18,7 +17,6 @@ $getAllDataQuery = "select rs.*,
                         join route_schedules rs
                         on v.id=rs.vehicle_id
                         join routes r on rs.route_id = r.id";
-=======
 $getAllDataQuery = "select rs.*, vt.name as type_name, vt.seat as seat,
                             v.plate_number as plate_number,
                             r.begin_point as begin, r.end_point as end
@@ -26,7 +24,6 @@ $getAllDataQuery = "select rs.*, vt.name as type_name, vt.seat as seat,
                         join vehicles v on vt.id=v.type_id
                         join route_schedules rs on v.id=rs.vehicle_id
                         join routes r on rs.route_id=r.id";
->>>>>>> quannh
 if ($keyword !== "") {
     $getAllDataQuery .= " where vt.name like '%$keyword%'
                             or vt.seat like '%$keyword%'

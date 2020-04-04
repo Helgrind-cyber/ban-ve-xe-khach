@@ -1,17 +1,14 @@
 <?php
 
 # Quy định constants
-define('BASE_URL', 'http://localhost/ban-ve-xe-khach/');
+define('BASE_URL', 'http://book-tickets.helgrind/');
 define('ADMIN_URL', BASE_URL . 'admin/');
 define('SEARCH_URL', BASE_URL . 'search_products/');
 define('PUBLIC_URL', BASE_URL . 'public/');
 define('ADMIN_ASSET_URL', PUBLIC_URL . 'admin/');
-
 define('THEME_ASSET_URL', PUBLIC_URL . 'blue/');
-
 define('DEFAULT_IMAGE', PUBLIC_URL . 'images/default-image.jpg');
 define('AUTH', 'AUTH_SESSION');
-//
 define("ACTIVE", 0);
 define("INACTIVE", 1);
 
@@ -22,7 +19,7 @@ function getdbConn(){
 		$host = "127.0.0.1";
 		$dbname = "ban-ve-xe";
 		$dbusername = "root";
-		$dbpass = "";
+		$dbpass = "123456789";
 
 		$connect = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $dbusername, $dbpass);
 		return $connect;

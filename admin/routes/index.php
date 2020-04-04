@@ -92,7 +92,7 @@ $routes = queryExecute($getRoutesQuery, true);
                                         <td><?php echo $route['end_point'] ?></td>
                                         <td>
                                             <a href="<?php echo ADMIN_URL . 'routes/edit-form.php?id=' . $route['id'] ?>" class="btn btn-sm btn-info">
-                                                <i class="fa fa-pencil-alt"></i>
+                                                <i class="fas fa-pencil-alt"></i>
                                             </a>
                                             <a href="<?php echo ADMIN_URL . 'routes/remove.php?id=' . $route['id'] ?>" class="btn-remove btn btn-sm btn-danger">
                                                 <i class="fa fa-trash"></i>

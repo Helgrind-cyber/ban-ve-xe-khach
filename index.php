@@ -4,9 +4,6 @@ session_start();
 require_once "./config/utils.php";
 $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
-// lấy dữ liệu từ Routes
-$getRoutesQuery = "select * from routes";
-$routes = queryExecute($getRoutesQuery, true);
 
 $getNewsQuery = "select * from news";
 $news = queryExecute($getNewsQuery, true);
@@ -30,7 +27,6 @@ $news = queryExecute($getNewsQuery, true);
         <div class="container">
             <h1 class="h2 m-5 text-dark text-center text-capitalize">đặt vé xe trước, nhận chỗ sớm, không lo hết vé</h1>
             <p class="text-center text-uppercase h4 font-weight-bold">tìm vé xe</p>
-
             <form action="<?= BASE_URL . 'list-tickets.php' ?>" method="get" enctype="multipart/form-data">
                 <div class="row d-flex justify-content-center">
                     <div class="col-8 form-group">

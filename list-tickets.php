@@ -57,8 +57,8 @@ $allData = queryExecute($getAllDataQuery, true);
                 <h3 class="h4 text-center text-capitalize border-bottom pt-2 pb-2">Danh sách vé xe</h3>
 
                 <?php foreach ($allData as $data) : ?>
-                    <div class="row pt-2 border-bottom">
-                        <div class="col-3">
+                    <div class="row p-2 border-bottom">
+                        <div class="col-3 d-flex align-items-center border-right">
                             <img src="<?php echo PUBLIC_URL . 'images/default-image.jpg' ?>" alt="">
                         </div>
                         <div class="col-7">

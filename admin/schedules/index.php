@@ -124,13 +124,13 @@ $schedules = queryExecute($getSchedulesQuery, true);
                                         <td><?php echo $schedule['begin']."  -  ".$schedule['end'] ?></td>
                                         <td><?php echo $schedule['plate_number'] ?></td>
                                         <td>
-                                            <?php echo $schedule['price'] ?>
+                                            <?php echo $schedule['price'] ?><span class="font-weight-bold"> VND</span>
                                         </td>
                                         <td><?php echo $schedule['start_time'] ?></td>
                                         <td><?php echo $schedule['end_time'] ?></td>
                                         <td>
                                             <a href="<?php echo ADMIN_URL . 'schedules/edit-form.php?id=' . $schedule['id'] ?>" class="btn btn-sm btn-info">
-                                                <i class="fa fa-pencil-alt"></i>
+                                                <i class="fas fa-pencil-alt"></i>
                                             </a>
                                             <a href="<?php echo ADMIN_URL . 'schedules/remove.php?id=' . $schedule['id'] ?>" class="btn-remove btn btn-sm btn-danger">
                                                 <i class="fa fa-trash"></i>

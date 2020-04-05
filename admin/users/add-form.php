@@ -59,17 +59,6 @@ $roles = queryExecute($getRoleQuery, true);
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Mật khẩu<span class="text-danger">*</span></label>
-                                    <input type="password" id="main-password" class="form-control" name="password">
-                                    <?php if (isset($_GET['passworderr'])) : ?>
-                                        <label class="error"><?= $_GET['passworderr'] ?></label>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Nhập lại mật khẩu<span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" name="cfpassword">
-                                </div>
-                                <div class="form-group">
                                     <label for="">Quyền</label>
                                     <select name="role_id" class="form-control">
                                         <?php foreach ($roles as $ro) : ?>
@@ -79,10 +68,16 @@ $roles = queryExecute($getRoleQuery, true);
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-6 offset-md-3">
-                                        <img src="<?= DEFAULT_IMAGE ?>" id="preview-img" class="img-fluid">
-                                    </div>
+                                <div class="form-group">
+                                    <label for="">Mật khẩu<span class="text-danger">*</span></label>
+                                    <input type="password" id="main-password" class="form-control" name="password">
+                                    <?php if (isset($_GET['passworderr'])) : ?>
+                                        <label class="error"><?= $_GET['passworderr'] ?></label>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Nhập lại mật khẩu<span class="text-danger">*</span></label>
+                                    <input type="password" class="form-control" name="cfpassword">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Số điện thoại</label>
@@ -108,18 +103,6 @@ $roles = queryExecute($getRoleQuery, true);
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
-        function encodeImageFileAsURL(element) {
-            var file = element.files[0];
-            if (file === undefined) {
-                $('#preview-img').attr('src', "<?= DEFAULT_IMAGE ?>");
-                return false;
-            }
-            var reader = new FileReader();
-            reader.onloadend = function() {
-                $('#preview-img').attr('src', reader.result)
-            }
-            reader.readAsDataURL(file);
-        }
         $('#add-user-form').validate({
             rules: {
                 name: {
@@ -150,13 +133,6 @@ $roles = queryExecute($getRoleQuery, true);
                 },
                 phone_number: {
                     number: true
-                },
-                house_no: {
-                    maxlength: 191
-                },
-                avatar: {
-                    required: true,
-                    extension: "png|jpg|jpeg|gif"
                 }
             },
             messages: {
@@ -182,13 +158,6 @@ $roles = queryExecute($getRoleQuery, true);
                     min: "Bắt buộc là số có 10 chữ số",
                     max: "Bắt buộc là số có 10 chữ số",
                     number: "Nhập định dạng số"
-                },
-                house_no: {
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                avatar: {
-                    required: "Hãy nhập ảnh đại diện",
-                    extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
                 }
             }
         });

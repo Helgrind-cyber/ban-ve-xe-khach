@@ -5,7 +5,6 @@ $email = $_POST['email'];
 $userId = isset($_POST['id']) ? $_POST['id'] : false;
 $checkEmailQuery = "select * from users where email = '$email'";
 
-
 if($userId !== false){
     $checkEmailQuery .= " and id != $userId";
 }

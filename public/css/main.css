@@ -82,10 +82,16 @@ footer {
     background: #F39C11;
 }
 
-.form-group label.error {
+label .error {
     color: #DD4B38;
+    display: inline;
 }
 
-form-group label.error {
-    color: #DD4B38;
+.carousel-header-img {
+    height: 145px;
+    display: block;
+}
+
+.carousel-header-img > img {
+    margin: auto;
 }

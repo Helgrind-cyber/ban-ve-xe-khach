@@ -95,7 +95,7 @@ $news = queryExecute($getNewsQuery, true);
                                         </td>
                                         <td>
                                             <a href="<?php echo ADMIN_URL . 'news/edit-form.php?id=' . $ne['id'] ?>" class="btn btn-sm btn-info">
-                                                <i class="fa fa-pencil-alt"></i>
+                                                <i class="fas fa-pencil-alt"></i>
                                             </a>
                                             <a href="<?php echo ADMIN_URL . 'news/remove.php?id=' . $ne['id'] ?>" class="btn-remove btn btn-sm btn-danger">
                                                 <i class="fa fa-trash"></i>

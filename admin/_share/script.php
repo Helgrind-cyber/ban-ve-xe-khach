@@ -36,4 +36,3 @@
 <script src="<?= ADMIN_ASSET_URL ?>dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= ADMIN_ASSET_URL ?>dist/js/demo.js"></script>
-

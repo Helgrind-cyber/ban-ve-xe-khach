@@ -15,7 +15,7 @@
                         <a class="nav-link" href="#">Thông tin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo SEARCH_URL ?>">Danh sách vé</a>
+                        <a class="nav-link" href="<?= BASE_URL . 'list-tickets.php' ?>">Danh sách vé</a>
                     </li>
                     <?php if ($loggedInUser) : ?>
                         <li class="nav-item dropdown">
@@ -39,7 +39,7 @@
                         </li>
                     <?php endif ?>
                     <li class="btn-cart nav-item btn btn-outline-primary">
-                        <a class="nav-link" href="<?= CART_URL ?>" title="">Giỏ Hàng <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                        <a class="nav-link" href="#" title="Pay tickets">Thanh toán <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                     </li>
                 </ul>
             </div>

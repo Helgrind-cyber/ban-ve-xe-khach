@@ -43,7 +43,7 @@ require_once "../config/utils.php";
 					</div>
 					<div class="form-group">
 						<label for="email">Email address</label>
-						<input type="email" class="form-control" id="email" name="email" placeholder="Nhập Email">
+						<input type="email" class="form-control" id="email" name="email" placeholder="Nhập Email" autofocus>
 					</div>
 					<div class="form-group">
 						<label for="password">Password</label>

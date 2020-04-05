@@ -38,7 +38,8 @@ checkAdminLoggedIn();
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="add-user-form" action="<?= ADMIN_URL . 'news/save-add.php' ?>" method="post" enctype="multipart/form-data">
+                    <form id="add-user-form" action="<?= ADMIN_URL . 'news/save-add.php' ?>" method="post"
+                        enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -49,6 +50,7 @@ checkAdminLoggedIn();
                                     <label for="">Nội dung<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="content">
                                 </div>
+<<<<<<< HEAD
 
                             </div>
                             <div class="col-md-6">
@@ -60,6 +62,22 @@ checkAdminLoggedIn();
                                         <input type="file" class="custom-file-input" id="inputGroupFile01" name="image" onchange="encodeImageFileAsURL(this)">
                                         <label class="custom-file-label" for="inputGroupFile01">Ảnh<span class="text-danger">*</span></label>
                                     </div>
+=======
+                                <div class="form-group">
+                                    <img src="<?= DEFAULT_IMAGE ?>" width="200" id="preview-img" alt="">
+                                </div>
+                                <div class="from-group">
+                                    <label for="">Ảnh<span class="text-danger">*</span></label><br>
+                                    <input type="file" class="form-control" name="image" onchange="encodeImageFileAsURL(this)">
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="from-group">
+                                    <label for="">Ảnh<span class="text-danger">*</span></label><br>
+                                    <img src="<?= DEFAULT_IMAGE ?>" width="200" id="preview-img" alt="">
+                                    <input type="file" class="form-control" name="image"
+                                        onchange="encodeImageFileAsURL(this)">
+>>>>>>> quannh
                                 </div>
                                 <div class="from-group p-2">
                                     <div class="col d-flex justify-content-start">
@@ -84,17 +102,15 @@ checkAdminLoggedIn();
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
-        function encodeImageFileAsURL(element) {
-            var file = element.files[0];
-            if (file === undefined) {
-                $('#preview-img').attr('src', "<?= DEFAULT_IMAGE ?>");
-                return false;
-            }
-            var reader = new FileReader();
-            reader.onloadend = function() {
-                $('#preview-img').attr('src', reader.result)
-            }
-            reader.readAsDataURL(file);
+    function encodeImageFileAsURL(element) {
+        var file = element.files[0];
+        if (file === undefined) {
+            $('#preview-img').attr('src', "<?= DEFAULT_IMAGE ?>");
+            return false;
+        }
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            $('#preview-img').attr('src', reader.result)
         }
 
         $('#add-user-form').validate({
@@ -111,7 +127,17 @@ checkAdminLoggedIn();
                     required: true,
                     extension: "png|jpg|jpeg|gif"
                 }
+=======
+        reader.readAsDataURL(file);
+    }
+
+    $('#add-user-form').validate({
+        rules: {
+            title: {
+                required: true,
+                maxlength: 191
             },
+<<<<<<< HEAD
             messages: {
                 title: {
                     required: "Hãy nhập tên bản tin",
@@ -127,8 +153,35 @@ checkAdminLoggedIn();
                     required: "Hãy nhập ảnh",
                     extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
                 }
+=======
+            content: {
+                required: true,
+                maxlength: 191
+            },
+            image: {
+                required: true,
+                extension: "png|jpg|jpeg|gif"
             }
-        });
+        },
+        messages: {
+            title: {
+                required: "Hãy nhập tên bản tin",
+                maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+>>>>>>> Son
+            },
+
+            content: {
+                required: "Hãy nhập thông tin",
+                maxlength: "Số lượng ký tự tối đa bằng 500 ký tự"
+
+            },
+            image: {
+                required: "Hãy nhập ảnh",
+                extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
+>>>>>>> quannh
+            }
+        }
+    });
     </script>
 </body>
 

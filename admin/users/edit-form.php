@@ -20,8 +20,6 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
     header("location: " . ADMIN_URL . 'users?msg=Bạn không có quyền sửa thông tin tài khoản này');
     die;
 }
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,6 +74,8 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                                         <label class="error"><?= $_GET['emailerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Quyền</label>
                                     <select name="role_id" class="form-control">
@@ -89,13 +89,6 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                                 <div class="form-group">
                                     <label for="">Số điện thoại</label>
                                     <input type="text" class="form-control" name="phone_number" value="<?= $user['phone_number'] ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-6 offset-md-3">
-                                        <img src="<?= PUBLIC_URL . 'images/default-image.jpg' ?>" id="preview-img" class="img-fluid">
-                                    </div>
                                 </div>
                                 <div class="col d-flex justify-content-center p-4">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;

@@ -2,16 +2,18 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-
+// get keyword from url
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
-$getVehicleTypesQuery = "select * from vehicle_types vt";
+$status = isset($_GET['status']) == true ? $_GET['status'] : false;
+// get vehicle types query
+$getVehicleTypesQuery = "select vt.* from vehicle_types vt";
 // điều kiện tìm kiếm
-
-if ($keyword !== "") {
-    $getVehicleTypesQuery .= " where (vt.name like '%$keyword%')";
+if ($keyword != "" || $status != "") {
+    $getVehicleTypesQuery .= " where (vt.name like '%$keyword%'
+                                    and vt.status = $status)";
 }
-
 $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
+
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +62,14 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                             <form action="" method="get">
                                 <div class="form-row">
                                     <div class="form-group col-6">
-                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên, trạng thái,...">
+                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên loại phương tiện...">
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <select name="status" class="form-control">
+                                            <option selected value="">Tất cả</option>
+                                            <option value="<?= ACTIVE ?>">Có hiệu lực</option>
+                                            <option value="<?= INACTIVE ?>">Không có hiệu lực</option>
+                                        </select>
                                     </div>
                                     <div class="form-group col-2">
                                         <button type="submit" class="btn btn-success">Tìm kiếm</button>
@@ -73,8 +82,8 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                             <thead>
                                 <th>ID</th>
                                 <th>Loại phương tiện</th>
+                                <th>Số ghế</th>
                                 <th>Trạng thái</th>
-
                                 <th>
                                     <a href="<?php echo ADMIN_URL . 'vehicle_types/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                 </th>
@@ -84,6 +93,7 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                                     <tr>
                                         <td><?php echo $type['id'] ?></td>
                                         <td><?php echo $type['name'] ?></td>
+                                        <th><?= $type['seat']?></th>
                                         <td><?php
                                             if ($type['status'] == 0) {
                                                 echo 'Có hiệu lực';
@@ -93,7 +103,7 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                                             ?></td>
                                         <td>
                                             <a href="<?php echo ADMIN_URL . 'vehicle_types/edit-form.php?id=' . $type['id'] ?>" class="btn btn-sm btn-info">
-                                                <i class="fa fa-pencil-alt"></i>
+                                                <i class="fas fa-pencil-alt"></i>
                                             </a>
                                             <a href="<?php echo ADMIN_URL . 'vehicle_types/remove.php?id=' . $type['id'] ?>" class="btn-remove btn btn-sm btn-danger">
                                                 <i class="fa fa-trash"></i>
@@ -122,7 +132,7 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                 var redirectUrl = $(this).attr('href');
                 Swal.fire({
                     title: 'Thông báo!',
-                    text: "Bạn có chắc chắn muốn xóa tài khoản này?",
+                    text: "Bạn có chắc chắn muốn xóa loại phương tiền này?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',

@@ -1,32 +1,38 @@
 <?php
 // bắt đầu sử dụng session
 session_start();
-require_once "../config/utils.php";
+require_once "./config/utils.php";
 $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 // lấy dữ liệu từ Routes
 $getRoutesQuery = "select * from routes";
 $routes = queryExecute($getRoutesQuery, true);
-
 // lấy dữ liệu từ bảng routes: begin_point, end_point; route_schedules: begin/end_time, price; vehicles: seat, plate_number
-$getAllDataQuery = "select rs.*, vt.name as type_name, v.seat as seat, v.plate_number as plate_number, r.begin_point as begin, r.end_point as end
+$getAllDataQuery = "select rs.*,
+                            vt.name as type_name,
+                            v.seat as seat, v.plate_number as plate_number,
+                            r.begin_point as begin, r.end_point as end
                 from    vehicle_types vt join vehicles v
                         on vt.id=v.type_id
                         join route_schedules rs
                         on v.id=rs.vehicle_id
+                        join routes r on rs.route_id = r.id";
+$getAllDataQuery = "select rs.*, vt.name as type_name, vt.seat as seat,
+                            v.plate_number as plate_number,
+                            r.begin_point as begin, r.end_point as end
+                from    vehicle_types vt
+                        join vehicles v on vt.id=v.type_id
+                        join route_schedules rs on v.id=rs.vehicle_id
                         join routes r on rs.route_id=r.id";
-
 if ($keyword !== "") {
     $getAllDataQuery .= " where vt.name like '%$keyword%'
-                            or v.seat like '%$keyword%'
+                            or vt.seat like '%$keyword%'
                             or v.plate_number like '%$keyword%'
                             or r.begin_point like '%$keyword%'
                             or r.end_point like '%$keyword%'
                             or rs.price like '%$keyword%'";
 }
-
 $allData = queryExecute($getAllDataQuery, true);
-// dd($allData);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,28 +41,28 @@ $allData = queryExecute($getAllDataQuery, true);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <?php include_once '../public/_share/style.php' ?>
+    <?php include_once './public/_share/style.php' ?>
     <title>Bán vé xe khách - Danh sách vé</title>
 </head>
 
 <body>
-    <?php include_once '../public/_share/header.php' ?>
+    <?php include_once './public/_share/header.php' ?>
     <!--END HEADER - START LIST-->
     <div class="container">
         <div class="row">
-            <div class="col-2 side-bar bg-secondary border">
+            <div class="col-2 side-bar bg-light border">
                 <h3 class="h4 text-center text-capitalize border-bottom pt-2 pb-2">Lọc vé</h3>
-
             </div>
             <div class="col-10 listSearch border">
                 <h3 class="h4 text-center text-capitalize border-bottom pt-2 pb-2">Danh sách vé xe</h3>
+
                 <?php foreach ($allData as $data) : ?>
-                    <div class="row pt-2 border-bottom">
-                        <div class="col-3">
+                    <div class="row p-2 border-bottom">
+                        <div class="col-3 d-flex align-items-center border-right">
                             <img src="<?php echo PUBLIC_URL . 'images/default-image.jpg' ?>" alt="">
                         </div>
                         <div class="col-7">
-                            <h4 class="h5">Nhà xe Thiên Thanh</h4>
+                            <h4 class="h5">Xe khách Nam Định - Hà Nội</h4>
                             <ul>
                                 <li>Tuyến đường: <span class="font-weight-bold text-primary"><?php echo $data['begin'] . " - " . $data['end'] ?></span></li>
                                 <li>Xe: <span class="font-weight-bold text-primary"><?php echo $data['plate_number'] ?></span></li>
@@ -76,8 +82,8 @@ $allData = queryExecute($getAllDataQuery, true);
         </div>
     </div>
     <!--END CONTACT - START FOOTER-->
-    <?php include_once '../public/_share/footer.php'?>
-    <?php include_once '../public/_share/script.php'?>
+    <?php include_once './public/_share/footer.php' ?>
+    <?php include_once './public/_share/script.php' ?>
 </body>
 
 </html>

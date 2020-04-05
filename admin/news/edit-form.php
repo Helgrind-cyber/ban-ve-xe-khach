@@ -1,7 +1,9 @@
 <?php
 session_start();
 require_once '../../config/utils.php';
+
 checkAdminLoggedIn();
+
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
 
 $getNewsQuery = "select * from news where id = '$id'";
@@ -32,7 +34,7 @@ $news = queryExecute($getNewsQuery, false);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Thêm tin tức</h1>
+                            <h1 class="m-0 text-dark">Sửa tin tức</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -43,7 +45,8 @@ $news = queryExecute($getNewsQuery, false);
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="add-user-form" action="<?= ADMIN_URL . 'news/save-edit.php' ?>" method="post" enctype="multipart/form-data">
+                    <form id="add-user-form" action="<?= ADMIN_URL . 'news/save-edit.php' ?>" method="post"
+                        enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group" hidden>
@@ -54,21 +57,27 @@ $news = queryExecute($getNewsQuery, false);
                                     <input type="text" class="form-control" name="title" value="<?= $news['title'] ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Thông tin<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="content" value="<?= $news['content'] ?>">
+                                    <label for="">Nội dung<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="content"
+                                        value="<?= $news['content'] ?>">
                                 </div>
+
+                            </div>
+                            <div class="col-md-6">
                                 <div class=" from-group">
                                     <label for="">Ảnh<span class="text-danger">*</span></label><br>
                                     <img src="<?= BASE_URL . $news['image'] ?>" width="200" id="preview-img" alt=""><br>
-                                    <input type="file" class="form-control" name="image" onchange="encodeImageFileAsURL(this)">
+                                    <input type="file" class="form-control" name="image"
+                                        onchange="encodeImageFileAsURL(this)">
+                                </div>
+                                <div class="from-group p-2">
+                                    <div class="col d-flex justify-content-start">
+                                        <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
+                                        <a href="<?= ADMIN_URL . 'news' ?>" class="btn btn-danger">Hủy</a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="from-group">
-                                <div class="col d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'news' ?>" class="btn btn-danger">Hủy</a>
-                                </div>
-                            </div>
+
                         </div>
                     </form>
                     <!-- /.row -->
@@ -84,40 +93,42 @@ $news = queryExecute($getNewsQuery, false);
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
-        function encodeImageFileAsURL(element) {
-            var file = element.files[0];
-            if (file === undefined) {
-                $('#preview-img').attr('src', "<?= BASE_URL . $news['image'] ?>");
-                return false;
-            }
-            var reader = new FileReader();
-            reader.onloadend = function() {
-                $('#preview-img').attr('src', reader.result)
-            }
-            reader.readAsDataURL(file);
+    function encodeImageFileAsURL(element) {
+        var file = element.files[0];
+        if (file === undefined) {
+            $('#preview-img').attr('src', "<?= BASE_URL . $news['image'] ?>");
+            return false;
         }
-        $('#add-user-form').validate({
-            rules: {
-                name: {
-                    required: true,
-                    maxlength: 191
-                },
-                avatar: {
-                    required: true,
-                    extension: "png|jpg|jpeg|gif"
-                }
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            $('#preview-img').attr('src', reader.result)
+        }
+        reader.readAsDataURL(file);
+    }
+    $('#add-user-form').validate({
+        rules: {
+            title: {
+                required: true,
+                maxlength: 191
             },
-            messages: {
-                name: {
-                    required: "Hãy nhập tên người dùng",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                avatar: {
-                    required: "Hãy nhập ảnh đại diện",
-                    extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
-                }
-            }
-        });
+            content: {
+                required: true,
+                maxlength: 500
+            },
+
+        },
+        messages: {
+            title: {
+                required: "Hãy nhập tên bản tin",
+                maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+            },
+            content: {
+                required: "hãy nhập thông tin",
+                maxlength: "số lượng ký tự tối đa 500 ký tự"
+            },
+
+        }
+    });
     </script>
 </body>
 

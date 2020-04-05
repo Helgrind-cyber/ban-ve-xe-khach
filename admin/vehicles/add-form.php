@@ -2,6 +2,8 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
+$getVehicleTypesQuery = "select * from vehicle_types";
+$vehicleTypes = queryExecute($getVehicleTypesQuery, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +53,7 @@ checkAdminLoggedIn();
                                 <div class="form-group">
                                     <label for="">Loại xe<span class="text-danger">*</span></label>
                                     <select name="type_id" class="form-control">
-                                        <?php foreach ($vehicleTypes as $key => $type) : ?>
+                                        <?php foreach ($vehicleTypes as $type) : ?>
                                             <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
                                         <?php endforeach; ?>
                                     </select>

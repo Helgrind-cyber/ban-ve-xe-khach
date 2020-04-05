@@ -65,7 +65,7 @@ $news = queryExecute($getNewsQuery, true);
                             <form action="" method="get">
                                 <div class="form-row">
                                     <div class="form-group col-6">
-                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên, email, căn hộ, số điện thoại,...">
+                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên bản tin,...">
                                     </div>
                                     <div class="form-group col-2">
                                         <button type="submit" class="btn btn-success">Tìm kiếm</button>
@@ -78,7 +78,7 @@ $news = queryExecute($getNewsQuery, true);
                             <thead>
                                 <th>ID</th>
                                 <th>Tên</th>
-                                <th>thông tin</th>
+                                <th>Nội dung</th>
                                 <th width="100">Ảnh</th>
                                 <th>
                                     <a href="<?php echo ADMIN_URL . 'news/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>

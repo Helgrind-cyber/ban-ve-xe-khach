@@ -46,23 +46,28 @@ checkAdminLoggedIn();
                                     <input type="text" class="form-control" name="title">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Thông tin<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="content">
-                                </div>
-                                <div class="form-group">
-                                    <img src="<?= DEFAULT_IMAGE ?>" width="200" id="preview-img" alt="">
-                                </div>
-                                <div class="from-group">
-                                    <label for="">Ảnh<span class="text-danger">*</span></label><br>
-                                    <input type="file" class="form-control" name="image" onchange="encodeImageFileAsURL(this)">
+                                    <label for="">Nội dung<span class="text-danger">*</span></label>
+                                    <textarea name="content" class="form-control" id="" cols="30" rows="5"></textarea>
                                 </div>
                             </div>
-                            <div class="from-group">
-                                <div class="col d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'news' ?>" class="btn btn-danger">Hủy</a>
+                            <div class="col-md-6">
+                                <div class="form-group d-flex justify-content-center">
+                                    <img src="<?= DEFAULT_IMAGE ?>" width="300" id="preview-img" alt="">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="image" onchange="encodeImageFileAsURL(this)">
+                                        <label class="custom-file-label" for="inputGroupFile01">Ảnh<span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="from-group p-2">
+                                    <div class="col d-flex justify-content-start">
+                                        <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
+                                        <a href="<?= ADMIN_URL . 'news' ?>" class="btn btn-danger">Hủy</a>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </form>
                     <!-- /.row -->
@@ -93,72 +98,32 @@ checkAdminLoggedIn();
 
         $('#add-user-form').validate({
             rules: {
-                name: {
+                title: {
                     required: true,
                     maxlength: 191
                 },
-                email: {
-                    required: true,
-                    maxlength: 191,
-                    email: true,
-                    remote: {
-                        url: "<?= ADMIN_URL . 'users/verify-email-existed.php' ?>",
-                        type: "post",
-                        data: {
-                            email: function() {
-                                return $("input[name='email']").val();
-                            }
-                        }
-                    }
-                },
-                password: {
+                content: {
                     required: true,
                     maxlength: 191
                 },
-                cfpassword: {
-                    required: true,
-                    equalTo: "#main-password"
-                },
-                phone_number: {
-                    number: true
-                },
-                house_no: {
-                    maxlength: 191
-                },
-                avatar: {
+                image: {
                     required: true,
                     extension: "png|jpg|jpeg|gif"
                 }
             },
             messages: {
-                name: {
-                    required: "Hãy nhập tên người dùng",
+                title: {
+                    required: "Hãy nhập tên bản tin",
                     maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
                 },
-                email: {
-                    required: "Hãy nhập email",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
-                    email: "Không đúng định dạng email",
-                    remote: "Email đã tồn tại, vui lòng sử dụng email khác"
+
+                content: {
+                    required: "Hãy nhập thông tin",
+                    maxlength: "Số lượng ký tự tối đa bằng 500 ký tự"
+
                 },
-                password: {
-                    required: "Hãy nhập mật khẩu",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                cfpassword: {
-                    required: "Nhập lại mật khẩu",
-                    equalTo: "Cần khớp với mật khẩu"
-                },
-                phone_number: {
-                    min: "Bắt buộc là số có 10 chữ số",
-                    max: "Bắt buộc là số có 10 chữ số",
-                    number: "Nhập định dạng số"
-                },
-                house_no: {
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                avatar: {
-                    required: "Hãy nhập ảnh đại diện",
+                image: {
+                    required: "Hãy nhập ảnh",
                     extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
                 }
             }

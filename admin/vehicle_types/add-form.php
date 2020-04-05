@@ -51,6 +51,7 @@ checkAdminLoggedIn();
                                 <div class="form-group">
                                     <label for="">Trạng thái<span class="text-danger">*</span></label>
                                     <select name="status" class="form-control">
+                                        <option value="" selected>Select ...</option>
                                         <option value="<?= ACTIVE ?>">Có hiệu lực</option>
                                         <option value="<?= INACTIVE ?>">Không có hiệu lực</option>
                                     </select>
@@ -102,6 +103,9 @@ checkAdminLoggedIn();
                     number: true,
                     min: 9,
                     max: 40
+                },
+                status : {
+                    required : true
                 }
             },
             messages: {
@@ -115,6 +119,9 @@ checkAdminLoggedIn();
                     number: "Hãy nhập số ghế bằng số",
                     min: "Số ghế tối thiểu phải lớn hơn hoặc bằng 9",
                     max: "Số ghế tối đa phải nhỏ hơn 40"
+                },
+                status : {
+                    required : "Chọn trạng thái xe"
                 }
             }
         });

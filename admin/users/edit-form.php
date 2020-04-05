@@ -91,7 +91,7 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                                     <input type="text" class="form-control" name="phone_number" value="<?= $user['phone_number'] ?>">
                                 </div>
                                 <div class="col d-flex justify-content-center p-4">
-                                    <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>&nbsp;
                                     <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>

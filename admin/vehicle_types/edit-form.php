@@ -72,7 +72,7 @@ $vehicleTypeEdit = queryExecute($getVehicleTypeEditQuery, false);
                                     </select>
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary">Sửa</button>&nbsp;
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>&nbsp;
                                     <a href="<?= ADMIN_URL . 'vehicle_types' ?>" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>
@@ -111,6 +111,9 @@ $vehicleTypeEdit = queryExecute($getVehicleTypeEditQuery, false);
                     number: true,
                     min: 9,
                     max: 40
+                },
+                status: {
+                    required: true
                 }
             },
             messages: {
@@ -124,6 +127,9 @@ $vehicleTypeEdit = queryExecute($getVehicleTypeEditQuery, false);
                     number: "Hãy nhập số ghế bằng số",
                     min: "Số ghế tối thiểu phải lớn hơn hoặc bằng 9",
                     max: "Số ghế tối đa phải nhỏ hơn 40"
+                },
+                status: {
+                    required: "Chọn trạng thái xe"
                 }
             }
         });

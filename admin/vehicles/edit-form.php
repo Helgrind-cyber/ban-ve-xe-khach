@@ -65,7 +65,7 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                                     </select>
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary">Sửa</button>&nbsp;
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>&nbsp;
                                     <a href="<?= ADMIN_URL . 'vehicles' ?>" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>
@@ -98,6 +98,9 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                             }
                         }
                     }
+                },
+                type_id: {
+                    required: true
                 }
             },
             messages: {
@@ -105,6 +108,9 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                     required: "Hãy nhập phương tiện",
                     maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
                     remote: "Phương tiện đã tồn tại."
+                },
+                type_id: {
+                    required: "Chọn loại phương tiện"
                 }
             }
         });

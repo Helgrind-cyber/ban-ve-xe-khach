@@ -124,7 +124,7 @@ $schedules = queryExecute($getSchedulesQuery, true);
                                         <td><?php echo $schedule['begin']."  -  ".$schedule['end'] ?></td>
                                         <td><?php echo $schedule['plate_number'] ?></td>
                                         <td>
-                                            <?php echo $schedule['price'] ?>
+                                            <?php echo $schedule['price'] ?><span class="font-weight-bold"> VND</span>
                                         </td>
                                         <td><?php echo $schedule['start_time'] ?></td>
                                         <td><?php echo $schedule['end_time'] ?></td>

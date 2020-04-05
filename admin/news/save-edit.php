@@ -7,7 +7,6 @@ $id = trim($_POST['id']);
 $content = trim($_POST['content']);
 $title = trim($_POST['title']);
 $image = $_FILES['image'];
-// var_dump($image);die;
 $id = trim($_POST['id']);
 // kiểm tra xem tin tức có tồn tại hay không
 $getNewsQuery = "select * from news where id = '$id'";

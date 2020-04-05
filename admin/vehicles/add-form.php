@@ -2,6 +2,9 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
+// get vehicle types query
+$getVehicleTypesQuery = "select * from vehicle_types";
+$vehicleTypes = queryExecute($getVehicleTypesQuery, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +54,8 @@ checkAdminLoggedIn();
                                 <div class="form-group">
                                     <label for="">Loại xe<span class="text-danger">*</span></label>
                                     <select name="type_id" class="form-control">
-                                        <?php foreach ($vehicleTypes as $key => $type) : ?>
+                                        <option value="" selected>Select ...</option>
+                                        <?php foreach ($vehicleTypes as $type) : ?>
                                             <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
@@ -90,6 +94,9 @@ checkAdminLoggedIn();
                             }
                         }
                     }
+                },
+                type_id : {
+                    required : true
                 }
             },
             messages: {
@@ -97,6 +104,9 @@ checkAdminLoggedIn();
                     required: "Hãy nhập phương tiện",
                     maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
                     remote: "Phương tiện đã tồn tại."
+                },
+                type_id : {
+                    required : "Chọn loại phương tiện"
                 }
             }
         });

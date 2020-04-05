@@ -118,7 +118,7 @@ if (!$schedules) {
                                     </script>
                                 </div>
                                 <div class="col d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary">Sửa</button>&nbsp;
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>&nbsp;
                                     <a href="<?= ADMIN_URL . 'schedules' ?>" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>

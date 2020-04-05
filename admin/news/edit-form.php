@@ -63,7 +63,7 @@ $news = queryExecute($getNewsQuery, false);
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group d-flex justify-content-center">
-                                    <img src="<?= BASE_URL . $news['image']  ?>" width="200" id="preview-img" alt="">
+                                    <img src="<?= BASE_URL . $news['image']  ?>" width="300" id="preview-img" alt="">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">

@@ -169,7 +169,7 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="<?= BASE_URL . 'logout.php' ?>" class="nav-link">
+                    <a href="<?= BASE_URL . 'login/logout.php' ?>" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
                             Logout

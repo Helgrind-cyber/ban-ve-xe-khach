@@ -81,7 +81,7 @@ $routesEdit = queryExecute($getRoutesEditQuery, false);
                             </div>
                         </div>
                         <div class="col-12 d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary">Thêm</button>&nbsp;
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>&nbsp;
                             <a href="<?= ADMIN_URL . 'routes' ?>" class="btn btn-danger">Hủy</a>
                         </div>
                     </form>

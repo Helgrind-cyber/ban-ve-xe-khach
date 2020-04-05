@@ -45,8 +45,7 @@ $news = queryExecute($getNewsQuery, false);
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="add-user-form" action="<?= ADMIN_URL . 'news/save-edit.php' ?>" method="post"
-                        enctype="multipart/form-data">
+                    <form id="add-user-form" action="<?= ADMIN_URL . 'news/save-edit.php' ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group" hidden>
@@ -58,17 +57,19 @@ $news = queryExecute($getNewsQuery, false);
                                 </div>
                                 <div class="form-group">
                                     <label for="">Nội dung<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="content"
-                                        value="<?= $news['content'] ?>">
+                                    <input type="text" class="form-control" name="content" value="<?= $news['content'] ?>">
                                 </div>
 
                             </div>
                             <div class="col-md-6">
-                                <div class=" from-group">
-                                    <label for="">Ảnh<span class="text-danger">*</span></label><br>
-                                    <img src="<?= BASE_URL . $news['image'] ?>" width="200" id="preview-img" alt=""><br>
-                                    <input type="file" class="form-control" name="image"
-                                        onchange="encodeImageFileAsURL(this)">
+                                <div class="form-group">
+                                    <img src="<?= BASE_URL . $news['image'] ?>" width="200" id="preview-img" alt="">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="image" onchange="encodeImageFileAsURL(this)">
+                                        <label class="custom-file-label" for="inputGroupFile01">Ảnh<span class="text-danger">*</span></label>
+                                    </div>
                                 </div>
                                 <div class="from-group p-2">
                                     <div class="col d-flex justify-content-start">
@@ -93,42 +94,42 @@ $news = queryExecute($getNewsQuery, false);
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
-    function encodeImageFileAsURL(element) {
-        var file = element.files[0];
-        if (file === undefined) {
-            $('#preview-img').attr('src', "<?= BASE_URL . $news['image'] ?>");
-            return false;
+        function encodeImageFileAsURL(element) {
+            var file = element.files[0];
+            if (file === undefined) {
+                $('#preview-img').attr('src', "<?= BASE_URL . $news['image'] ?>");
+                return false;
+            }
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                $('#preview-img').attr('src', reader.result)
+            }
+            reader.readAsDataURL(file);
         }
-        var reader = new FileReader();
-        reader.onloadend = function() {
-            $('#preview-img').attr('src', reader.result)
-        }
-        reader.readAsDataURL(file);
-    }
-    $('#add-user-form').validate({
-        rules: {
-            title: {
-                required: true,
-                maxlength: 191
-            },
-            content: {
-                required: true,
-                maxlength: 500
-            },
+        $('#add-user-form').validate({
+            rules: {
+                title: {
+                    required: true,
+                    maxlength: 191
+                },
+                content: {
+                    required: true,
+                    maxlength: 500
+                },
 
-        },
-        messages: {
-            title: {
-                required: "Hãy nhập tên bản tin",
-                maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
             },
-            content: {
-                required: "hãy nhập thông tin",
-                maxlength: "số lượng ký tự tối đa 500 ký tự"
-            },
+            messages: {
+                title: {
+                    required: "Hãy nhập tên bản tin",
+                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+                },
+                content: {
+                    required: "hãy nhập thông tin",
+                    maxlength: "số lượng ký tự tối đa 500 ký tự"
+                },
 
-        }
-    });
+            }
+        });
     </script>
 </body>
 

@@ -50,14 +50,12 @@ checkAdminLoggedIn();
                                     <label for="">Nội dung<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="content">
                                 </div>
-<<<<<<< HEAD
                                 <div class="form-group">
                                     <img src="<?= DEFAULT_IMAGE ?>" width="200" id="preview-img" alt="">
                                 </div>
                                 <div class="from-group">
                                     <label for="">Ảnh<span class="text-danger">*</span></label><br>
                                     <input type="file" class="form-control" name="image" onchange="encodeImageFileAsURL(this)">
-=======
 
                             </div>
                             <div class="col-md-6">
@@ -66,7 +64,6 @@ checkAdminLoggedIn();
                                     <img src="<?= DEFAULT_IMAGE ?>" width="200" id="preview-img" alt="">
                                     <input type="file" class="form-control" name="image"
                                         onchange="encodeImageFileAsURL(this)">
->>>>>>> Son
                                 </div>
                                 <div class="from-group p-2">
                                     <div class="col d-flex justify-content-start">
@@ -101,7 +98,6 @@ checkAdminLoggedIn();
         reader.onloadend = function() {
             $('#preview-img').attr('src', reader.result)
         }
-<<<<<<< HEAD
 
         $('#add-user-form').validate({
             rules: {

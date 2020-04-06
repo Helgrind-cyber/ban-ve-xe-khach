@@ -2,7 +2,7 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-
+// lay key word tu url
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 $routeId = isset($_GET['route']) == true ? $_GET['route'] : false;
 
@@ -10,8 +10,9 @@ $routeId = isset($_GET['route']) == true ? $_GET['route'] : false;
 $getSchedulesQuery = "select rs.*,
                             r.begin_point as begin, r.end_point as end,
                             v.plate_number as plate_number
-                        from vehicles v join route_schedules rs on v.id = rs.vehicle_id
-                        join routes r on rs.route_id = r.id";
+                        from vehicles v join route_schedules rs on v.id=rs.vehicle_id
+                        join routes r
+                        on rs.route_id = r.id";
 // get query from vehicles
 $getVehiclesQuery = "select * from vehicles";
 $vehicles = queryExecute($getVehiclesQuery, true);
@@ -26,9 +27,7 @@ if ($keyword !== "") {
                             or rs.vehicle_id like '%$keyword%'
                             or rs.price like '%$keyword%'
                             or rs.start_time like '%$keyword%'
-                            or rs.end_time like '%$keyword%'
-                            or r.begin_point like '%$keyword%'
-                            or r.end_point like '%$keyword%')
+                            or rs.end_time like '%$keyword%')
                       ";
     if ($routeId !== false && $routeId !== "") {
         $getRoutesQuery .= " and rs.route_id = $routeId";

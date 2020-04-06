@@ -80,7 +80,7 @@ CREATE TABLE `route_schedules`(
 CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_general_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 10;
+AUTO_INCREMENT = 12;
 -- -------------------------------------------------------------
 
 
@@ -144,11 +144,11 @@ AUTO_INCREMENT = 8;
 
 -- Dump data of "news" -------------------------------------
 INSERT INTO `news`(`id`,`image`,`title`,`content`) VALUES 
-( '2', 'public/images/5e81e4cc1793c-ten-nhan-vat-game-audition-5.jpg', 'Lorem, ipsum dolor.', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, dolorum?' ),
+( '2', 'public/images/5e81e4cc1793c-ten-nhan-vat-game-audition-5.jpg', 'quan', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, dolorum?' ),
 ( '3', 'public/images/5e81dd25dcc7b-Best-PC-Games-GTAV.jpg', 'Lorem, ipsum dolor.', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, dolorum?' ),
 ( '4', 'public/images/5e81e56903319-INSIDE-1.jpg', 'Lorem, ipsum dolor.', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, dolorum?' ),
 ( '7', 'public/images/5e8300ba4d995-5e7d871aa732a-error_bg.jpg', 'Lorem, ipsum dolor.', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, dolorum?' ),
-( '10', 'public/images/5e8456a0e62d0-maxresdefault.jpg', 'Lorem, ipsum dolor.', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, dolorum?' );
+( '10', 'public/images/5e89d2d31a0b2-Selection_004.png', 'Nguyễn hồng Quân', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, dolorum?' );
 -- ---------------------------------------------------------
 
 
@@ -171,7 +171,9 @@ INSERT INTO `roles`(`id`,`name`,`status`) VALUES
 -- Dump data of "route_schedules" --------------------------
 INSERT INTO `route_schedules`(`id`,`route_id`,`vehicle_id`,`price`,`start_time`,`end_time`) VALUES 
 ( '8', '1', '1', '120000', '03/07/2020 9:30 AM', '03/07/2020 12:30 PM' ),
-( '9', '2', '1', '80000', '03/08/2020 9:46 AM', '03/10/2020 12:45 PM' );
+( '9', '2', '1', '80000', '03/08/2020 9:46 AM', '03/10/2020 12:45 PM' ),
+( '10', '5', '7', '120000', '04/05/2020 4:15 PM', '04/05/2020 8:15 PM' ),
+( '11', '1', '1', '110000', '04/05/2020 2:18 PM', '04/05/2020 4:18 PM' );
 -- ---------------------------------------------------------
 
 

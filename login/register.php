@@ -66,27 +66,35 @@ require_once "../config/utils.php";
             </form>
         </div>
     </div>
-    <!-- jQuery -->
+    <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- Jquery Validation -->
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    <!-- Jquery validation -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.min.js"></script>
+    <!-- Sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
         $(document).ready(function() {
             $("#validation").validate({
                 rules: {
                     email: {
                         required: true,
-                        email: true
+                        maxlength: 191,
+                        email: true,
+                        remote: {
+                            url: "<?= './verify-email-existed.php' ?>",
+                            type: "post",
+                            data: {
+                                email: function() {
+                                    return $("input[name='email']").val();
+                                }
+                            }
+                        }
                     },
                     password: {
                         required: true,
                         minlength: 6,
                         maxlength: 16
-                    },
-                    name: {
-                        required: true,
-                        minlength: 2,
-                        maxlength: 191
                     },
                     cfpassword: {
                         required: true,
@@ -95,20 +103,20 @@ require_once "../config/utils.php";
                 },
 
                 messages: {
-                    email: "Vui lòng nhập email",
+                    email: {
+                        required: "Hãy nhập email",
+                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
+                        email: "Không đúng định dạng email",
+                        remote: "Email đã tồn tại, vui lòng sử dụng email khác"
+                    },
                     password: {
                         required: "Hãy nhập mật khẩu",
-                        minlength: "Số lượng ký tự tối 6 ký tự",
+                        minlength: "Số lượng ký tự tối thiểu là 6 ký tự",
                         maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
                     },
                     cfpassword: {
                         required: "Nhập lại mật khẩu",
                         equalTo: "Cần khớp với mật khẩu"
-                    },
-                    name : {
-                        maxlength: "Số lượng ký tự tối đa là 191 ký tự",
-                        minlength: "Số lượng ký tự tối thiểu bằng 2 ký tự",
-                        required: "Hãy nhập tên bạn vào đây"
                     }
                 },
 

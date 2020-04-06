@@ -58,7 +58,7 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                                 </div>
                                 <div class="form-group">
                                     <label for="">Loại xe<span class="text-danger">*</span></label>
-                                    <select name="vehicletype_id" class="form-control">
+                                    <select name="type_id" class="form-control">
                                         <?php foreach ($vehicleTypes as $key => $type) : ?>
                                             <option <?php if ($vehicleEdit['type_id'] == $type['id']) echo 'selected' ?> value="<?php echo $type['id'] ?>"><?php echo $type['name'] ?></option>
                                         <?php endforeach; ?>

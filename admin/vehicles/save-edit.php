@@ -4,15 +4,11 @@ include_once "../../config/utils.php";
 checkAdminLoggedIn();
 $id = trim($_POST['id']);
 $plate_number = trim($_POST['plate_number']);
-$type_id = trim($_POST['type_id']);
-$seat = trim($_POST['seat']);
+$type_id = trim($_POST['vehicletype_id']);
 // validate bằng php
 
 $plate_numbererr = "";
 
-if(strlen($plate_number) != 8){
-    $plate_numbererr = "Yêu cầu nhập 8 ký tự";
-}
 if(strlen($plate_number) == 0){
     $plate_numbererr = "Yêu cầu nhập biển số xe";
 }
@@ -26,19 +22,16 @@ if($plates == "" && count($plates) > 0){
 }
 
 
-if($plate_numbererr . $owner_iderr . $manufactureerr . $colorerr . $modelerr != "" ){
+if($plate_numbererr != "" ){
     header('location: ' . ADMIN_URL . "vehicles/edit-form.php?plate_numbererr=$plate_numbererr");
     die;
 }
 
 $updateVehicleQuery = "update vehicles
                     set
-                        vehicletype_id = '$vehicletype_id',
-                        seat_booked = '$seat_booked',
+                        type_id = '$type_id',
                         plate_number = '$plate_number'
                     where id = '$id'";
-
-
 queryExecute($updateVehicleQuery, false);
 
 header("location: " . ADMIN_URL . "vehicles?msg=Sửa thông tin phương tiện thành công");

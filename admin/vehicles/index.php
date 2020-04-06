@@ -21,11 +21,11 @@ if ($keyword !== "") {
     $getVehiclesQuery .= " where (v.seat_booked like '%$keyword%'
                                 or v.plate_number like '%$keyword%')";
     if ($vtId !== false && $vtId !== "") {
-        $getVehiclesQuery .= " and v.vehicletype_id = $vtId";
+        $getVehiclesQuery .= " and v.type_id = $vtId";
     }
 } else {
     if ($vtId !== false && $vtId !== "") {
-        $getVehiclesQuery .= " and v.vehicletype_id = $vtId";
+        $getVehiclesQuery .= " and v.type_id = $vtId";
     }
 }
 $vehicles = queryExecute($getVehiclesQuery, true);
@@ -159,7 +159,7 @@ $vehicles = queryExecute($getVehiclesQuery, true);
         <?php if(isset($_GET['msg'])):?>
         Swal.fire({
             position: 'bottom-center',
-            icon: 'warning',
+            icon: 'success',
             title: "<?= $_GET['msg'];?>",
             showConfirmButton: false,
             timer: 1500

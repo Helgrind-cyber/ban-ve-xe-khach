@@ -4,6 +4,7 @@ require_once '../../config/utils.php';
 checkAdminLoggedIn();
 // lay key word tu url
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
+// get roleid from search
 $routeId = isset($_GET['route']) == true ? $_GET['route'] : false;
 
 // get query from schedules

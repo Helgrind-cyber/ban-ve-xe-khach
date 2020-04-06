@@ -91,7 +91,7 @@ $vehicles = queryExecute($getVehiclesQuery, true);
                                     </script>
                                 </div>
                                 <div class="form-group">
-                                    <label for="" class="text-capitalize font-weight-bold">Thời gian bắt đầu<span class="text-danger">*</span></label>
+                                    <label for="" class="text-capitalize font-weight-bold">Thời gian kết thúc<span class="text-danger">*</span></label>
                                     <div class="form-group">
                                         <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" name="end_time" />
@@ -154,6 +154,12 @@ $vehicles = queryExecute($getVehiclesQuery, true);
                         number : true,
                         min: 0,
                         max: 500000
+                    },
+                    start_time: {
+                        required: true,
+                    },
+                    end_time:{
+                        required:true,
                     }
                 },
                 messages: {
@@ -172,6 +178,12 @@ $vehicles = queryExecute($getVehiclesQuery, true);
                         number: "Chỉ nhập giá tiền bằng số",
                         min: "Giá tiền tối thiểu là 0 VND",
                         max: "Giá tiền tối đa là 500,000 VND"
+                    },
+                    start_time: {
+                        required:"hãy nhập thời gian bắt đầu"
+                    },
+                    end_time:{
+                        required: "hãy nhập thời gian kết thúc"
                     }
                 }
             });

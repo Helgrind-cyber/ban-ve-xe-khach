@@ -89,6 +89,9 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                                 <div class="form-group">
                                     <label for="">Số điện thoại</label>
                                     <input type="text" class="form-control" name="phone_number" value="<?= $user['phone_number'] ?>">
+                                    <?php if (isset($_GET['phone_numbererr'])) : ?>
+                                        <label class="error"><?= $_GET['phone_numbererr'] ?></label>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="col d-flex justify-content-center p-4">
                                     <button type="submit" class="btn btn-primary">Cập nhật</button>&nbsp;

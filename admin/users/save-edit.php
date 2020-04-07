@@ -6,7 +6,7 @@ checkAdminLoggedIn();
 $id = trim($_POST['id']);
 $name = trim($_POST['name']);
 $email = trim($_POST['email']);
-$phone_number = trim($_POST['phone_number']);
+$phone_number = (int)($_POST['phone_number']);
 $role_id = trim($_POST['role_id']);
 
 // kiểm tra sự tồn tại của tài khoản
@@ -44,12 +44,12 @@ $users = queryExecute($checkEmailQuery, true);
 if($emailerr == "" && count($users) > 0){
     $emailerr = "Email đã tồn tại, vui lòng sử dụng email khác";
 }
-if(strlen($phone_number) != 10){
-    $phone_numbererr = "Yêu cầu nhập 10 ký tự của biển số '80A-800.80'";
+if(strlen((string)$phone_number) != 10){
+    $phone_numbererr = "Yêu cầu nhập 10 ký tự của biển số";
 }
 
-if($nameerr . $emailerr != "" ){
-    header('location: ' . ADMIN_URL . "users/edit-form.php?id=$id&nameerr=$nameerr&emailerr=$emailerr");
+if($nameerr . $emailerr . $phone_numbererr != "" ){
+    header('location: ' . ADMIN_URL . "users/edit-form.php?id=$id&nameerr=$nameerr&emailerr=$emailerr&phone_numbererr=$phone_numbererr");
     die;
 }
 

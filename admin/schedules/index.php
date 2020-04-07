@@ -28,7 +28,11 @@ if ($keyword !== "") {
                             or rs.vehicle_id like '%$keyword%'
                             or rs.price like '%$keyword%'
                             or rs.start_time like '%$keyword%'
-                            or rs.end_time like '%$keyword%')
+                            or rs.end_time like '%$keyword%'
+                            or r.begin_point like '%$keyword%'
+                            or r.end_point like '%$keyword%'
+                            or v.plate_number like '%$keyword%'
+                            )
                       ";
     if ($routeId !== false && $routeId !== "") {
         $getRoutesQuery .= " and rs.route_id = $routeId";
@@ -178,7 +182,7 @@ $schedules = queryExecute($getSchedulesQuery, true);
             <?php if (isset($_GET['msg'])) : ?>
                 Swal.fire({
                     position: 'bottom-end',
-                    icon: 'warning',
+                    icon: 'success',
                     title: "<?= $_GET['msg']; ?>",
                     showConfirmButton: false,
                     timer: 1500

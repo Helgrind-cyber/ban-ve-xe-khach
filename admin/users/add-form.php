@@ -88,7 +88,7 @@ $roles = queryExecute($getRoleQuery, true);
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
+                                    <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger" id="btnRemove">Hủy</a>
                                 </div>
                             </div>
                         </div>
@@ -126,6 +126,11 @@ $roles = queryExecute($getRoleQuery, true);
             });
             phone_number.addEventListener('change', function() {
                 sessionStorage.setItem('phone_number', phone_number.value);
+            });
+
+            var btnRemove = document.getElementById('btnRemove');
+            btnRemove.addEventListener('click', function() {
+                sessionStorage.clear();
             });
 
             $('#add-user-form').validate({

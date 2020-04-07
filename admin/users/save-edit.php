@@ -25,6 +25,7 @@ if($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH]['
 // validate bằng php
 $nameerr = "";
 $emailerr = "";
+$phone_numbererr = "";
 // check name
 if(strlen($name) < 2 || strlen($name) > 191){
     $nameerr = "Yêu cầu nhập tên tài khoản nằm trong khoảng 2-191 ký tự";
@@ -42,6 +43,9 @@ $checkEmailQuery = "select * from users where email = '$email' and id != $id";
 $users = queryExecute($checkEmailQuery, true);
 if($emailerr == "" && count($users) > 0){
     $emailerr = "Email đã tồn tại, vui lòng sử dụng email khác";
+}
+if(strlen($phone_number) != 10){
+    $phone_numbererr = "Yêu cầu nhập 10 ký tự của biển số '80A-800.80'";
 }
 
 if($nameerr . $emailerr != "" ){

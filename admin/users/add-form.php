@@ -82,6 +82,9 @@ $roles = queryExecute($getRoleQuery, true);
                                 <div class="form-group">
                                     <label for="">Số điện thoại</label>
                                     <input type="text" class="form-control" name="phone_number">
+                                    <?php if (isset($_GET['phone_number'])) : ?>
+                                        <label class="error"><?= $_GET['phone_numbererr'] ?></label>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;

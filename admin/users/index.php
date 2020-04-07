@@ -123,7 +123,7 @@ $users = queryExecute($getUsersQuery, true);
                                         </td>
                                         <td><?php echo $us['phone_number'] ?></td>
                                         <td>
-                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id'] || $us['id'] === $_SESSION[AUTH]['id']) : ?>
+                                            <?php if ($us['role_id'] <= $_SESSION[AUTH]['role_id'] || $us['id'] === $_SESSION[AUTH]['id']) : ?>
                                                 <a href="<?php echo ADMIN_URL . 'users/edit-form.php?id=' . $us['id'] ?>" class="btn btn-sm btn-info">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
@@ -173,7 +173,7 @@ $users = queryExecute($getUsersQuery, true);
             <?php if (isset($_GET['msg'])) : ?>
                 Swal.fire({
                     position: 'bottom-end',
-                    icon: 'warning',
+                    icon: 'success',
                     title: "<?= $_GET['msg']; ?>",
                     showConfirmButton: false,
                     timer: 1500

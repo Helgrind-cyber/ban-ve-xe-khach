@@ -164,7 +164,7 @@ $roles = queryExecute($getRoleQuery, true);
                     phone_number: {
                         required: true,
                         number: true,
-                        manlength: 10
+                        maxlength: 10
                     }
                 },
                 messages: {

@@ -57,7 +57,7 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <form id="edit-user-form" action="<?= ADMIN_URL . 'users/save-edit.php' ?>" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                        <input type="text" name="id" value="<?= $user['id'] ?>" hidden>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -110,19 +110,7 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
     </div>
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
-    <script>
-        function encodeImageFileAsURL(element) {
-            var file = element.files[0];
-            if (file === undefined) {
-                $('#preview-img').attr('src', "<?= BASE_URL . $user['avatar'] ?>");
-                return false;
-            }
-            var reader = new FileReader();
-            reader.onloadend = function() {
-                $('#preview-img').attr('src', reader.result)
-            }
-            reader.readAsDataURL(file);
-        }
+    <script type="text/javascript">
         $('#edit-user-form').validate({
             rules: {
                 name: {
@@ -144,14 +132,18 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                         }
                     }
                 },
-                phone_number: {
-                    number: true
-                },
-                house_no: {
+                password: {
+                    required: true,
                     maxlength: 191
                 },
-                avatar: {
-                    extension: "png|jpg|jpeg|gif"
+                cfpassword: {
+                    required: true,
+                    equalTo: "#main-password"
+                },
+                phone_number: {
+                    number: true,
+                    max: 10,
+                    min: 10
                 }
             },
             messages: {
@@ -165,16 +157,18 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                     email: "Không đúng định dạng email",
                     remote: "Email đã tồn tại, vui lòng sử dụng email khác"
                 },
+                password: {
+                    required: "Hãy nhập mật khẩu",
+                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+                },
+                cfpassword: {
+                    required: "Nhập lại mật khẩu",
+                    equalTo: "Cần khớp với mật khẩu"
+                },
                 phone_number: {
                     min: "Bắt buộc là số có 10 chữ số",
                     max: "Bắt buộc là số có 10 chữ số",
                     number: "Nhập định dạng số"
-                },
-                house_no: {
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                avatar: {
-                    extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
                 }
             }
         });

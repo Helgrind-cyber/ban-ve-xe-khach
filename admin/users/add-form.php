@@ -82,7 +82,7 @@ $roles = queryExecute($getRoleQuery, true);
                                 <div class="form-group">
                                     <label for="">Số điện thoại</label>
                                     <input type="text" class="form-control" name="phone_number">
-                                    <?php if (isset($_GET['phone_number'])) : ?>
+                                    <?php if (isset($_GET['phone_numbererr'])) : ?>
                                         <label class="error"><?= $_GET['phone_numbererr'] ?></label>
                                     <?php endif; ?>
                                 </div>
@@ -135,7 +135,9 @@ $roles = queryExecute($getRoleQuery, true);
                     equalTo: "#main-password"
                 },
                 phone_number: {
-                    number: true
+                    required: true,
+                    number: true,
+                    manlength: 10
                 }
             },
             messages: {
@@ -158,9 +160,9 @@ $roles = queryExecute($getRoleQuery, true);
                     equalTo: "Cần khớp với mật khẩu"
                 },
                 phone_number: {
-                    min: "Bắt buộc là số có 10 chữ số",
-                    max: "Bắt buộc là số có 10 chữ số",
-                    number: "Nhập định dạng số"
+                    required: "Nhập số điện thoại",
+                    number: "Nhập định dạng số",
+                    maxlength: "Tối đa 10 kí tự"
                 }
             }
         });

@@ -173,7 +173,7 @@ $users = queryExecute($getUsersQuery, true);
             <?php if (isset($_GET['msg'])) : ?>
                 Swal.fire({
                     position: 'bottom-end',
-                    icon: 'warning',
+                    icon: 'success',
                     title: "<?= $_GET['msg']; ?>",
                     showConfirmButton: false,
                     timer: 1500

@@ -12,7 +12,7 @@ $role_id = trim($_POST['role_id']);
 $nameerr = "";
 $emailerr = "";
 $passworderr = "";
-$phone_numbererr= "";
+$phone_numbererr = "";
 // check name
 if (strlen($name) < 2 || strlen($name) > 191) {
     $nameerr = "Yêu cầu nhập tên tài khoản nằm trong khoảng 2-191 ký tự";
@@ -36,22 +36,21 @@ if (strlen($password) < 6) {
     $passworderr = "Mật khẩu cần >= 6 ký tự";
 }
 
-
 if ($passworderr == "" && $password != $cfpassword) {
     $passworderr = "Mật khẩu và nhập lại mật khẩu không khớp nhau";
 }
 
-if(strlen($phone_number) != 10){
+if (strlen($phone_number) !== 10) {
     $phone_numbererr = "Yêu cầu nhập 10 so";
 }
 
-function is_email($phone_numbererr) {
-return (!preg_match('/^[a-z]{10}$/', $phone_numbererr)) ? FALSE : TRUE;
-}
+// function is_email($phone_numbererr)
+// {
+//     return (!preg_match('/^[a-z]{10}$/', $phone_numbererr)) ? FALSE : TRUE;
+// }
 
-
-if ($nameerr . $emailerr . $passworderr .$phone_numbererr != "") {
-    header('location: ' . ADMIN_URL . "users/add-form.php?nameerr=$nameerr&emailerr=$emailerr&passworderr=$passworderr&phone_numbererr=$phone_number");
+if ($nameerr . $emailerr . $passworderr . $phone_numbererr != "") {
+    header('location: ' . ADMIN_URL . "users/add-form.php?nameerr=$nameerr&emailerr=$emailerr&passworderr=$passworderr&phone_numbererr=$phone_numbererr");
     die;
 }
 // mã hóa mật khẩu
@@ -61,7 +60,6 @@ $insertUserQuery = "insert into users
                           (name, email, password, phone_number, role_id)
                     values
                           ('$name', '$email', '$password', '$phone_number', '$role_id')";
-var_dump($insertUserQuery); die;
-//queryExecute($insertUserQuery, false);
+queryExecute($insertUserQuery, false);
 header("location: " . ADMIN_URL . "users");
 die;

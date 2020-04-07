@@ -46,21 +46,21 @@ $roles = queryExecute($getRoleQuery, true);
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Tên người dùng<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="name">
+                                    <input type="text" class="form-control" name="name" id="name">
                                     <?php if (isset($_GET['nameerr'])) : ?>
                                         <label class="error"><?= $_GET['nameerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Email<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="email">
+                                    <input type="text" class="form-control" name="email" id="email">
                                     <?php if (isset($_GET['emailerr'])) : ?>
                                         <label class="error"><?= $_GET['emailerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Quyền</label>
-                                    <select name="role_id" class="form-control">
+                                    <select name="role_id" class="form-control" id="role_id">
                                         <?php foreach ($roles as $ro) : ?>
                                             <option value="<?= $ro['id'] ?>"><?= $ro['name'] ?></option>
                                         <?php endforeach ?>
@@ -81,7 +81,7 @@ $roles = queryExecute($getRoleQuery, true);
                                 </div>
                                 <div class="form-group">
                                     <label for="">Số điện thoại</label>
-                                    <input type="text" class="form-control" name="phone_number">
+                                    <input type="text" class="form-control" name="phone_number" id="phone_number">
                                     <?php if (isset($_GET['phone_numbererr'])) : ?>
                                         <label class="error"><?= $_GET['phone_numbererr'] ?></label>
                                     <?php endif; ?>
@@ -105,67 +105,90 @@ $roles = queryExecute($getRoleQuery, true);
     </div>
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
-    <script>
-        $('#add-user-form').validate({
-            rules: {
-                name: {
-                    required: true,
-                    maxlength: 191
-                },
-                email: {
-                    required: true,
-                    maxlength: 191,
-                    email: true,
-                    remote: {
-                        url: "<?= ADMIN_URL . 'users/verify-email-existed.php' ?>",
-                        type: "post",
-                        data: {
-                            email: function() {
-                                return $("input[name='email']").val();
+    <script type="text/javascript">
+        window.onload = function() {
+            // demo session storage
+            // get data
+            var name = document.getElementById('name');
+            name.value = sessionStorage.getItem('name');
+
+            var email = document.getElementById('email');
+            email.value = sessionStorage.getItem('email');
+
+            var phone_number = document.getElementById('phone_number');
+            phone_number.value = sessionStorage.getItem('phone_number');
+
+            name.addEventListener('change', function() {
+                sessionStorage.setItem('name', name.value);
+            });
+            email.addEventListener('change', function() {
+                sessionStorage.setItem('email', email.value);
+            });
+            phone_number.addEventListener('change', function() {
+                sessionStorage.setItem('phone_number', phone_number.value);
+            });
+
+            $('#add-user-form').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        maxlength: 191
+                    },
+                    email: {
+                        required: true,
+                        maxlength: 191,
+                        email: true,
+                        remote: {
+                            url: "<?= ADMIN_URL . 'users/verify-email-existed.php' ?>",
+                            type: "post",
+                            data: {
+                                email: function() {
+                                    return $("input[name='email']").val();
+                                }
                             }
                         }
+                    },
+                    password: {
+                        required: true,
+                        maxlength: 191
+                    },
+                    cfpassword: {
+                        required: true,
+                        equalTo: "#main-password"
+                    },
+                    phone_number: {
+                        required: true,
+                        number: true,
+                        manlength: 10
                     }
                 },
-                password: {
-                    required: true,
-                    maxlength: 191
-                },
-                cfpassword: {
-                    required: true,
-                    equalTo: "#main-password"
-                },
-                phone_number: {
-                    required: true,
-                    number: true,
-                    manlength: 10
+                messages: {
+                    name: {
+                        required: "Hãy nhập tên người dùng",
+                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+                    },
+                    email: {
+                        required: "Hãy nhập email",
+                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
+                        email: "Không đúng định dạng email",
+                        remote: "Email đã tồn tại, vui lòng sử dụng email khác"
+                    },
+                    password: {
+                        required: "Hãy nhập mật khẩu",
+                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+                    },
+                    cfpassword: {
+                        required: "Nhập lại mật khẩu",
+                        equalTo: "Cần khớp với mật khẩu"
+                    },
+                    phone_number: {
+                        required: "Nhập số điện thoại",
+                        number: "Nhập định dạng số",
+                        maxlength: "Tối đa 10 kí tự"
+                    }
                 }
-            },
-            messages: {
-                name: {
-                    required: "Hãy nhập tên người dùng",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                email: {
-                    required: "Hãy nhập email",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
-                    email: "Không đúng định dạng email",
-                    remote: "Email đã tồn tại, vui lòng sử dụng email khác"
-                },
-                password: {
-                    required: "Hãy nhập mật khẩu",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                cfpassword: {
-                    required: "Nhập lại mật khẩu",
-                    equalTo: "Cần khớp với mật khẩu"
-                },
-                phone_number: {
-                    required: "Nhập số điện thoại",
-                    number: "Nhập định dạng số",
-                    maxlength: "Tối đa 10 kí tự"
-                }
-            }
-        });
+            });
+        }
     </script>
 </body>
 

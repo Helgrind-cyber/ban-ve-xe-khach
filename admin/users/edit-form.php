@@ -115,7 +115,8 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
             rules: {
                 name: {
                     required: true,
-                    maxlength: 191
+                    maxlength: 191,
+                    minlength: 6
                 },
                 email: {
                     required: true,
@@ -149,7 +150,8 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
             messages: {
                 name: {
                     required: "Hãy nhập tên người dùng",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
+                    minlength: "Nhập tối thiểu 6 kí tự"
                 },
                 email: {
                     required: "Hãy nhập email",

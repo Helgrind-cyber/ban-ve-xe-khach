@@ -38,6 +38,7 @@ if ($keyword !== "") {
         $getRoutesQuery .= " and rs.route_id = $routeId";
     }
 }
+
 $schedules = queryExecute($getSchedulesQuery, true);
 
 ?>

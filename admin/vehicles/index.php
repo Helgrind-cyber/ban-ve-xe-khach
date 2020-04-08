@@ -99,6 +99,7 @@ $vehicles = queryExecute($getVehiclesQuery, true);
                         <th>ID</th>
                         <th>Biển số xe</th>
                         <th>Loại xe</th>
+                        <th width=150>Ảnh phương tiện</th>
                         <th>
                             <a href="<?php echo ADMIN_URL . 'vehicles/add-form.php' ?>" class="btn btn-primary btn-sm"><i
                                     class="fa fa-plus"></i> Thêm</a>
@@ -110,6 +111,7 @@ $vehicles = queryExecute($getVehiclesQuery, true);
                                 <td><?php echo $vehicle['id'] ?></td>
                                 <td><?php echo $vehicle['plate_number'] ?></td>
                                 <td><?php echo $vehicle['type_name'] ?></td>
+                                <td><img src="<?=BASE_URL.$vehicle['avatar']?>" alt="Anh phuong tien" width="150" /></td>
                                 <td>
                                     <a href="<?php echo ADMIN_URL . 'vehicles/edit-form.php?id=' . $vehicle['id'] ?>"
                                        class="btn btn-sm btn-info">

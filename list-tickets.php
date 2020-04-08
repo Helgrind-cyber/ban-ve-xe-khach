@@ -12,7 +12,7 @@ $routes = queryExecute($getRoutesQuery, true);
  * phương tiện từ vehicles: seat, plate_number
  */
 $getAllDataQuery = "select rs.*, vt.name as type_name, vt.seat as seat,
-                            v.plate_number as plate_number,
+                            v.plate_number as plate_number, v.avatar as avatar,
                             r.begin_point as begin, r.end_point as end
                 from    vehicle_types vt
                         join vehicles v on vt.id=v.type_id
@@ -50,7 +50,13 @@ $allData = queryExecute($getAllDataQuery, true);
             <?php foreach ($allData as $data) : ?>
                 <div class="row p-2 border-bottom">
                     <div class="col-3 d-flex align-items-center border-right">
-                        <img src="<?php echo PUBLIC_URL . 'images/default-image.jpg' ?>" alt="">
+                        <img src="<?php
+                        if($data['avatar']){
+                            echo BASE_URL.$data['avatar'];
+                        }else{
+                        echo PUBLIC_URL . 'images/default-image.jpg';
+                        }
+                        ?>" alt="">
                     </div>
                     <div class="col-7">
                         <h4 class="h5">Xe khách Nam Định - Hà Nội</h4>

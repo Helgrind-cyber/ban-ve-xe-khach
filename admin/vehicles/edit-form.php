@@ -64,11 +64,26 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary">Cập nhật</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'vehicles' ?>" class="btn btn-danger">Hủy</a>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-6 offset-md-3">
+                                    <img src="<?= BASE_URL . $vehicleEdit['avatar'] ?>" id="preview-img" class="img-fluid">
+                                </div>
+                                <div class="input-group mb-3 mt-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Ảnh phương tiện<span class="text-danger">*</span></span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="avatar" onchange="encodeImageFileAsURL(this)">
+                                        <label class="custom-file-label" for="inputGroupFile01">Chọn ảnh</label>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>&nbsp;
+                            <a href="<?= ADMIN_URL . 'vehicles' ?>" class="btn btn-danger">Hủy</a>
+                        </div>
                     </form>
 
                     <!-- /.row -->
@@ -84,6 +99,18 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
+        function encodeImageFileAsURL(element) {
+            var file = element.files[0];
+            if (file === undefined) {
+                $('#preview-img').attr('src', "<?= DEFAULT_IMAGE ?>");
+                return false;
+            }
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                $('#preview-img').attr('src', reader.result)
+            }
+            reader.readAsDataURL(file);
+        }
         $('#add-vehicle-form').validate({
             rules: {
                 plate_number: {

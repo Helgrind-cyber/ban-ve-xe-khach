@@ -27,6 +27,7 @@ $news = queryExecute($getNewsQuery, true);
         <div class="container">
             <h1 class="h2 m-5 text-dark text-center text-capitalize">đặt vé xe trước, nhận chỗ sớm, không lo hết vé</h1>
             <p class="text-center text-uppercase h4 font-weight-bold">tìm vé xe</p>
+
             <form action="<?= BASE_URL . 'list-tickets.php' ?>" method="get" enctype="multipart/form-data">
                 <div class="row d-flex justify-content-center">
                     <div class="col-8 form-group">
@@ -37,21 +38,21 @@ $news = queryExecute($getNewsQuery, true);
                     <button type="submit" name="btn-submit" class="btn btn-primary">Tìm Vé</button>
                 </div>
             </form>
-            <!--END CONTENT - START CAROUSEL-->
         </div>
     </div>
+    <!--END CONTENT - START CAROUSEL-->
     <div class="container pt-2">
         <h4 class="h3">Tin tức</h4>
         <div class="list_carousel bg-light pt-3 pb-4">
             <ul id="foo">
-                <?php foreach ($news as $ne) : ?>
+                <?php foreach ($news as $new) : ?>
                     <li>
                         <a href="list4.html" class="carousel-header-img">
-                            <img src="<?= BASE_URL . $ne['image'] ?>" alt="" />
+                            <img src="<?= BASE_URL . $new['image'] ?>" alt="" />
                         </a>
                         <div class="m1">
-                            <a href="#" class="h6 dark"><b><?= $ne['title'] ?></b></a>
-                            <p class="h6 green"><?= $ne['content'] ?></p>
+                            <a href="#" class="h6 dark"><b><?= $new['title'] ?></b></a>
+                            <p class="h6 green"><?= $new['content'] ?></p>
                         </div>
                     </li>
                 <?php endforeach; ?>
@@ -64,7 +65,6 @@ $news = queryExecute($getNewsQuery, true);
     <!--END CONTACT - START FOOTER-->
     <?php include_once './public/_share/footer.php'; ?>
     <?php include_once './public/_share/script.php'; ?>
-    </div>
 </body>
 
 </html>

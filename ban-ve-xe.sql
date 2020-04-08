@@ -95,7 +95,7 @@ CREATE TABLE `routes`(
 CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_general_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 6;
+AUTO_INCREMENT = 8;
 -- -------------------------------------------------------------
 
 
@@ -134,6 +134,7 @@ CREATE TABLE `vehicles`(
 	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
 	`type_id` Int( 11 ) NOT NULL,
 	`plate_number` VarChar( 100 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+	`avatar` VarChar( 255 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_general_ci
@@ -182,7 +183,10 @@ INSERT INTO `routes`(`id`,`distance`,`estimate_time`,`begin_point`,`end_point`) 
 ( '1', '160', '04:00:00.000000', 'Mỹ Đình', 'Nam Định' ),
 ( '2', '160', '04:20:00.000000', 'Hải Hậu', 'Giáp Bát' ),
 ( '4', '1434', '04:00:00.000000', 'Mỹ Đình', 'Hải Hậu' ),
-( '5', '200', '04:00:00.000000', 'Mỹ Đình A', 'Hải Hậu A' );
+( '5', '200', '04:00:00.000000', 'Mỹ Đình A', 'Hải Hậu A' ),
+( '6', '160', '04:00:00.000000', 'Mỹ Đình B', 'Bx hải hậu' ),
+( '7', '160', '04:00:00.000000', 'Mỹ Đình BABC', 'Bx hải hậu ABC' ),
+( '8', '160', '04:00:00.000000', 'Mỹ Đình c', 'Nam Định a' );
 -- ---------------------------------------------------------
 
 
@@ -201,15 +205,19 @@ INSERT INTO `vehicle_types`(`id`,`name`,`status`,`seat`) VALUES
 ( '2', 'Xe Limousine', '0', '23' ),
 ( '3', 'Xe cút kít', '1', '14' ),
 ( '6', 'Xe Công lý 19 bánh', '0', '9' ),
-( '12', 'Xe Công lý 18 bánh', '0', '9' );
+( '12', 'Xe Công lý 18 bánh', '0', '9' ),
+( '13', 'Xe Công lý 11 bánh', '0', '11' );
 -- ---------------------------------------------------------
 
 
 -- Dump data of "vehicles" ---------------------------------
-INSERT INTO `vehicles`(`id`,`type_id`,`plate_number`) VALUES 
-( '1', '1', '29T9-999.99' ),
-( '6', '1', '18H1-888.88' ),
-( '7', '2', '29G9-666.66' );
+INSERT INTO `vehicles`(`id`,`type_id`,`plate_number`,`avatar`) VALUES 
+( '1', '1', '29T9-999.99', NULL ),
+( '6', '1', '18H1-888.88', NULL ),
+( '7', '6', '29G9-666.00', 'public/images/5e8d9aa20f82c-mbuntu-1.jpg' ),
+( '13', '2', '29G9-555.55', 'public/images/5e8d96742fdbb-maxresdefault.jpg' ),
+( '14', '2', '29G9-555.00', 'public/images/5e8d975562ab4-mbuntu-2.jpg' ),
+( '15', '6', '29T9-999.77', 'public/images/5e8d99b1d7109-marian-kroell-A-5aEufc0j4-unsplash.jpg' );
 -- ---------------------------------------------------------
 
 

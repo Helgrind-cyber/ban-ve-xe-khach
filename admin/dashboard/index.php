@@ -128,7 +128,7 @@ $news = queryExecute($getAllNewsSql, true);
                                 <div class="icon">
                                     <i class="fa fa fa-truck"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'vehicle_type' ?>" class="small-box-footer">Chi tiết <i
+                                <a href="<?= ADMIN_URL . 'vehicle_types' ?>" class="small-box-footer">Chi tiết <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>

@@ -70,6 +70,9 @@ checkAdminLoggedIn();
                                     <?php if (isset($_GET['end_pointerr'])) : ?>
                                         <label class="error"><?= $_GET['end_pointerr'] ?></label>
                                     <?php endif; ?>
+                                    <?php if (isset($_GET['routeerr'])) : ?>
+                                        <label class="error"><?= $_GET['routeerr'] ?></label>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

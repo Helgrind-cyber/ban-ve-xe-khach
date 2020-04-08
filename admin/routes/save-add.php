@@ -32,13 +32,18 @@ $beginPoint = queryExecute($checkBeginPointQuery, true);
 if ($begin_pointerr == "" && count($beginPoint) > 0) {
       $begin_pointerr = "Điểm đầu đã tồn tại";
 }
+
 // kiểm tra end point
 if (strlen($end_point) < 2 || strlen($end_point) > 191) {
       $end_pointerr = "Yêu cầu nhập trong khoảng 2-191 ký tự";
 }
 $checkEndPointQuery = "select * from routes where end_point = '$end_point'";
 $endPoint = queryExecute($checkEndPointQuery, true);
+<<<<<<< HEAD
 if ($end_pointerr == "" && count($end_point) > 0) {
+=======
+if ($end_pointerr == "" && count($endPoint) > 0) {
+>>>>>>> 88223056283c7af7afe825fbc81a5e07f339ba16
       $end_pointerr = "Điểm cuối đã tồn tại";
 }
 
@@ -59,7 +64,6 @@ if ($end_pointerr == "" && count($endPoint) > 0) {
 if ($distanceerr . $begin_pointerr . $end_pointerr != "") {
       header('location: ' . ADMIN_URL . "routes/add-form.php?distanceerr=$distanceerr&begin_pointerr=$begin_pointerr&end_pointerr=$end_pointerr");
       die;
->>>>>>> 0d4c97c3764e53f71d8d5726a32e313b8009b0cc
 }
 
 $insertRoutesQuery = "insert into routes

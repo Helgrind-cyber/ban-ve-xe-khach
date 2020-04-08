@@ -20,7 +20,6 @@ if($plates == "" && count($plates) > 0){
     $plate_numbererr = "Biển số đã tồn tại, vui lòng sử dụng biển số khác";
 }
 
-
 if($plate_numbererr != "" ){
     header('location: ' . ADMIN_URL . "vehicles/edit-form.php?plate_numbererr=$plate_numbererr");
     die;

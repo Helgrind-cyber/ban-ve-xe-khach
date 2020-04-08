@@ -17,9 +17,8 @@ $getVehiclesQuery = "select
                     from vehicles v
                     join vehicle_types vt
                     on v.type_id = vt.id";
-if ($keyword !== "") {
-    $getVehiclesQuery .= " where (v.seat_booked like '%$keyword%'
-                                or v.plate_number like '%$keyword%')";
+if ($keyword !== "" && $keyword !== false) {
+    $getVehiclesQuery .= " where v.plate_number like '%$keyword%'";
     if ($vtId !== false && $vtId !== "") {
         $getVehiclesQuery .= " and v.type_id = $vtId";
     }

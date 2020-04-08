@@ -145,6 +145,7 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                     equalTo: "#main-password"
                 },
                 phone_number: {
+                    required: true,
                     number: true,
                     maxlength: 10,
                     minlength: 10
@@ -172,8 +173,9 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                     equalTo: "Cần khớp với mật khẩu"
                 },
                 phone_number: {
-                    min: "Bắt buộc là số có 10 chữ số",
-                    max: "Bắt buộc là số có 10 chữ số",
+                    required: "Nhập số điện thoại vào đây",
+                    minlength: "Bắt buộc là số có 10 chữ số",
+                    maxlength: "Bắt buộc là số có 10 chữ số",
                     number: "Nhập định dạng số"
                 }
             }

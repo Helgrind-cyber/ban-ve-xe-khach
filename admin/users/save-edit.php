@@ -7,7 +7,7 @@ $id = trim($_POST['id']);
 $name = trim($_POST['name']);
 $email = trim($_POST['email']);
 $phone_number = trim($_POST['phone_number']);
-$role_id = $_POST['role_id'];
+$role_id = trim($_POST['role_id']);
 $phone_number = (int)($_POST['phone_number']);
 $role_id = trim($_POST['role_id']);
 
@@ -68,7 +68,6 @@ $updateUserQuery = "update users
                           role_id = $role_id,
                           phone_number = '$phone_number'
                     where id = $id";
-// dd($updateUserQuery);
 queryExecute($updateUserQuery, false);
 header("location: " . ADMIN_URL . "users");
 die;

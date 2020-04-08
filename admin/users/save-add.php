@@ -44,11 +44,6 @@ if (strlen($phone_number) !== 10) {
     $phone_numbererr = "Yêu cầu nhập 10 so";
 }
 
-// function is_email($phone_numbererr)
-// {
-//     return (!preg_match('/^[a-z]{10}$/', $phone_numbererr)) ? FALSE : TRUE;
-// }
-
 if ($nameerr . $emailerr . $passworderr . $phone_numbererr != "") {
     header('location: ' . ADMIN_URL . "users/add-form.php?nameerr=$nameerr&emailerr=$emailerr&passworderr=$passworderr&phone_numbererr=$phone_numbererr");
     die;

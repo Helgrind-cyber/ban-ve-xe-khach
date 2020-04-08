@@ -164,6 +164,7 @@ $roles = queryExecute($getRoleQuery, true);
                     phone_number: {
                         required: true,
                         number: true,
+                        minlength: 10,
                         maxlength: 10
                     }
                 },
@@ -187,9 +188,10 @@ $roles = queryExecute($getRoleQuery, true);
                         equalTo: "Cần khớp với mật khẩu"
                     },
                     phone_number: {
-                        required: "Nhập số điện thoại",
+                        required: "Nhập vào số điện thoại",
                         number: "Nhập định dạng số",
-                        maxlength: "Tối đa 10 kí tự"
+                        minlength: "Số điện thoại gồm 10 chữ số",
+                        maxlength: "Số điện thoại gồm 10 chữ số"
                     }
                 }
             });

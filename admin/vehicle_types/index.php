@@ -4,13 +4,20 @@ require_once '../../config/utils.php';
 checkAdminLoggedIn();
 // get keyword from url
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
-$status = isset($_GET['status']) == true ? $_GET['status'] : false;
+$status = isset($_GET['status']) == true ? $_GET['status'] : "";
 // get vehicle types query
-$getVehicleTypesQuery = "select vt.* from vehicle_types vt";
+$getVehicleTypesQuery = "select * from vehicle_types";
 // điều kiện tìm kiếm
-if ($keyword != "" || $status != "") {
-    $getVehicleTypesQuery .= " where (vt.name like '%$keyword%'
-                                    and vt.status = $status)";
+if ($keyword !== "" && $keyword !== false) {
+    $getVehicleTypesQuery .= " where (name like '%$keyword%'
+                                    or seat like '%$keyword%')";
+    if ($status !== "" && $status !== false) {
+        $getVehicleTypesQuery .= " and status = '$status'";
+    }
+}else {
+    if ($status !== "" && $status !== false) {
+        $getVehicleTypesQuery .= " where status = '$status'";
+    }
 }
 $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
 
@@ -93,7 +100,7 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                                     <tr>
                                         <td><?php echo $type['id'] ?></td>
                                         <td><?php echo $type['name'] ?></td>
-                                        <th><?= $type['seat']?></th>
+                                        <th><?= $type['seat'] ?></th>
                                         <td><?php
                                             if ($type['status'] == 0) {
                                                 echo 'Có hiệu lực';

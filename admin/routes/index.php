@@ -116,6 +116,10 @@ $routes = queryExecute($getRoutesQuery, true);
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
+        setTimeout(function() {
+            sessionStorage.clear();
+        }, 2000);
+
         $(document).ready(function() {
             setTimeout(() => sessionStorage.clear(), 2000);
 
@@ -139,7 +143,7 @@ $routes = queryExecute($getRoutesQuery, true);
             <?php if (isset($_GET['msg'])) : ?>
                 Swal.fire({
                     position: 'bottom-center',
-                    icon: 'warning',
+                    icon: 'success',
                     title: "<?= $_GET['msg']; ?>",
                     showConfirmButton: false,
                     timer: 1500

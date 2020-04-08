@@ -40,7 +40,11 @@ if (strlen($end_point) < 2 || strlen($end_point) > 191) {
 }
 $checkEndPointQuery = "select * from routes where end_point = '$end_point'";
 $endPoint = queryExecute($checkEndPointQuery, true);
+<<<<<<< HEAD
+if ($end_pointerr == "" && count($end_point) > 0) {
+=======
 if ($end_pointerr == "" && count($endPoint) > 0) {
+>>>>>>> 88223056283c7af7afe825fbc81a5e07f339ba16
       $end_pointerr = "Điểm cuối đã tồn tại";
 }
 

@@ -106,7 +106,7 @@ $roles = queryExecute($getRoleQuery, true);
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script type="text/javascript">
-        window.onload = function() {
+        $(document).ready(function() {
             // session storage
             // get data
             var name = document.getElementById('name');
@@ -193,7 +193,7 @@ $roles = queryExecute($getRoleQuery, true);
                     }
                 }
             });
-        }
+        });
     </script>
 </body>
 

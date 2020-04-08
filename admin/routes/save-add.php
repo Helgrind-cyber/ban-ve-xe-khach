@@ -36,8 +36,8 @@ if ($begin_pointerr == "" && count($begin_point) > 0) {
 if (strlen($end_point) < 2 || strlen($end_point) > 191) {
       $end_pointerr = "Yêu cầu nhập trong khoảng 2-191 ký tự";
 }
-$checkBeginPointQuery = "select * from routes end_point = '$end_point'";
-$beginPoint = queryExecute($checkBeginPointQuery, true);
+$checkEndPointQuery = "select * from routes end_point = '$end_point'";
+$endPoint = queryExecute($checkEndPointQuery, true);
 if ($end_pointerr == "" && count($end_point) > 0) {
       $end_pointerr = "Điểm đầu đã tồn tại";
 }

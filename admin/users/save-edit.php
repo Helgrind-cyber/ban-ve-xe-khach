@@ -6,8 +6,13 @@ checkAdminLoggedIn();
 $id = trim($_POST['id']);
 $name = trim($_POST['name']);
 $email = trim($_POST['email']);
+<<<<<<< HEAD
 $phone_number = trim($_POST['phone_number']);
 $role_id = $_POST['role_id'];
+=======
+$phone_number = (int)($_POST['phone_number']);
+$role_id = trim($_POST['role_id']);
+>>>>>>> 324abb5668f4f4cdf57d9a7c578c4ede004d55d8
 
 // kiểm tra sự tồn tại của tài khoản
 $getUserByIdQuery = "select * from users where id = '$id'";
@@ -44,15 +49,20 @@ $users = queryExecute($checkEmailQuery, true);
 if($emailerr == "" && count($users) > 0){
     $emailerr = "Email đã tồn tại, vui lòng sử dụng email khác";
 }
+<<<<<<< HEAD
 if(strlen($phone_number) != 10){
     $phone_numbererr = "Yêu cầu nhập 10 số";
 }
 if(strlen($phone_number) == 0){
     $phone_numbererr = "Yêu cầu nhập 10 số";
+=======
+if(strlen((string)$phone_number) != 10){
+    $phone_numbererr = "Yêu cầu nhập 10 ký tự của biển số";
+>>>>>>> 324abb5668f4f4cdf57d9a7c578c4ede004d55d8
 }
 
-if($nameerr . $emailerr != "" ){
-    header('location: ' . ADMIN_URL . "users/edit-form.php?id=$id&nameerr=$nameerr&emailerr=$emailerr");
+if($nameerr . $emailerr . $phone_numbererr != "" ){
+    header('location: ' . ADMIN_URL . "users/edit-form.php?id=$id&nameerr=$nameerr&emailerr=$emailerr&phone_numbererr=$phone_numbererr");
     die;
 }
 

@@ -117,6 +117,8 @@ $routes = queryExecute($getRoutesQuery, true);
     <?php include_once '../_share/script.php'; ?>
     <script>
         $(document).ready(function() {
+            setTimeout(() => sessionStorage.clear(), 2000);
+
             $('.btn-remove').on('click', function() {
                 var redirectUrl = $(this).attr('href');
                 Swal.fire({

@@ -38,13 +38,13 @@ if ($begin_pointerr == "" && count($beginPoint) > 0) {
 if (strlen($end_point) < 2 || strlen($end_point) > 191) {
       $end_pointerr = "Yêu cầu nhập trong khoảng 2-191 ký tự";
 }
-$checkEndPointQuery = "select * from routes end_point = '$end_point'";
+$checkEndPointQuery = "select * from routes where end_point = '$end_point'";
 $endPoint = queryExecute($checkEndPointQuery, true);
-if ($end_pointerr == "" && count($end_point) > 0) {
-      $end_pointerr = "Điểm đầu đã tồn tại";
+if ($end_pointerr == "" && count($endPoint) > 0) {
+      $end_pointerr = "Điểm cuối đã tồn tại";
 }
 
-if (strcasecmp($begin_point, $end_point)) {
+if (strcasecmp($begin_point, $end_point) == 0) {
       $routeserr = "Không thể đặt điểm đầu điểm cuối khớp nhau";
 }
 

@@ -11,6 +11,7 @@ $distanceerr = "";
 $estimate_timeerr = "";
 $begin_pointerr = "";
 $end_pointerr = "";
+$routeserr = "";
 
 // kiểm tra distance có phải kiểu số không
 if(!is_numeric($distance)) {
@@ -40,6 +41,10 @@ $beginPoint = queryExecute($checkBeginPointQuery, true);
 if ($end_pointerr == "" && count($end_point) > 0) {
       $end_pointerr = "Điểm đầu đã tồn tại";
 }
+
+// if ($begin_point == $end_point) {
+//       $routeserr = "điểm đầu và cuối trùng nhau";
+//   }
 
 if($distanceerr . $begin_pointerr . $end_pointerr!= "" ){
     header('location: ' . ADMIN_URL . "routes/add-form.php?distanceerr=$distanceerr&begin_pointerr=$begin_pointerr&end_pointerr=$end_pointerr");

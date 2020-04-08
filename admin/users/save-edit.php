@@ -7,7 +7,7 @@ $id = trim($_POST['id']);
 $name = trim($_POST['name']);
 $email = trim($_POST['email']);
 $phone_number = trim($_POST['phone_number']);
-$role_id = trim($_POST['role_id']);
+$role_id = $_POST['role_id'];
 
 // kiểm tra sự tồn tại của tài khoản
 $getUserByIdQuery = "select * from users where id = '$id'";
@@ -45,7 +45,10 @@ if($emailerr == "" && count($users) > 0){
     $emailerr = "Email đã tồn tại, vui lòng sử dụng email khác";
 }
 if(strlen($phone_number) != 10){
-    $phone_numbererr = "Yêu cầu nhập 10 ký tự của biển số '80A-800.80'";
+    $phone_numbererr = "Yêu cầu nhập 10 số";
+}
+if(strlen($phone_number) == 0){
+    $phone_numbererr = "Yêu cầu nhập 10 số";
 }
 
 if($nameerr . $emailerr != "" ){

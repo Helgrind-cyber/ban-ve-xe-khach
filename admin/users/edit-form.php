@@ -146,8 +146,8 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                 },
                 phone_number: {
                     number: true,
-                    max: 10,
-                    min: 10
+                    maxlength: 10,
+                    minlength: 10
                 }
             },
             messages: {
@@ -168,6 +168,7 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                 },
                 cfpassword: {
                     required: "Nhập lại mật khẩu",
+          
                     equalTo: "Cần khớp với mật khẩu"
                 },
                 phone_number: {

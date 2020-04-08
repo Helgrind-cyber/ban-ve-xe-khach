@@ -6,6 +6,8 @@ checkAdminLoggedIn();
 $id = trim($_POST['id']);
 $name = trim($_POST['name']);
 $email = trim($_POST['email']);
+$phone_number = trim($_POST['phone_number']);
+$role_id = $_POST['role_id'];
 $phone_number = (int)($_POST['phone_number']);
 $role_id = trim($_POST['role_id']);
 
@@ -44,6 +46,12 @@ $users = queryExecute($checkEmailQuery, true);
 if($emailerr == "" && count($users) > 0){
     $emailerr = "Email đã tồn tại, vui lòng sử dụng email khác";
 }
+if(strlen($phone_number) != 10){
+    $phone_numbererr = "Yêu cầu nhập 10 số";
+}
+if(strlen($phone_number) == 0){
+    $phone_numbererr = "Yêu cầu nhập 10 số";
+}
 if(strlen((string)$phone_number) != 10){
     $phone_numbererr = "Yêu cầu nhập 10 ký tự của biển số";
 }
@@ -64,3 +72,4 @@ $updateUserQuery = "update users
 queryExecute($updateUserQuery, false);
 header("location: " . ADMIN_URL . "users");
 die;
+?>

@@ -11,6 +11,7 @@ $distanceerr = "";
 $estimate_timeerr = "";
 $begin_pointerr = "";
 $end_pointerr = "";
+$routeserr = "";
 
 // kiểm tra distance có phải kiểu số không
 if (!is_numeric($distance)) {
@@ -35,6 +36,21 @@ if ($begin_pointerr == "" && count($beginPoint) > 0) {
 if (strlen($end_point) < 2 || strlen($end_point) > 191) {
       $end_pointerr = "Yêu cầu nhập trong khoảng 2-191 ký tự";
 }
+<<<<<<< HEAD
+$checkEndPointQuery = "select * from routes end_point = '$end_point'";
+$endPoint = queryExecute($checkEndPointQuery, true);
+if ($end_pointerr == "" && count($end_point) > 0) {
+      $end_pointerr = "Điểm đầu đã tồn tại";
+}
+
+// if ($begin_point == $end_point) {
+//       $routeserr = "điểm đầu và cuối trùng nhau";
+//   }
+
+if($distanceerr . $begin_pointerr . $end_pointerr!= "" ){
+    header('location: ' . ADMIN_URL . "routes/add-form.php?distanceerr=$distanceerr&begin_pointerr=$begin_pointerr&end_pointerr=$end_pointerr");
+    die;
+=======
 $checkEndPointQuery = "select * from routes where end_point = '$end_point'";
 $endPoint = queryExecute($checkEndPointQuery, true);
 if ($end_pointerr == "" && count($endPoint) > 0) {
@@ -44,6 +60,7 @@ if ($end_pointerr == "" && count($endPoint) > 0) {
 if ($distanceerr . $begin_pointerr . $end_pointerr != "") {
       header('location: ' . ADMIN_URL . "routes/add-form.php?distanceerr=$distanceerr&begin_pointerr=$begin_pointerr&end_pointerr=$end_pointerr");
       die;
+>>>>>>> 0d4c97c3764e53f71d8d5726a32e313b8009b0cc
 }
 
 $insertRoutesQuery = "insert into routes

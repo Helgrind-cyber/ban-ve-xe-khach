@@ -43,7 +43,7 @@ checkAdminLoggedIn();
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Khoảng cách<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="distance">
+                                    <input type="text" class="form-control" name="distance" id="distance">
                                     <?php if (isset($_GET['distanceerr'])) : ?>
                                         <label class="error"><?= $_GET['distanceerr'] ?></label>
                                     <?php endif; ?>
@@ -59,14 +59,14 @@ checkAdminLoggedIn();
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Điểm đầu<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="begin_point">
+                                    <input type="text" class="form-control" name="begin_point" id="begin_point">
                                     <?php if (isset($_GET['begin_pointerr'])) : ?>
                                         <label class="error"><?= $_GET['begin_pointerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Điểm cuối<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="end_point">
+                                    <input type="text" class="form-control" name="end_point" id="end_point">
                                     <?php if (isset($_GET['end_pointerr'])) : ?>
                                         <label class="error"><?= $_GET['end_pointerr'] ?></label>
                                     <?php endif; ?>
@@ -75,7 +75,7 @@ checkAdminLoggedIn();
                         </div>
                         <div class="col-12 d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">Thêm</button>&nbsp;
-                            <a href="<?= ADMIN_URL . 'routes' ?>" class="btn btn-danger">Hủy</a>
+                            <a href="<?= ADMIN_URL . 'routes' ?>" class="btn btn-danger" id="btnRemove">Hủy</a>
                         </div>
                     </form>
                     <!-- /.row -->
@@ -90,61 +90,97 @@ checkAdminLoggedIn();
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
-        $(document).ready(function() {
-            $('#add-route-form').validate({
-                rules: {
-                    distance: {
-                        required: true,
-                        min: 100,
-                        max: 200
-                    },
-                    begin_point: {
-                        required: true,
-                        maxlength: 191,
-                        remote: {
-                            url: "<?= ADMIN_URL . 'routes/verify-begin-point-existed.php' ?>",
-                            type: "post",
-                            data: {
-                                name: function() {
-                                    return $("input[name='begin_point']").val();
-                                }
-                            }
-                        }
-                    },
-                    end_point: {
-                        required: true,
-                        maxlength: 191,
-                        remote: {
-                            url: "<?= ADMIN_URL . 'routes/verify-end-point-existed.php' ?>",
-                            type: "post",
-                            data: {
-                                name: function() {
-                                    return $("input[name='end_point']").val();
-                                }
-                            }
-                        }
-                    },
-                    estimate_time: "required time"
+        // session storage
+        // get data
+        var distance = document.getElementById('distance');
+        if (sessionStorage.getItem('distance')) {
+            distance.value = sessionStorage.getItem('distance');
+        } else {
+            distance.value = "";
+        }
+
+        var estimate_time = document.getElementById('estimate_time');
+        estimate_time.value = sessionStorage.getItem('estimate_time');
+
+        var begin_point = document.getElementById('begin_point');
+        begin_point.value = sessionStorage.getItem('begin_point');
+
+        var end_point = document.getElementById('end_point');
+        end_point.value = sessionStorage.getItem('end_point');
+
+        distance.addEventListener('change', function() {
+            sessionStorage.setItem('distance', distance.value);
+        });
+
+        estimate_time.addEventListener('change', function() {
+            sessionStorage.setItem('estimate_time', estimate_time.value);
+        });
+
+        begin_point.addEventListener('change', function() {
+            sessionStorage.setItem('begin_point', begin_point.value);
+        });
+
+        end_point.addEventListener('change', function() {
+            sessionStorage.setItem('end_point', end_point.value);
+        });
+        var btnRemove = document.getElementById('btnRemove');
+        btnRemove.addEventListener('click', function() {
+            sessionStorage.clear();
+        });
+
+        $('#add-route-form').validate({
+            rules: {
+                distance: {
+                    number: true,
+                    min: 100,
+                    max: 200
                 },
-                messages: {
-                    begin_point: {
-                        required: "Hãy nhập địa điểm",
-                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
-                        remote: "Điểm đầu đã tồn tại."
-                    },
-                    end_point: {
-                        required: "Hãy nhập địa điểm",
-                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
-                        remote: "Điểm cuối đã tồn tại."
-                    },
-                    distance: {
-                        require: "Hãy nhập khoảng cách quãng đường",
-                        min: "Khoảng cách tối thiểu là 100km",
-                        max: "Khoảng cách tối đa là 200km"
-                    },
-                    estimate_time: "Nhập đúng định dạng thời gian example: 01:01"
-                }
-            });
+                begin_point: {
+                    required: true,
+                    maxlength: 191,
+                    remote: {
+                        url: "<?= ADMIN_URL . 'routes/verify-begin-point-existed.php' ?>",
+                        type: "post",
+                        data: {
+                            name: function() {
+                                return $("input[name='begin_point']").val();
+                            }
+                        }
+                    }
+                },
+                end_point: {
+                    required: true,
+                    maxlength: 191,
+                    remote: {
+                        url: "<?= ADMIN_URL . 'routes/verify-end-point-existed.php' ?>",
+                        type: "post",
+                        data: {
+                            name: function() {
+                                return $("input[name='end_point']").val();
+                            }
+                        }
+                    }
+                },
+                estimate_time: "required time"
+            },
+            messages: {
+                begin_point: {
+                    required: "Hãy nhập địa điểm",
+                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
+                    remote: "Điểm đầu đã tồn tại."
+                },
+                end_point: {
+                    required: "Hãy nhập địa điểm",
+                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
+                    remote: "Điểm cuối đã tồn tại."
+                },
+                distance: {
+                    number: "Hãy nhập khoảng cách quãng đường là số",
+                    min: "Khoảng cách tối thiểu là 100km",
+                    max: "Khoảng cách tối đa là 200km"
+                },
+                estimate_time: "Nhập đúng định dạng thời gian example: 01:01"
+            }
         });
     </script>
 </body>

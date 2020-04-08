@@ -107,7 +107,7 @@ $roles = queryExecute($getRoleQuery, true);
     <?php include_once '../_share/script.php'; ?>
     <script type="text/javascript">
         window.onload = function() {
-            // demo session storage
+            // session storage
             // get data
             var name = document.getElementById('name');
             name.value = sessionStorage.getItem('name');

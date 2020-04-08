@@ -53,7 +53,7 @@ if(strlen($phone_number) == 0){
     $phone_numbererr = "Yêu cầu nhập 10 số";
 }
 if(strlen((string)$phone_number) != 10){
-    $phone_numbererr = "Yêu cầu nhập 10 ký tự của biển số";
+    $phone_numbererr = "Yêu cầu nhập 10 ký tự";
 }
 
 if($nameerr . $emailerr . $phone_numbererr != "" ){

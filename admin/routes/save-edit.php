@@ -28,7 +28,6 @@ if (strlen($begin_point) < 2 || strlen($begin_point) > 191) {
     $begin_pointerr = "Yêu cầu nhập trong khoảng 2-191 ký tự";
 }
 $checkBeginPointQuery = "select * from routes where begin_point = '$begin_point' and id != '$id'";
-dd($checkBeginPointQuery);
 $beginPoint = queryExecute($checkBeginPointQuery, true);
 if ($begin_pointerr == "" && count($beginPoint) > 0) {
     $begin_pointerr = "Điểm đầu đã tồn tại";
@@ -55,7 +54,6 @@ $updateRoutesQuery = "update routes
                         begin_point = '$begin_point',
                         end_point = '$end_point'
                     where id = '$id'";
-dd($updateRoutesQuery);
 queryExecute($updateRoutesQuery, false);
 header("location: " . ADMIN_URL . "routes?msg=Sửa thông tin quãng đường thành công");
 die;

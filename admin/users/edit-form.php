@@ -119,7 +119,7 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                 name: {
                     required: true,
                     maxlength: 191,
-                    minlength: 6
+                    minlength: 2
                 },
                 email: {
                     required: true,
@@ -155,7 +155,7 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                 name: {
                     required: "Hãy nhập tên người dùng",
                     maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
-                    minlength: "Nhập tối thiểu 6 kí tự"
+                    minlength: "Nhập tối thiểu 2 kí tự"
                 },
                 email: {
                     required: "Hãy nhập email",
@@ -169,7 +169,6 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                 },
                 cfpassword: {
                     required: "Nhập lại mật khẩu",
-          
                     equalTo: "Cần khớp với mật khẩu"
                 },
                 phone_number: {

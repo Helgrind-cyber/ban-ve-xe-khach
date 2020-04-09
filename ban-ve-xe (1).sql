@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 08, 2020 at 04:37 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.4
+-- Host: localhost:3306
+-- Generation Time: Apr 09, 2020 at 02:27 PM
+-- Server version: 5.7.29-0ubuntu0.18.04.1
+-- PHP Version: 7.3.16-1+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -54,7 +53,7 @@ INSERT INTO `news` (`id`, `image`, `title`, `content`) VALUES
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `created_date` datetime NOT NULL,
+  `created_date` datetime(6) NOT NULL,
   `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -103,7 +102,7 @@ INSERT INTO `roles` (`id`, `name`, `status`) VALUES
 CREATE TABLE `routes` (
   `id` int(11) NOT NULL,
   `distance` varchar(100) NOT NULL,
-  `estimate_time` time NOT NULL,
+  `estimate_time` time(6) NOT NULL,
   `begin_point` varchar(255) NOT NULL,
   `end_point` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -113,13 +112,11 @@ CREATE TABLE `routes` (
 --
 
 INSERT INTO `routes` (`id`, `distance`, `estimate_time`, `begin_point`, `end_point`) VALUES
-(1, '160', '04:00:00', 'Mỹ Đình', 'Nam Định'),
-(2, '160', '04:20:00', 'Hải Hậu', 'Giáp Bát'),
-(4, '1434', '04:00:00', 'Mỹ Đình', 'Hải Hậu'),
-(5, '200', '04:00:00', 'Mỹ Đình A', 'Hải Hậu A'),
-(6, '160', '04:00:00', 'Mỹ Đình B', 'Bx hải hậu'),
-(7, '160', '04:00:00', 'Mỹ Đình BABC', 'Bx hải hậu ABC'),
-(8, '160', '04:00:00', 'Mỹ Đình c', 'Nam Định a');
+(2, '160', '04:20:00.000000', 'Hải Hậu', 'Giáp Bát'),
+(5, '200', '04:00:00.000000', 'Mỹ Đình A', 'Hải Hậu A'),
+(6, '160', '04:00:00.000000', 'Mỹ Đình B', 'Bx hải hậu'),
+(7, '160', '04:00:00.000000', 'Mỹ Đình BABC', 'Bx hải hậu ABC'),
+(8, '160', '04:00:00.000000', 'Mỹ Đình c', 'Nam Định a');
 
 -- --------------------------------------------------------
 
@@ -189,7 +186,7 @@ CREATE TABLE `vehicles` (
 --
 
 INSERT INTO `vehicles` (`id`, `type_id`, `plate_number`, `avatar`) VALUES
-(1, 1, '29T9-999.99', 'public/images/5e8de08cd58e4-Nơi_này_có_anh_-_Single_Cover.jpg'),
+(1, 1, '29T9-999.99', NULL),
 (6, 1, '18H1-888.88', NULL),
 (7, 6, '29G9-666.00', 'public/images/5e8d9aa20f82c-mbuntu-1.jpg'),
 (13, 2, '29G9-555.55', 'public/images/5e8d96742fdbb-maxresdefault.jpg'),
@@ -219,7 +216,7 @@ INSERT INTO `vehicle_types` (`id`, `name`, `status`, `seat`) VALUES
 (3, 'Xe cút kít', 1, 14),
 (6, 'Xe Công lý 19 bánh', 0, 9),
 (12, 'Xe Công lý 18 bánh', 0, 9),
-(13, 'Xe Công lý 11 bánh', 0, 11);
+(13, 'Xe Công lý 11 bánh', 0, 12);
 
 --
 -- Indexes for dumped tables
@@ -236,15 +233,15 @@ ALTER TABLE `news`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`) USING BTREE;
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `order_id` (`order_id`) USING BTREE,
-  ADD KEY `schedule_id` (`schedule_id`) USING BTREE;
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `schedule_id` (`schedule_id`);
 
 --
 -- Indexes for table `roles`
@@ -263,22 +260,22 @@ ALTER TABLE `routes`
 --
 ALTER TABLE `route_schedules`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `route_id` (`route_id`) USING BTREE,
-  ADD KEY `vehicle_id` (`vehicle_id`) USING BTREE;
+  ADD KEY `route_id` (`route_id`),
+  ADD KEY `vehicle_id` (`vehicle_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `role_id` (`role_id`) USING BTREE;
+  ADD KEY `role_id` (`role_id`);
 
 --
 -- Indexes for table `vehicles`
 --
 ALTER TABLE `vehicles`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `type_id` (`type_id`) USING BTREE;
+  ADD KEY `type_id` (`type_id`);
 
 --
 -- Indexes for table `vehicle_types`
@@ -295,92 +292,46 @@ ALTER TABLE `vehicle_types`
 --
 ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `routes`
 --
 ALTER TABLE `routes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
 -- AUTO_INCREMENT for table `route_schedules`
 --
 ALTER TABLE `route_schedules`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
 --
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
 --
 -- AUTO_INCREMENT for table `vehicle_types`
 --
 ALTER TABLE `vehicle_types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `order_detail`
---
-ALTER TABLE `order_detail`
-  ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
-  ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`schedule_id`) REFERENCES `route_schedules` (`id`);
-
---
--- Constraints for table `route_schedules`
---
-ALTER TABLE `route_schedules`
-  ADD CONSTRAINT `route_schedules_ibfk_1` FOREIGN KEY (`route_id`) REFERENCES `routes` (`id`),
-  ADD CONSTRAINT `route_schedules_ibfk_2` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
-
---
--- Constraints for table `vehicles`
---
-ALTER TABLE `vehicles`
-  ADD CONSTRAINT `vehicles_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `vehicle_types` (`id`);
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

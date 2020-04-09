@@ -47,7 +47,6 @@ $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
 
-
                     <form id="edit-vehicle-form" action="<?= ADMIN_URL . 'vehicles/save-edit.php' ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <input name="id" value="<?php echo $vehicleEdit['id'] ?>" hidden>

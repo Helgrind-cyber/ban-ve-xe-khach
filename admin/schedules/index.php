@@ -7,13 +7,6 @@ $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 // get roleid from search
 $routeId = isset($_GET['route']) == true ? $_GET['route'] : false;
 
-// get query from schedules
-$getSchedulesQuery = "select rs.*,
-                            r.begin_point as begin, r.end_point as end,
-                            v.plate_number as plate_number
-                        from vehicles v join route_schedules rs on v.id=rs.vehicle_id
-                        join routes r
-                        on rs.route_id = r.id";
 // get query from vehicles
 $getVehiclesQuery = "select * from vehicles";
 $vehicles = queryExecute($getVehiclesQuery, true);
@@ -21,6 +14,14 @@ $vehicles = queryExecute($getVehiclesQuery, true);
 // get query from routes
 $getRoutesQuery = "select * from routes";
 $routes = queryExecute($getRoutesQuery, true);
+
+// get query from schedules
+$getSchedulesQuery = "select 
+                            v.plate_number as plate_number,
+                            rs.*,
+                            r.begin_point as begin, r.end_point as end
+                        from vehicles v join route_schedules rs on v.id = rs.vehicle_id
+                        join routes r on rs.route_id = r.id";
 
 // tìm kiếm
 if ($keyword !== "") {
@@ -32,17 +33,15 @@ if ($keyword !== "") {
                             or r.begin_point like '%$keyword%'
                             or r.end_point like '%$keyword%'
                             or v.plate_number like '%$keyword%'
-                            )
-                      ";
+                            )";
     if ($routeId !== false && $routeId !== "") {
-        $getRoutesQuery .= " and rs.route_id = $routeId";
+        $getSchedulesQuery .= " and rs.route_id = '$routeId'";
     }
 }else{
     if ($routeId !== false && $routeId !== "") {
-        $getRoutesQuery .= " and rs.route_id = $routeId";
+        $getSchedulesQuery .= " where rs.route_id = '$routeId'";
     }
 }
-
 $schedules = queryExecute($getSchedulesQuery, true);
 
 ?>

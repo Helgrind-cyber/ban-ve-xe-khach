@@ -102,7 +102,8 @@ $vehicleTypeEdit = queryExecute($getVehicleTypeEditQuery, false);
                         data: {
                             name: function() {
                                 return $("input[name='name']").val();
-                            }
+                            },
+                            id: <?= $vehicleTypeEdit['id']?>
                         }
                     }
                 },

@@ -2,7 +2,7 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-$getRoleQuery = "select * from roles where status = 1";
+$getRoleQuery = "select * from roles";
 $roles = queryExecute($getRoleQuery, true);
 
 // lấy thông tin của người dùng ra ngoài thông id trên đường dẫn

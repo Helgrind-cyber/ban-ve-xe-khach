@@ -55,9 +55,7 @@ $news = queryExecute($getNewsQuery, false);
                                 </div>
                                 <div class="form-group">
                                     <label for="">Nội dung<span class="text-danger">*</span></label>
-                                    <textarea name="content" class="form-control" id="" cols="30" rows="5">
-                                        <?= $news['content'] ?>
-                                    </textarea>
+                                    <textarea name="content" class="form-control" id="" cols="30" rows="5"><?= $news['content'] ?></textarea>
                                 </div>
 
                             </div>

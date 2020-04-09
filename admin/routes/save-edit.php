@@ -2,6 +2,7 @@
 session_start();
 include_once "../../config/utils.php";
 checkAdminLoggedIn();
+$id = $_POST['id'];
 $distance = trim($_POST['distance']);
 $estimate_time = trim($_POST['estimate_time']);
 $begin_point = trim($_POST['begin_point']);
@@ -26,7 +27,7 @@ if ($distance < 100 || $distance > 200) {
 if (strlen($begin_point) < 2 || strlen($begin_point) > 191) {
     $begin_pointerr = "Yêu cầu nhập trong khoảng 2-191 ký tự";
 }
-$checkBeginPointQuery = "select * from routes where begin_point = '$begin_point' and id = '$id'";
+$checkBeginPointQuery = "select * from routes where begin_point = '$begin_point' and id != '$id'";
 $beginPoint = queryExecute($checkBeginPointQuery, true);
 if ($begin_pointerr == "" && count($beginPoint) > 0) {
     $begin_pointerr = "Điểm đầu đã tồn tại";
@@ -35,7 +36,7 @@ if ($begin_pointerr == "" && count($beginPoint) > 0) {
 if (strlen($end_point) < 2 || strlen($end_point) > 191) {
     $end_pointerr = "Yêu cầu nhập trong khoảng 2-191 ký tự";
 }
-$checkEndPointQuery = "select * from routes where end_point = '$end_point' and id = '$id'";
+$checkEndPointQuery = "select * from routes where end_point = '$end_point' and id != '$id'";
 $endPoint = queryExecute($checkEndPointQuery, true);
 if ($end_pointerr == "" && count($endPoint) > 0) {
     $end_pointerr = "Điểm cuối đã tồn tại";
@@ -52,7 +53,7 @@ $updateRoutesQuery = "update routes
                         estimate_time = '$estimate_time',
                         begin_point = '$begin_point',
                         end_point = '$end_point'
-                        where id = '$id'";
+                    where id = '$id'";
 queryExecute($updateRoutesQuery, false);
 header("location: " . ADMIN_URL . "routes?msg=Sửa thông tin quãng đường thành công");
 die;

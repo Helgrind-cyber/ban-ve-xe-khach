@@ -50,7 +50,7 @@ $routesEdit = queryExecute($getRoutesEditQuery, false);
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Khoảng cách<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="distance" value="<?= $routesEdit['distance'] . ' KM' ?>">
+                                    <input type="text" class="form-control" name="distance" value="<?= $routesEdit['distance']?>">
                                     <?php if (isset($_GET['distanceerr'])) : ?>
                                         <label class="error"><?= $_GET['distanceerr'] ?></label>
                                     <?php endif; ?>

@@ -11,7 +11,7 @@ if(!$removeRoutes){
     die;
 }
 
-$removeRoutesQuery = "delete from routes where id = $id";
+$removeRoutesQuery = "delete from routes where id = '$id'";
 queryExecute($removeRoutesQuery, false);
 header("location: " . ADMIN_URL . "routes?msg=Xóa quãng đường thành công");
 die;

@@ -2,7 +2,7 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-$getRoleQuery = "select * from roles where status = 1";
+$getRoleQuery = "select * from roles";
 $roles = queryExecute($getRoleQuery, true);
 
 ?>
@@ -137,7 +137,8 @@ $roles = queryExecute($getRoleQuery, true);
                 rules: {
                     name: {
                         required: true,
-                        maxlength: 191
+                        maxlength: 191,
+                        minlength: 2
                     },
                     email: {
                         required: true,
@@ -171,7 +172,8 @@ $roles = queryExecute($getRoleQuery, true);
                 messages: {
                     name: {
                         required: "Hãy nhập tên người dùng",
-                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
+                        minlength: "Nhập tối thiểu 2 kí tự"
                     },
                     email: {
                         required: "Hãy nhập email",

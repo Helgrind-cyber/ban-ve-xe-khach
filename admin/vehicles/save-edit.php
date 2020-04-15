@@ -15,7 +15,6 @@ if(strlen($plate_number) == 0){
 
 // check plate_number đã tồn tại hay chưa
 $checkPlateQuery = "select * from vehicles where plate_number = '$plate_number' and id != $id";
-dd($checkAvatarQuery);
 $plates = queryExecute($checkPlateQuery, true);
 if($plates == "" && count($plates) > 0){
     $plate_numbererr = "Biển số đã tồn tại, vui lòng sử dụng biển số khác";
@@ -27,9 +26,9 @@ if($plate_numbererr != "" ){
 }
 
 // upload file ảnh
-// $checkAvatarQuery = "select * from vehicles where id = '$id'";
-// $avatar = queryExecute($checkAvatarQuery, true);
-$filename = "";
+$checkAvatarQuery = "select * from vehicles where id = '$id'";
+$avatar = queryExecute($checkAvatarQuery, false);
+$filename = $avatar['avatar'];
 if ($image['size'] > 0) {
     $filename = uniqid() . '-' . $image['name'];
     move_uploaded_file($image['tmp_name'], "../../public/images/" . $filename);

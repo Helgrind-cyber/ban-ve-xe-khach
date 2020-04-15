@@ -60,6 +60,7 @@ if (!$schedules) {
                                 <div class="form-group">
                                     <label for="">Tuyến đường<span class="text-danger">*</span></label>
                                     <select name="route_id" class="form-control">
+                                        <option value="">Select ...</option>
                                         <?php foreach ($routes as $route) : ?>
                                             <option value="<?php echo $route['id'] ?>">
                                                 <?php echo $route['begin_point'] . "  -  " . $route['end_point'] ?></option>
@@ -69,6 +70,7 @@ if (!$schedules) {
                                 <div class="form-group">
                                     <label for="">Biển số xe<span class="text-danger">*</span></label>
                                     <select name="vehicle_id" class="form-control">
+                                        <option value="">Select ...</option>
                                         <?php foreach ($vehicles as $vehicle) : ?>
                                             <option value="<?php echo $vehicle['id'] ?>">
                                                 <?php echo $vehicle['plate_number'] ?></option>
@@ -146,10 +148,6 @@ if (!$schedules) {
         $(document).ready(function() {
             $('#edit-schedules-form').validate({
                 rules: {
-                    name: {
-                        required: true,
-                        maxlength: 191
-                    },
                     route_id: {
                         required: true
                     },
@@ -161,13 +159,15 @@ if (!$schedules) {
                         number: true,
                         min: 0,
                         max: 500000
+                    },
+                    start_time: {
+                        required: true,
+                    },
+                    end_time: {
+                        required: true,
                     }
                 },
                 messages: {
-                    name: {
-                        required: "Hãy nhập tên người dùng",
-                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                    },
                     route_id: {
                         required: "Hãy chọn quãng đường cho lịch trình này"
                     },
@@ -179,18 +179,15 @@ if (!$schedules) {
                         number: "Chỉ nhập giá tiền bằng số",
                         min: "Giá tiền tối thiểu là 0 VND",
                         max: "Giá tiền tối đa là 500,000 VND"
+                    },
+                    start_time: {
+                        required: "hãy nhập thời gian bắt đầu"
+                    },
+                    end_time: {
+                        required: "hãy nhập thời gian kết thúc"
                     }
                 }
             });
-            <?php if (isset($_GET['msg'])) : ?>
-                Swal.fire({
-                    position: 'bottom-end',
-                    icon: 'warning',
-                    title: "<?= $_GET['msg']; ?>",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            <?php endif; ?>
         })
     </script>
 </body>
